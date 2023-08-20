@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ChefsController;
+use App\Http\Controllers\ChefController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.home');
+    Route::get('/admin-usuarios', [ChefsController::class, 'index'])->name('admin.index');
+});
+
+Route::middleware(['auth', 'role:chef'])->group(function () {
+    Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
+});
+
+Route::middleware(['auth', 'role:estudiante'])->group(function () {
+    Route::get('/estud-dashboard', 'EstudController@index')->name('estudiante.home');
 });

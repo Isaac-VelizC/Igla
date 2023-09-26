@@ -6,7 +6,7 @@
           <div class="header-left d-flex align-items-center">
             <div class="menu-toggle-btn mr-10">
               <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                <i class="lni lni-chevron-left me-2"></i>
+                <i class="lni lni-chevron-left"></i>
               </button>
             </div>
           </div>

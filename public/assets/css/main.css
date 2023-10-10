@@ -12,7 +12,7 @@ body {
   font-style: normal;
   color: #5d657b;
   overflow-x: hidden;
-  background: #f1f5f9;
+  background: #f1f5f9; /*color de fondo de la pagina por dentro*/
 }
 
 * {
@@ -116,7 +116,7 @@ p {
 
 /* ========== cart style ========== */
 .card-style {
-  background: #fff;
+  background: #fff; /*Es el color de los card ejemplo de la tablas*/
   box-sizing: border-box;
   padding: 25px 30px;
   position: relative;
@@ -287,7 +287,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  color: #1A2142;
+  color: #1A2142;/*El color de la letras al poner le mause*/
   margin: 0;
 }
 
@@ -2690,7 +2690,7 @@ h6,
 /* ========== header css ========== */
 .header {
   padding: 22px 0;
-  background: #fff;
+  background: #fff;/*Cambia el color de la cabezera del la pagina*/
   position: sticky;
   top: 0;
   z-index: 99;
@@ -2880,7 +2880,7 @@ h6,
   align-items: center;
   border-radius: 6px;
   padding: 10px 8px;
-  color: rgba(26, 33, 66, 0.5);
+  color: rgba(0, 0, 0, 0.718); /*Estilos del texto de la parte del Login Para cerrar sesion*/
 }
 .header .header-right .profile-box .dropdown-menu li a i {
   margin-right: 8px;
@@ -3622,7 +3622,7 @@ h6,
 
 /* =========== Sidebar css =========== */
 .sidebar-nav-wrapper {
-  background: #fff;
+  background: #fff;/*Cambia el color del menu el sidebar*/
   width: 250px;
   padding: 20px 0px;
   height: 100vh;
@@ -3712,7 +3712,7 @@ h6,
   transform: rotate(180deg);
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children > a.collapsed {
-  color: #9AA4CA;
+  color: #9AA4CA; /*Color de las letras del menu, con subtitulos*/
 }
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item.nav-item-has-children > a.collapsed::before {
   opacity: 0;
@@ -3767,7 +3767,7 @@ h6,
 .sidebar-nav-wrapper .sidebar-nav ul .nav-item a {
   display: flex;
   align-items: center;
-  color: #9AA4CA;
+  color: #9AA4CA; /*Color de las letras del menu*/
   font-size: 14px;
   font-weight: 500;
   width: 100%;

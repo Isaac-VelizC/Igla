@@ -115,19 +115,19 @@
                 <li class="divider"></li>
                 <li>
                   <a href="#0">
-                    <i class="lni lni-user"></i> View Profile
+                    <i class="lni lni-user"></i> Ver perfil
                   </a>
                 </li>
                 <li>
                   <a href="#0">
-                    <i class="lni lni-alarm"></i> Notifications
+                    <i class="lni lni-alarm"></i> Notificaciones
                   </a>
                 </li>
                 <li>
-                  <a href="#0"> <i class="lni lni-inbox"></i> Messages </a>
+                  <a href="#0"> <i class="lni lni-inbox"></i> Mensajes </a>
                 </li>
                 <li>
-                  <a href="#0"> <i class="lni lni-cog"></i> Settings </a>
+                  <a href="#0"> <i class="lni lni-cog"></i> Ajustes </a>
                 </li>
                 <li class="divider"></li>
                 <li>

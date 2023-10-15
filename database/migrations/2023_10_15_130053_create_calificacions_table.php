@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('calificacions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('lastname');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('photo', 255)->nullable();
-            $table->rememberToken();
+            $table->unsignedBigInteger('nota_tipo_id')->nullable();
+            $table->unsignedBigInteger('inscripcion_id')->nullable();
+            $table->foreign('inscripcion_id')->references('id')->on('inscripcions')->onDelete('cascade');
+            $table->decimal('grado', 4, 2);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +27,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('calificacions');
     }
 };

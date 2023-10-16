@@ -27,7 +27,7 @@
                   <a href="index.html"> Todos los Usuarios </a>
                 </li>
                 <li>
-                  <a href="index.html"> Estudiante </a>
+                  <a href="{{ route('admin.estudinte') }}"> Estudiante </a>
                 </li>
                 <li>
                   <a href="index.html"> Chef </a>
@@ -58,7 +58,7 @@
               <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_3"
                 aria-controls="ddmenu_3" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon">
-                  <i class="lni lni-agenda"></i>
+                  <i class="lni lni-layers"></i>
                 </span>
                 <span class="text">Materias</span>
               </a>
@@ -68,6 +68,26 @@
                 </li>
                 <li>
                   <a href="index.html"> Lista </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-item-has-children">
+              <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_4"
+                aria-controls="ddmenu_4" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="icon">
+                  <i class="lni lni-agenda"></i>
+                </span>
+                <span class="text">Reportes</span>
+              </a>
+              <ul id="ddmenu_4" class="collapse dropdown-nav">
+                <li>
+                  <a href="index.html"> Estudiantes </a>
+                </li>
+                <li>
+                  <a href="index.html"> Calificaciones </a>
+                </li>
+                <li>
+                  <a href="index.html"> Asistencias </a>
                 </li>
               </ul>
             </li>

@@ -26,7 +26,7 @@
           </div>
           <div class="content">
             <h6 class="mb-10">Todos los Usuarios</h6>
-            <h3 class="text-bold mb-10">107</h3>
+            <h3 class="text-bold mb-10">{{ $users->count() }}</h3>
           </div>
         </div>
         <!-- End Icon Cart -->
@@ -39,7 +39,7 @@
           </div>
           <div class="content">
             <h6 class="mb-10">Estudiantes</h6>
-            <h3 class="text-bold mb-10">100</h3>
+            <h3 class="text-bold mb-10">{{ $estudiantes->count() }}</h3>
           </div>
         </div>
         <!-- End Icon Cart -->
@@ -52,7 +52,7 @@
           </div>
           <div class="content">
             <h6 class="mb-10">Chefs</h6>
-            <h3 class="text-bold mb-10">3</h3>
+            <h3 class="text-bold mb-10">{{ $docentes->count() }}</h3>
           </div>
         </div>
         <!-- End Icon Cart -->

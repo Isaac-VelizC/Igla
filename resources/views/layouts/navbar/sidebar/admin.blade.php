@@ -244,7 +244,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
+                <a class="nav-link" href="{{ route('admin.ajustes') }}">
                     <i class="fa fa-sliders"></i>
                     <span class="item-name">Acerca De</span>
                 </a>

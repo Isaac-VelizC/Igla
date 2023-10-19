@@ -1,155 +1,488 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- ========== header start ========== -->
-<header class="header">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-5 col-md-5 col-6">
-        <div class="header-left d-flex align-items-center">
-          <div class="menu-toggle-btn mr-10">
-            <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-              <i class="lni lni-chevron-left"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-7 col-md-7 col-6">
-        <div class="header-right">
-          <!-- notification start -->
-          <div class="notification-box ml-15 d-none d-md-flex">
-            <button class="dropdown-toggle" type="button" id="notification" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M11 20.1667C9.88317 20.1667 8.88718 19.63 8.23901 18.7917H13.761C13.113 19.63 12.1169 20.1667 11 20.1667Z"
-                  fill="" />
-                <path
-                  d="M10.1157 2.74999C10.1157 2.24374 10.5117 1.83333 11 1.83333C11.4883 1.83333 11.8842 2.24374 11.8842 2.74999V2.82604C14.3932 3.26245 16.3051 5.52474 16.3051 8.24999V14.287C16.3051 14.5301 16.3982 14.7633 16.564 14.9352L18.2029 16.6342C18.4814 16.9229 18.2842 17.4167 17.8903 17.4167H4.10961C3.71574 17.4167 3.5185 16.9229 3.797 16.6342L5.43589 14.9352C5.6017 14.7633 5.69485 14.5301 5.69485 14.287V8.24999C5.69485 5.52474 7.60672 3.26245 10.1157 2.82604V2.74999Z"
-                  fill="" />
-              </svg>
-              <span></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification">
-              <li>
-                <a href="#0">
-                  <div class="image">
-                    <img src="assets/images/lead/lead-6.png" alt="" />
-                  </div>
-                  <div class="content">
-                    <h6>
-                      John Doe
-                      <span class="text-regular">
-                        comment on a product.
-                      </span>
-                    </h6>
-                    <p>
-                      Lorem ipsum dolor sit amet, consect etur adipiscing
-                      elit Vivamus tortor.
-                    </p>
-                    <span>10 mins ago</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!-- notification end -->
-          <!-- message start -->
-          <div class="header-message-box ml-15 d-none d-md-flex">
-            <button class="dropdown-toggle" type="button" id="message" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M7.74866 5.97421C7.91444 5.96367 8.08162 5.95833 8.25005 5.95833C12.5532 5.95833 16.0417 9.4468 16.0417 13.75C16.0417 13.9184 16.0364 14.0856 16.0259 14.2514C16.3246 14.138 16.6127 14.003 16.8883 13.8482L19.2306 14.629C19.7858 14.8141 20.3141 14.2858 20.129 13.7306L19.3482 11.3882C19.8694 10.4604 20.1667 9.38996 20.1667 8.25C20.1667 4.70617 17.2939 1.83333 13.75 1.83333C11.0077 1.83333 8.66702 3.55376 7.74866 5.97421Z"
-                  fill="" />
-                <path
-                  d="M14.6667 13.75C14.6667 17.2938 11.7939 20.1667 8.25004 20.1667C7.11011 20.1667 6.03962 19.8694 5.11182 19.3482L2.76946 20.129C2.21421 20.3141 1.68597 19.7858 1.87105 19.2306L2.65184 16.8882C2.13062 15.9604 1.83338 14.89 1.83338 13.75C1.83338 10.2062 4.70622 7.33333 8.25004 7.33333C11.7939 7.33333 14.6667 10.2062 14.6667 13.75ZM5.95838 13.75C5.95838 13.2437 5.54797 12.8333 5.04171 12.8333C4.53545 12.8333 4.12504 13.2437 4.12504 13.75C4.12504 14.2563 4.53545 14.6667 5.04171 14.6667C5.54797 14.6667 5.95838 14.2563 5.95838 13.75ZM9.16671 13.75C9.16671 13.2437 8.7563 12.8333 8.25004 12.8333C7.74379 12.8333 7.33338 13.2437 7.33338 13.75C7.33338 14.2563 7.74379 14.6667 8.25004 14.6667C8.7563 14.6667 9.16671 14.2563 9.16671 13.75ZM11.4584 14.6667C11.9647 14.6667 12.375 14.2563 12.375 13.75C12.375 13.2437 11.9647 12.8333 11.4584 12.8333C10.9521 12.8333 10.5417 13.2437 10.5417 13.75C10.5417 14.2563 10.9521 14.6667 11.4584 14.6667Z"
-                  fill="" />
-              </svg>
-              <span></span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="message">
-              <li>
-                <a href="#0">
-                  <div class="image">
-                    <img src="assets/images/lead/lead-5.png" alt="" />
-                  </div>
-                  <div class="content">
-                    <h6>Jacob Jones</h6>
-                    <p>Hey!I can across your profile and ...</p>
-                    <span>10 mins ago</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <!-- message end -->
-          <!-- profile start -->
-          <div class="profile-box ml-15">
-            <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-              data-bs-toggle="dropdown" aria-expanded="false">
-              <div class="profile-info">
-                <div class="info">
-                  <div class="image">
-                    <img src="assets/images/profile/profile-image.png" alt="" />
-                  </div>
+
+<div class="iq-navbar-header" style="height: 215px;">
+  <div class="container-fluid iq-container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                    <h6 class="fw-500">{{ Auth::user()->name }}</h6>
-                    @foreach(Auth::user()->getRoleNames()->toArray() as $role)
-                      <p>{{ $role }}</p>
-                    @endforeach
+                      <h1>Hello Devs!</h1>
+                      <p>We are on a mission to help developers like you build successful projects for FREE.</p>
                   </div>
-                </div>
               </div>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-              <li>
-                <div class="author-info flex items-center !p-1">
-                  <div class="image">
-                    <img src="assets/images/profile/profile-image.png" alt="image">
-                  </div>
-                  <div class="content">
-                    <h4 class="text-sm">{{ Auth::user()->name }}</h4>
-                    <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                      href="#">{{ Auth::user()->email }}</a>
-                  </div>
-                </div>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="#0">
-                  <i class="lni lni-user"></i> Ver perfil
-                </a>
-              </li>
-              <li>
-                <a href="#0">
-                  <i class="lni lni-alarm"></i> Notificaciones
-                </a>
-              </li>
-              <li>
-                <a href="#0"> <i class="lni lni-inbox"></i> Mensajes </a>
-              </li>
-              <li>
-                <a href="#0"> <i class="lni lni-cog"></i> Ajustes </a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
-                  <i class="lni lni-exit"></i> Salir 
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-                </form>
-              </li>
-            </ul>
           </div>
-          <!-- profile end -->
-        </div>
       </div>
-    </div>
   </div>
-</header>
-<!-- ========== header end ========== -->
+</div>
+
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+<div>
+<div class="row">
+<div class="col-sm-12 col-lg-6">
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">Basic Form</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+        <form>
+            <div class="form-group">
+                <label class="form-label" for="email">Email address:</label>
+                <input type="email" class="form-control" id="email1">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd">
+            </div>
+            <div class="checkbox mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
+                    <label class="form-check-label" for="flexCheckDefault3">
+                        Remember me
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">cancel</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">Form Grid</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+        <form>
+            <div class="row">
+                <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">Input</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+        <form>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputText1">Input Text </label>
+                <input type="text" class="form-control" id="exampleInputText1" value="Mark Jhon" placeholder="Enter Name">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputEmail3">Email Input</label>
+                <input type="email" class="form-control" id="exampleInputEmail3" value="markjhon@gmail.com" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputurl">Url Input</label>
+                <input type="url" class="form-control" id="exampleInputurl" value="https://getbootstrap.com" placeholder="Enter Url">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputphone">Teliphone Input</label>
+                <input type="tel" class="form-control" id="exampleInputphone" value="1-(555)-555-5555">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputNumber1">Number Input</label>
+                <input type="number" class="form-control" id="exampleInputNumber1" value="2356">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputPassword3">Password Input</label>
+                <input type="password" class="form-control" id="exampleInputPassword3" value="markjhon123" placeholder="Enter Password">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputdate">Date Input</label>
+                <input type="date" class="form-control" id="exampleInputdate" value="2019-12-18">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputmonth">Month Input</label>
+                <input type="month" class="form-control" id="exampleInputmonth" value="2019-12">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputweek">Week Input</label>
+                <input type="week" class="form-control" id="exampleInputweek" value="2019-W46">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputtime">Time Input</label>
+                <input type="time" class="form-control" id="exampleInputtime" value="13:45">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputdatetime">Date and Time Input</label>
+                <input type="datetime-local" class="form-control" id="exampleInputdatetime" value="2019-12-19T13:45:00">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">cancel</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+<div class="card-header d-flex justify-content-between">
+    <div class="header-title">
+        <h4 class="card-title">Input Size</h4>
+    </div>
+</div>
+<div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+    <form>
+        <div class="form-group">
+            <label class="form-label" for="colFormLabelSm">Small</label>
+            <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="form-control-sm">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="colFormLabel">Default</label>
+            <input type="email" class="form-control" id="colFormLabel" placeholder="form-control">
+        </div>
+        <div class="form-group mb-0">
+            <label class="form-label pb-0" for="colFormLabelLg">Large</label>
+            <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="form-control-lg">
+        </div>
+    </form>
+</div>
+</div>
+<div class="card">
+<div class="card-header d-flex justify-content-between">
+    <div class="header-title">
+        <h4 class="card-title">Select Size</h4>
+    </div>
+</div>
+<div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+    <div class="form-group">
+        <label class="form-label">Small</label>
+        <select class="form-select form-select-sm mb-3 shadow-none">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Default</label>
+        <select class="form-select mb-3 shadow-none">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="form-label">Large</label>
+        <select class="form-select form-select-lg shadow-none">
+            <option selected="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+</div>
+</div>
+</div>
+<div class="col-sm-12 col-lg-6">
+<div class="card">
+<div class="card-header d-flex justify-content-between">
+    <div class="header-title">
+        <h4 class="card-title">Horizontal Form</h4>
+    </div>
+</div>
+<div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+    <form class="form-horizontal">
+        <div class="form-group row">
+            <label class="control-label col-sm-3 align-self-center mb-0" for="email1">Email:</label>
+            <div class="col-sm-9">
+            <input type="email" class="form-control" id="email1" placeholder="Enter Your  email">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="control-label col-sm-3 align-self-center mb-0" for="pwd2">Password:</label>
+            <div class="col-sm-9">
+            <input type="password" class="form-control" id="pwd2" placeholder="Enter Your password">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Remember me
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">cancel</button>
+        </div>
+    </form>
+</div>
+</div>
+<div class="card">
+    <div class="card-header d-flex justify-content-between">
+        <div class="header-title">
+            <h4 class="card-title">Form row</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+        <form>
+            <div class="row">
+                <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card">
+<div class="card-header d-flex justify-content-between">
+    <div class="header-title">
+        <h4 class="card-title">Input</h4>
+    </div>
+</div>
+<div class="card-body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+    <form>
+        <div class="form-group">
+            <label class="form-label" for="exampleInputDisabled1">Disabled Input</label>
+            <input type="text" class="form-control" id="exampleInputDisabled1" disabled="" value="Mark Jhon">
+        </div>
+    </form>
+    <div class="card-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
+        <form class="form-horizontal">
+            <div class="form-group row">
+                <label class="control-label col-sm-3 align-self-center mb-0" for="email">Email:</label>
+                <div class="col-sm-9">
+                <input type="email" class="form-control" id="email" placeholder="Enter Your  email">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="control-label col-sm-3 align-self-center mb-0" for="pwd1">Password:</label>
+                <div class="col-sm-9">
+                <input type="password" class="form-control" id="pwd1" placeholder="Enter Your password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                    <label class="form-check-label" for="flexCheckDefault1">
+                        Remember me
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-danger">cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+<div class="card">
+        <div class="card-header d-flex justify-content-between">
+            <div class="header-title">
+                <h4 class="card-title">Form row</h4>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label class="form-label" for="exampleInputReadonly">Readonly</label>
+                <input type="text" class="form-control" id="exampleInputReadonly" readonly="" value="Mark Jhon">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleInputcolor">Input Color </label>
+                <input type="color" class="form-control" id="exampleInputcolor" value="#50b5ff">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleFormControlSelect1">Select Input</label>
+                <select class="form-select" id="exampleFormControlSelect1">
+                <option selected="" disabled="">Select your age</option>
+                <option>0-18</option>
+                <option>18-26</option>
+                <option>26-46</option>
+                <option>46-60</option>
+                <option>Above 60</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="choices-single-default">Select Input New</label>
+                <select class="form-select" data-trigger name="choices-single-default" id="choices-single-default">
+                    <option value="">This is a placeholder</option>
+                    <option value="Choice 1">Choice 1</option>
+                    <option value="Choice 2">Choice 2</option>
+                    <option value="Choice 3">Choice 3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="choices-multiple-default">Default</label>
+                <select class="form-select" data-trigger name="choices-multiple-default"  id="choices-multiple-default" multiple>
+                <option value="Choice 1" selected>Choice 1</option>
+                <option value="Choice 2">Choice 2</option>
+                <option value="Choice 3">Choice 3</option>
+                <option value="Choice 4" disabled>Choice 4</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>
+                <select multiple="" class="form-select" id="exampleFormControlSelect2">
+                <option>select-1</option>
+                <option>select-2</option>
+                <option>select-3</option>
+                <option>select-4</option>
+                <option>select-5</option>
+                <option>select-6</option>
+                <option>select-7</option>
+                <option>select-8</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="customRange1">Range Input</label>
+                <input type="range" class="form-range" id="customRange1">
+            </div>
+            <div class="form-group">
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault11">
+                    <label class="form-check-label" for="flexCheckDefault11">
+                        Default checkbox
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked11" checked>
+                    <label class="form-check-label" for="flexCheckChecked11">
+                        Checked checkbox
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled>
+                    <label class="form-check-label" for="flexCheckDisabled">
+                        Disabled checkbox
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" checked disabled>
+                    <label class="form-check-label" for="flexCheckCheckedDisabled">
+                        Disabled checked checkbox
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Default radio
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Default checked radio
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioDisabled" disabled>
+                    <label class="form-check-label" for="flexRadioDisabled">
+                        Disabled radio
+                    </label>
+                </div>
+                <div class="form-check d-block">
+                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="flexRadioCheckedDisabled" checked disabled>
+                    <label class="form-check-label" for="flexRadioCheckedDisabled">
+                        Disabled checked radio
+                    </label>
+                </div>
+                <div class="form-check form-radio">
+                    <input type="radio" id="customRadio5" name="customRadio5" class="form-check-input" disabled="" checked="">
+                    <label class="form-check-label" for="customRadio5"> Selected and  disabled radio</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio6" name="customRadio1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio6"> Default radio</label>
+                </div>
+                <div class="form-group">
+                    <div class="form-check d-block">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                        <label class="form-check-label" for="flexCheckDefault2">
+                            Default checkbox
+                        </label>
+                    </div>
+                    <div class="form-check d-block">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Checked checkbox
+                        </label>
+                    </div>
+                    <div class="form-check d-block">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled1" disabled>
+                        <label class="form-check-label" for="flexCheckDisabled1">
+                            Disabled checkbox
+                        </label>
+                    </div>
+                    <div class="form-check d-block">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled11" checked disabled>
+                        <label class="form-check-label" for="flexCheckCheckedDisabled11">
+                            Disabled checked checkbox
+                        </label>
+                    </div>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio8" name="customRadio6" class="custom-control-input" checked="">
+                <label class="custom-control-label" for="customRadio8"> Selected radio</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio9" name="customRadio7" class="custom-control-input" disabled="">
+                <label class="custom-control-label" for="customRadio9"> disabled radio</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio10" name="customRadio8" class="custom-control-input" disabled="" checked="">
+                <label class="custom-control-label" for="customRadio10"> Selected and  disabled radio</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+                </div>
+                <div class="form-group">
+                    <label for="customFile1" class="form-label custom-file-input">Choose file</label>
+                    <input class="form-control" type="file" id="customFile1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="customFile" class="form-label custom-file-input">Example file input</label>
+                <input class="form-control" type="file" id="customFile">
+            </div>
+            <div class="form-group">
+                <label for="customFile2" class="form-label custom-file-input">Choose file</label>
+                <input class="form-control" type="file" id="customFile2">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-danger">cancel</button>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
 
 @endsection

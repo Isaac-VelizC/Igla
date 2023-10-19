@@ -11,12 +11,10 @@ class ChefsController extends Controller
 {
     public function index() {
         $chefRole = Role::where('name', 'chef')->first();
-
         if ($chefRole) {
             $chefs = User::role($chefRole)->get();
             return view('admin.usuarios.chefs.index', compact('chefs'));
         }
-
         return view('admin.usuarios.chefs.index');
     }
 

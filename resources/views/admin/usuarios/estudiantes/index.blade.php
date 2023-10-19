@@ -11,7 +11,9 @@
                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
                   </div>
                   <div>
-                     <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                     <a class="btn bg-gray text-white d-inline-flex align-items-center" href="{{ route('create.docentes') }}">
+                        <i class="fa fa-heart"></i> Inscribir
+                     </a>
                  </div>
               </div>
           </div>

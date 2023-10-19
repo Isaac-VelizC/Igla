@@ -1,115 +1,83 @@
 @extends('layouts.app')
 
 @section('content')
-      <!-- Favicon -->
-      <link rel="stylesheet" href="{{ asset('assets2/css/core/libs.min.css')}}" />
-      <link rel="stylesheet" href="{{ asset('assets2/css/custom.min.css?v=2.0.0')}}" />
-
-    <section class="table-components">
-        <div class="container-fluid">
-          <!-- ========== title-wrapper start ========== -->
-          <div class="title-wrapper pt-30">
-            <div class="row align-items-center">
-              <div class="col-md-6">
-                <div class="title">
-                  <h2>Tables</h2>
-                </div>
+<div class="iq-navbar-header" style="height: 215px;">
+  <div class="container-fluid iq-container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="flex-wrap d-flex justify-content-between align-items-center">
+                  <div>
+                     <h1 style="color: black">Hello Devs!</h1>
+                     <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
+                  </div>
+                  <div>
+                     <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                 </div>
               </div>
-              <!-- end col -->
-              <div class="col-md-6">
-                <div class="breadcrumb-wrapper">
-                  <a href="#0" class="main-btn light-btn-light rounded-full btn-hover">
-                    <i class="lni lni-heart"></i>
-                    Nuevo Estudiante
-                  </a>
-                </div>
-              </div>
-              <!-- end col -->
-            </div>
-            <!-- end row -->
           </div>
-    
-    <!-- ========== tables-wrapper start ========== -->
-    <div class="tables-wrapper">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card-style mb-30">
-              <h6 class="mb-10">Data Table</h6>
-              <p class="text-sm mb-20">
-                For basic styling—light padding and only horizontal
-                dividers—use the class table.
-              </p>
-              <div class="table-wrapper table-responsive">
-                <table id="datatable" class="table"  data-toggle="data-table">
-                  <thead>
-                    <tr>
-                      <th class="lead-info">
-                        <h6>Lead</h6>
-                      </th>
-                      <th class="lead-email">
-                        <h6>Email</h6>
-                      </th>
-                      <th class="lead-phone">
-                        <h6>Phone No</h6>
-                      </th>
-                      <th class="lead-company">
-                        <h6>Company</h6>
-                      </th>
-                      <th>
-                        <h6>Action</h6>
-                      </th>
-                    </tr>
-                    <!-- end table row-->
-                  </thead>
-                  <tbody>
-                    @foreach ($estudiantes as $item)
+      </div>
+  </div>
+</div> 
+
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+  <div class="row">
+     <div class="col-sm-12">
+        <div class="card">
+           <div class="card-header d-flex justify-content-between">
+              <div class="header-title">
+                 <h4 class="card-title">Bootstrap Datatables</h4>
+              </div>
+           </div>
+           <div class="card-body">
+              <div class="table-responsive">
+                 <table id="datatable" class="table table-striped" data-toggle="data-table">
+                    <thead>
+                       <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Salary</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                      @foreach ($estudiantes as $item)
                         <tr>
-                            <td class="min-width">
-                            <div class="lead">
-                                <div class="lead-image">
-                                <img src="assets/images/lead/lead-1.png" alt="" />
-                                </div>
-                                <div class="lead-text">
-                                <p>{{ $item->name }}</p>
-                                </div>
-                            </div>
-                            </td>
-                            <td class="min-width">
+                            <td><p>{{ $item->name }}</p></td>
+                            <td>
                             <p><a href="#0">{{ $item->email }}</a></p>
                             </td>
-                            <td class="min-width">
+                            <td>
                             <p>(303)555 3343523</p>
                             </td>
-                            <td class="min-width">
+                            <td>
                             <p>UIdeck digital agency</p>
                             </td>
                             <td>
-                            <div class="action">
-                                <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                                </button>
-                            </div>
+                              <div class="flex align-items-center list-user-action">
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
+                                    <i class="fa fa-user-plus"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
+                                    <i class="fa fa-eye"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="#">
+                                    <i class="fa fa-edit"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
+                                    <i class="fa fa-trash"></i>
+                                 </a>
+                              </div>
                             </td>
                         </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-                <!-- end table -->
+                      @endforeach
+                    </tbody>
+                 </table>
               </div>
-            </div>
-            <!-- end card -->
-          </div>
-          <!-- end col -->
+           </div>
         </div>
-        <!-- end row -->
-        
-      </div>
-      <!-- ========== tables-wrapper end ========== -->
-        </div>
-    </section>
-      
-    <!-- Library Script Importantes para las tablas -->
-    <script src="{{ asset('assets2/js/core/libs.min.js')}}"></script>
-    <script src="{{ asset('assets2/js/hope-ui.js')}}"></script>
+     </div>
+  </div>
+</div>
 
 @endsection

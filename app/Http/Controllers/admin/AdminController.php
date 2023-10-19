@@ -16,4 +16,14 @@ class AdminController extends Controller
         $docentes = Docente::all();
         return view('admin.home', compact('users', 'estudiantes', 'docentes'));
     }
+
+    public function allPersonal() {
+        $personals = User::all();
+        return view('admin.usuarios.administrador.index', compact('personals'));
+    }
+
+    public function allUsers() {
+        $users = User::all();
+        return view('admin.usuarios.lista_users', compact('users'));
+    }
 }

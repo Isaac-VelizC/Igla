@@ -19,4 +19,18 @@ class ChefsController extends Controller
 
         return view('admin.usuarios.chefs.index');
     }
+
+    public function allDocentes() {
+        $docentes = User::all();
+        return view('admin.usuarios.chefs.index', compact('docentes'));
+    }
+
+    public function create() {
+        return view('admin.usuarios.chefs.create');
+    }
+
+    public function store(Request $request) {
+        dd($request);
+        return back();
+    }
 }

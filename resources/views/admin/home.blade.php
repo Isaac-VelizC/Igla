@@ -1,211 +1,150 @@
 @extends('layouts.app')
 
 @section('content')
-
-<!-- ========== section start ========== -->
-<section class="section">
-  <div class="container-fluid">
-    <!-- ========== title-wrapper start ========== -->
-    <div class="title-wrapper pt-30">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="title">
-            <h2>Todos los usuarios del sistema</h2>
-          </div>
-        </div>
-        <!-- end col -->
-      </div>
-      <!-- end row -->
-    </div>
-    <!-- ========== title-wrapper end ========== -->
-    <div class="row">
-      <div class="col-xl-3 col-lg-4 col-sm-6">
-        <div class="icon-card mb-30">
-          <div class="icon purple">
-            <i class="lni lni-users"></i>
-          </div>
-          <div class="content">
-            <h6 class="mb-10">Todos los Usuarios</h6>
-            <h3 class="text-bold mb-10">{{ $users->count() }}</h3>
-          </div>
-        </div>
-        <!-- End Icon Cart -->
-      </div>
-      <!-- End Col -->
-      <div class="col-xl-3 col-lg-4 col-sm-6">
-        <div class="icon-card mb-30">
-          <div class="icon success">
-            <i class="lni lni-user"></i>
-          </div>
-          <div class="content">
-            <h6 class="mb-10">Estudiantes</h6>
-            <h3 class="text-bold mb-10">{{ $estudiantes->count() }}</h3>
-          </div>
-        </div>
-        <!-- End Icon Cart -->
-      </div>
-      <!-- End Col -->
-      <div class="col-xl-3 col-lg-4 col-sm-6">
-        <div class="icon-card mb-30">
-          <div class="icon primary">
-            <i class="lni lni-chef-hat"></i>
-          </div>
-          <div class="content">
-            <h6 class="mb-10">Chefs</h6>
-            <h3 class="text-bold mb-10">{{ $docentes->count() }}</h3>
-          </div>
-        </div>
-        <!-- End Icon Cart -->
-      </div>
-      <!-- End Col -->
-      <div class="col-xl-3 col-lg-4 col-sm-6">
-        <div class="icon-card mb-30">
-          <div class="icon orange">
-            <i class="lni lni-library"></i>
-          </div>
-          <div class="content">
-            <h6 class="mb-10">Materias</h6>
-            <h3 class="text-bold mb-10">34567</h3>
-          </div>
-        </div>
-        <!-- End Icon Cart -->
-      </div>
-      <!-- End Col -->
-    </div>
-      <div class="col-lg-7">
-        <div class="card-style mb-30">
-          <div class="title d-flex flex-wrap align-items-center justify-content-between">
-            <div class="left">
-              <h6 class="text-medium mb-30">Sales History</h6>
-            </div>
-            <div class="right">
-              <div class="select-style-1">
-                <div class="select-position select-sm">
-                  <select class="light-bg">
-                    <option value="">Today</option>
-                    <option value="">Yesterday</option>
-                  </select>
-                </div>
+<div class="iq-navbar-header" style="height: 215px;">
+  <div class="container-fluid iq-container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="flex-wrap d-flex justify-content-between align-items-center">
+                  <div>
+                      <h1 style="color: black">Hello Devs!</h1>
+                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
+                  </div>
               </div>
-              <!-- end select -->
-            </div>
           </div>
-          <!-- End Title -->
-          <div class="table-responsive">
-            <table class="table top-selling-table">
-              <thead>
-                <tr>
-                  <th>
-                    <h6 class="text-sm text-medium">Products</h6>
-                  </th>
-                  <th class="min-width">
-                    <h6 class="text-sm text-medium">
-                      Category <i class="lni lni-arrows-vertical"></i>
-                    </h6>
-                  </th>
-                  <th class="min-width">
-                    <h6 class="text-sm text-medium">
-                      Revenue <i class="lni lni-arrows-vertical"></i>
-                    </h6>
-                  </th>
-                  <th class="min-width">
-                    <h6 class="text-sm text-medium">
-                      Status <i class="lni lni-arrows-vertical"></i>
-                    </h6>
-                  </th>
-                  <th>
-                    <h6 class="text-sm text-medium text-end">
-                      Actions <i class="lni lni-arrows-vertical"></i>
-                    </h6>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="product">
-                      <div class="image">
-                        <img src="assets/images/products/product-mini-3.jpg" alt="" />
-                      </div>
-                      <p class="text-sm">Sofa</p>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="text-sm">Interior</p>
-                  </td>
-                  <td>
-                    <p class="text-sm">$345</p>
-                  </td>
-                  <td>
-                    <span class="status-btn success-btn">Completed</span>
-                  </td>
-                  <td>
-                    <div class="action justify-content-end">
-                      <button class="edit">
-                        <i class="lni lni-pencil"></i>
-                      </button>
-                      <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="lni lni-more-alt"></i>
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
-                        <li class="dropdown-item">
-                          <a href="#0" class="text-gray">Remove</a>
-                        </li>
-                        <li class="dropdown-item">
-                          <a href="#0" class="text-gray">Edit</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div class="product">
-                      <div class="image">
-                        <img src="assets/images/products/product-mini-4.jpg" alt="" />
-                      </div>
-                      <p class="text-sm">Kitchen</p>
-                    </div>
-                  </td>
-                  <td>
-                    <p class="text-sm">Interior</p>
-                  </td>
-                  <td>
-                    <p class="text-sm">$345</p>
-                  </td>
-                  <td>
-                    <span class="status-btn close-btn">Canceled</span>
-                  </td>
-                  <td>
-                    <div class="action justify-content-end">
-                      <button class="edit">
-                        <i class="lni lni-pencil"></i>
-                      </button>
-                      <button class="more-btn ml-10 dropdown-toggle" id="moreAction1" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <i class="lni lni-more-alt"></i>
-                      </button>
-                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction1">
-                        <li class="dropdown-item">
-                          <a href="#0" class="text-gray">Remove</a>
-                        </li>
-                        <li class="dropdown-item">
-                          <a href="#0" class="text-gray">Edit</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <!-- End Table -->
-          </div>
-        </div>
       </div>
   </div>
-  <!-- end container -->
-</section>
-<!-- ========== section end ========== -->
-
+</div> 
+<div class="conatiner-fluid content-inner mt-n5 py-0">
+  <div class="row">
+     <div class="col-md-12 col-lg-12">
+        <div class="row row-cols-1">
+           <div class="overflow-hidden d-slider1 ">
+              <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="700">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-01" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="90" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24"  viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Total de Usuarios</p>
+                             <h4 class="counter">{{ $users->count() }}</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="800">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-02" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="80" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Estudiantes</p>
+                             <h4 class="counter">{{ $estudiantes->count() }}</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="900">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-03" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="70" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Docentes</p>
+                             <h4 class="counter">{{ $docentes->count() }}</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-04" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="60" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24px"  viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Materias</p>
+                             <h4 class="counter">$742K</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1100">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-05" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="50" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24px"  viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Cursos</p>
+                             <h4 class="counter">$150K</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-06" class="text-center circle-progress-01 circle-progress circle-progress-info" data-min-value="0" data-max-value="100" data-value="40" data-type="percent">
+                             <svg class="card-slie-arrow icon-24" width="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Inscripciones</p>
+                             <h4 class="counter">$4600</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+                 <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1300">
+                    <div class="card-body">
+                       <div class="progress-widget">
+                          <div id="circle-progress-07" class="text-center circle-progress-01 circle-progress circle-progress-primary" data-min-value="0" data-max-value="100" data-value="30" data-type="percent">
+                             <svg class="card-slie-arrow icon-24 " width="24" viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M19,6.41L17.59,5L7,15.59V9H5V19H15V17H8.41L19,6.41Z" />
+                             </svg>
+                          </div>
+                          <div class="progress-detail">
+                             <p  class="mb-2">Eventos</p>
+                             <h4 class="counter">11.2M</h4>
+                          </div>
+                       </div>
+                    </div>
+                 </li>
+              </ul>
+              <div class="swiper-button swiper-button-next"></div>
+              <div class="swiper-button swiper-button-prev"></div>
+           </div>
+        </div>
+     </div> 
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="card  ">
+                      <div class="card-body">
+                          <div id="calendar1" class="calendar-s"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 @endsection

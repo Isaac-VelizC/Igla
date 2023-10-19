@@ -1,150 +1,136 @@
-<!-- ========== header start ========== -->
-<header class="header">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-5 col-md-5 col-6">
-          <div class="header-left d-flex align-items-center">
-            <div class="menu-toggle-btn mr-10">
-              <button id="menu-toggle" class="main-btn primary-btn btn-hover">
-                <i class="lni lni-chevron-left"></i>
-              </button>
-            </div>
+<div class="position-relative iq-banner">
+  <!--Nav Start-->
+  <nav class="nav navbar navbar-expand-lg navbar-light iq-navbar">
+    <div class="container-fluid navbar-inner">
+      <a href="../../dashboard/index.html" class="navbar-brand">
+          <div class="logo-main">
+              <div class="logo-normal">
+                  <svg class="text-primary icon-30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
+                      <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
+                      <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
+                      <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
+                  </svg>
+              </div>
+              <div class="logo-mini">
+                  <svg class="text-primary icon-30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
+                      <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
+                      <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
+                      <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
+                  </svg>
+              </div>
           </div>
-        </div>
-        <div class="col-lg-7 col-md-7 col-6">
-          <div class="header-right">
-            <!-- notification start -->
-            <div class="notification-box ml-15 d-none d-md-flex">
-              <button class="dropdown-toggle" type="button" id="notification" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M11 20.1667C9.88317 20.1667 8.88718 19.63 8.23901 18.7917H13.761C13.113 19.63 12.1169 20.1667 11 20.1667Z"
-                    fill="" />
-                  <path
-                    d="M10.1157 2.74999C10.1157 2.24374 10.5117 1.83333 11 1.83333C11.4883 1.83333 11.8842 2.24374 11.8842 2.74999V2.82604C14.3932 3.26245 16.3051 5.52474 16.3051 8.24999V14.287C16.3051 14.5301 16.3982 14.7633 16.564 14.9352L18.2029 16.6342C18.4814 16.9229 18.2842 17.4167 17.8903 17.4167H4.10961C3.71574 17.4167 3.5185 16.9229 3.797 16.6342L5.43589 14.9352C5.6017 14.7633 5.69485 14.5301 5.69485 14.287V8.24999C5.69485 5.52474 7.60672 3.26245 10.1157 2.82604V2.74999Z"
-                    fill="" />
+          <!--logo End-->
+          <h4 class="logo-title">IGLA</h4>
+      </a>
+      <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
+          <i class="icon">
+           <svg  width="20px" class="icon-20" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+          </svg>
+          </i>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+            <span class="mt-2 navbar-toggler-bar bar1"></span>
+            <span class="navbar-toggler-bar bar2"></span>
+            <span class="navbar-toggler-bar bar3"></span>
+          </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="mb-2 navbar-nav ms-auto align-items-center navbar-list mb-lg-0">
+          <li class="nav-item dropdown">
+            <a href="#"  class="nav-link" id="notification-drop" data-bs-toggle="dropdown" >
+                <svg class="icon-24" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M19.7695 11.6453C19.039 10.7923 18.7071 10.0531 18.7071 8.79716V8.37013C18.7071 6.73354 18.3304 5.67907 17.5115 4.62459C16.2493 2.98699 14.1244 2 12.0442 2H11.9558C9.91935 2 7.86106 2.94167 6.577 4.5128C5.71333 5.58842 5.29293 6.68822 5.29293 8.37013V8.79716C5.29293 10.0531 4.98284 10.7923 4.23049 11.6453C3.67691 12.2738 3.5 13.0815 3.5 13.9557C3.5 14.8309 3.78723 15.6598 4.36367 16.3336C5.11602 17.1413 6.17846 17.6569 7.26375 17.7466C8.83505 17.9258 10.4063 17.9933 12.0005 17.9933C13.5937 17.9933 15.165 17.8805 16.7372 17.7466C17.8215 17.6569 18.884 17.1413 19.6363 16.3336C20.2118 15.6598 20.5 14.8309 20.5 13.9557C20.5 13.0815 20.3231 12.2738 19.7695 11.6453Z" fill="currentColor"></path>
+                  <path opacity="0.4" d="M14.0088 19.2283C13.5088 19.1215 10.4627 19.1215 9.96275 19.2283C9.53539 19.327 9.07324 19.5566 9.07324 20.0602C9.09809 20.5406 9.37935 20.9646 9.76895 21.2335L9.76795 21.2345C10.2718 21.6273 10.8632 21.877 11.4824 21.9667C11.8123 22.012 12.1482 22.01 12.4901 21.9667C13.1083 21.877 13.6997 21.6273 14.2036 21.2345L14.2026 21.2335C14.5922 20.9646 14.8734 20.5406 14.8983 20.0602C14.8983 19.5566 14.4361 19.327 14.0088 19.2283Z" fill="currentColor"></path>
                 </svg>
-                <span></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="notification">
-                <li>
-                  <a href="#0">
-                    <div class="image">
-                      <img src="assets/images/lead/lead-6.png" alt="" />
-                    </div>
-                    <div class="content">
-                      <h6>
-                        John Doe
-                        <span class="text-regular">
-                          comment on a product.
-                        </span>
-                      </h6>
-                      <p>
-                        Lorem ipsum dolor sit amet, consect etur adipiscing
-                        elit Vivamus tortor.
-                      </p>
-                      <span>10 mins ago</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- notification end -->
-            <!-- message start -->
-            <div class="header-message-box ml-15 d-none d-md-flex">
-              <button class="dropdown-toggle" type="button" id="message" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path
-                    d="M7.74866 5.97421C7.91444 5.96367 8.08162 5.95833 8.25005 5.95833C12.5532 5.95833 16.0417 9.4468 16.0417 13.75C16.0417 13.9184 16.0364 14.0856 16.0259 14.2514C16.3246 14.138 16.6127 14.003 16.8883 13.8482L19.2306 14.629C19.7858 14.8141 20.3141 14.2858 20.129 13.7306L19.3482 11.3882C19.8694 10.4604 20.1667 9.38996 20.1667 8.25C20.1667 4.70617 17.2939 1.83333 13.75 1.83333C11.0077 1.83333 8.66702 3.55376 7.74866 5.97421Z"
-                    fill="" />
-                  <path
-                    d="M14.6667 13.75C14.6667 17.2938 11.7939 20.1667 8.25004 20.1667C7.11011 20.1667 6.03962 19.8694 5.11182 19.3482L2.76946 20.129C2.21421 20.3141 1.68597 19.7858 1.87105 19.2306L2.65184 16.8882C2.13062 15.9604 1.83338 14.89 1.83338 13.75C1.83338 10.2062 4.70622 7.33333 8.25004 7.33333C11.7939 7.33333 14.6667 10.2062 14.6667 13.75ZM5.95838 13.75C5.95838 13.2437 5.54797 12.8333 5.04171 12.8333C4.53545 12.8333 4.12504 13.2437 4.12504 13.75C4.12504 14.2563 4.53545 14.6667 5.04171 14.6667C5.54797 14.6667 5.95838 14.2563 5.95838 13.75ZM9.16671 13.75C9.16671 13.2437 8.7563 12.8333 8.25004 12.8333C7.74379 12.8333 7.33338 13.2437 7.33338 13.75C7.33338 14.2563 7.74379 14.6667 8.25004 14.6667C8.7563 14.6667 9.16671 14.2563 9.16671 13.75ZM11.4584 14.6667C11.9647 14.6667 12.375 14.2563 12.375 13.75C12.375 13.2437 11.9647 12.8333 11.4584 12.8333C10.9521 12.8333 10.5417 13.2437 10.5417 13.75C10.5417 14.2563 10.9521 14.6667 11.4584 14.6667Z"
-                    fill="" />
-                </svg>
-                <span></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="message">
-                <li>
-                  <a href="#0">
-                    <div class="image">
-                      <img src="assets/images/lead/lead-5.png" alt="" />
-                    </div>
-                    <div class="content">
-                      <h6>Jacob Jones</h6>
-                      <p>Hey!I can across your profile and ...</p>
-                      <span>10 mins ago</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <!-- message end -->
-            <!-- profile start -->
-            <div class="profile-box ml-15">
-              <button class="dropdown-toggle bg-transparent border-0" type="button" id="profile"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <div class="profile-info">
-                  <div class="info">
-                    <div class="image">
-                      <img src="assets/images/profile/profile-image.png" alt="" />
-                    </div>
-                    <div>
-                      <h6 class="fw-500">{{ Auth::user()->name }}</h6>
-                      @foreach(Auth::user()->getRoleNames()->toArray() as $role)
-                        <p>{{ $role }}</p>
-                      @endforeach
-                    </div>
+                <span class="bg-danger dots"></span>
+            </a>
+            <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="notification-drop">
+                <div class="m-0 shadow-none card">
+                  <div class="py-3 card-header d-flex justify-content-between bg-primary">
+                      <div class="header-title">
+                        <h5 class="mb-0 text-white">All Notifications</h5>
+                      </div>
+                  </div>
+                  <div class="p-0 card-body">
+                      <a href="#" class="iq-sub-card">
+                        <div class="d-flex align-items-center">
+                            <img class="p-1 avatar-40 rounded-pill bg-soft-primary" src="../../assets/images/shapes/01.png" alt="">
+                            <div class="ms-3 w-100">
+                              <h6 class="mb-0 ">Emma Watson Bni</h6>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <p class="mb-0">95 MB</p>
+                                  <small class="float-end font-size-12">Just Now</small>
+                              </div>
+                            </div>
+                        </div>
+                      </a>
                   </div>
                 </div>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profile">
-                <li>
-                  <div class="author-info flex items-center !p-1">
-                    <div class="image">
-                      <img src="assets/images/profile/profile-image.png" alt="image">
-                    </div>
-                    <div class="content">
-                      <h4 class="text-sm">{{ Auth::user()->name }}</h4>
-                      <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs"
-                        href="#">{{ Auth::user()->email }}</a>
-                    </div>
-                  </div>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="#0">
-                    <i class="lni lni-user"></i> Ver perfil
-                  </a>
-                </li>
-                <li>
-                  <a href="#0">
-                    <i class="lni lni-alarm"></i> Notificaciones
-                  </a>
-                </li>
-                <li>
-                  <a href="#0"> <i class="lni lni-inbox"></i> Mensajes </a>
-                </li>
-                <li>
-                  <a href="#0"> <i class="lni lni-cog"></i> Ajustes </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="{{ route('logout') }}" onclick="event.preventDefault();
-                  document.getElementById('logout-form').submit();">
-                    <i class="lni lni-exit"></i> Salir 
-                  </a>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                  </form>
-                </li>
-              </ul>
             </div>
-            <!-- profile end -->
-          </div>
-        </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link" id="mail-drop" data-bs-toggle="dropdown"  aria-haspopup="true" aria-expanded="false">
+              <svg class="icon-24" width="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.4" d="M22 15.94C22 18.73 19.76 20.99 16.97 21H16.96H7.05C4.27 21 2 18.75 2 15.96V15.95C2 15.95 2.006 11.524 2.014 9.298C2.015 8.88 2.495 8.646 2.822 8.906C5.198 10.791 9.447 14.228 9.5 14.273C10.21 14.842 11.11 15.163 12.03 15.163C12.95 15.163 13.85 14.842 14.56 14.262C14.613 14.227 18.767 10.893 21.179 8.977C21.507 8.716 21.989 8.95 21.99 9.367C22 11.576 22 15.94 22 15.94Z" fill="currentColor"></path>
+                <path d="M21.4759 5.67351C20.6099 4.04151 18.9059 2.99951 17.0299 2.99951H7.04988C5.17388 2.99951 3.46988 4.04151 2.60388 5.67351C2.40988 6.03851 2.50188 6.49351 2.82488 6.75151L10.2499 12.6905C10.7699 13.1105 11.3999 13.3195 12.0299 13.3195C12.0339 13.3195 12.0369 13.3195 12.0399 13.3195C12.0429 13.3195 12.0469 13.3195 12.0499 13.3195C12.6799 13.3195 13.3099 13.1105 13.8299 12.6905L21.2549 6.75151C21.5779 6.49351 21.6699 6.03851 21.4759 5.67351Z" fill="currentColor"></path>
+              </svg>
+              <span class="bg-primary count-mail"></span>
+            </a>
+            <div class="p-0 sub-drop dropdown-menu dropdown-menu-end" aria-labelledby="mail-drop">
+                <div class="m-0 shadow-none card">
+                  <div class="py-3 card-header d-flex justify-content-between bg-primary">
+                      <div class="header-title">
+                        <h5 class="mb-0 text-white">All Message</h5>
+                      </div>
+                  </div>
+                  <div class="p-0 card-body ">
+                      <a href="#" class="iq-sub-card">
+                        <div class="d-flex align-items-center">
+                            <div class="">
+                              <img class="p-1 avatar-40 rounded-pill bg-soft-primary" src="../../assets/images/shapes/01.png" alt="">
+                            </div>
+                            <div class="ms-3">
+                              <h6 class="mb-0 ">Bni Emma Watson</h6>
+                              <small class="float-start font-size-12">13 Jun</small>
+                            </div>
+                        </div>
+                      </a>
+                  </div>
+                </div>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ asset('assets2/images/avatars/01.png')}}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
+              <div class="caption ms-3 d-none d-md-block ">
+                <h6 class="mb-0 caption-title">{{ Auth::user()->name }}</h6>
+                    @foreach(Auth::user()->getRoleNames()->toArray() as $role)
+                      <p class="mb-0 caption-sub-title">{{ $role }}</p>
+                    @endforeach
+              </div>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Ver Perfil</a></li>
+              <li><a class="dropdown-item" href="#"> Notificaciones</a></li>
+              <li><a class="dropdown-item" href="#"> Ajustes</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                  <i class="lni lni-exit"></i> Salir 
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
-</header>
-<!-- ========== header end ========== -->
+  </nav>
+</div>

@@ -29,4 +29,8 @@ class HomeController extends Controller
 
         return view('home', compact('roles'));
     }
+
+    public function acercaDe() {
+        return view('ajustes.principal');
+    }
 }

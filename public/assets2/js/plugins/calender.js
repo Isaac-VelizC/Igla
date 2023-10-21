@@ -1,9 +1,3 @@
-/*
-Template: Hope-Ui - Responsive Bootstrap 5 Admin Dashboard Template
-Author: iqonic.design
-Design and Developed by: iqonic.design
-NOTE: This file contains the all calender events.
-*/
 "use strict"
 
 if (document.querySelectorAll('#calendar1').length) {
@@ -14,6 +8,8 @@ if (document.querySelectorAll('#calendar1').length) {
       plugins: ["timeGrid", "dayGrid", "list", "interaction"],
       timeZone: "UTC",
       defaultView: "dayGridMonth",
+      locale: 'es',
+      displayEventTime:false,
       contentHeight: "auto",
       eventLimit: true,
       dayMaxEvents: 4,
@@ -168,6 +164,7 @@ if (document.querySelectorAll('#calendar1').length) {
       ]
   });
   calendar1.render();
+  calendar1.setOption('locale', 'es');
   });
   
 }

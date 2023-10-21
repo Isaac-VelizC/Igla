@@ -75,7 +75,7 @@
                   <div class="col-12">
                     <div class="button-group d-flex justify-content-center flex-wrap">
                       <button type="submit"  class="main-btn primary-btn btn-hover w-100 text-center">
-                        Sign In
+                        Inicia sesión
                       </button>
                     </div>
                   </div>

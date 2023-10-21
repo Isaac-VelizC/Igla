@@ -52,11 +52,20 @@
                             <p>UIdeck digital agency</p>
                             </td>
                             <td>
-                            <div class="action">
-                                <button class="text-danger">
-                                <i class="lni lni-trash-can"></i>
-                                </button>
-                            </div>
+                              <div class="flex align-items-center list-user-action">
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
+                                    <i class="bi bi-person-gear"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
+                                    <i class="bi bi-eye"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="#">
+                                    <i class="bi bi-pen"></i>
+                                 </a>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
+                                    <i class="bi bi-trash"></i>
+                                 </a>
+                              </div>
                             </td>
                         </tr>
                       @endforeach

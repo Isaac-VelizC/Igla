@@ -19,16 +19,15 @@
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/daygrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/timegrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/list/main.css')}}' />
-    
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>    
     <!-- ======== Preloader =========== -->
-    <div id="loading">
+    <!--div id="loading">
         <div class="loader simple-loader">
             <div class="loader-body"></div>
         </div>
-    </div>
+    </div-->
     <!-- ======== Preloader =========== -->
     @if (in_array('admin', Auth::user()->getRoleNames()->toArray()))
       @include('layouts.navbar.sidebar.admin')

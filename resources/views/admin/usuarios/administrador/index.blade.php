@@ -56,16 +56,16 @@
                             <td>
                               <div class="flex align-items-center list-user-action">
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
-                                    <i class="fa fa-user-plus"></i>
+                                    <i class="bi bi-person-gear"></i>
                                  </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="bi bi-eye"></i>
                                  </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="#">
-                                    <i class="fa fa-edit"></i>
+                                    <i class="bi bi-pen"></i>
                                  </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
-                                    <i class="fa fa-trash"></i>
+                                    <i class="bi bi-trash"></i>
                                  </a>
                               </div>
                             </td>

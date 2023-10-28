@@ -10,6 +10,9 @@
                      <h1 style="color: black">Hello Devs!</h1>
                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
                   </div>
+                  <div>
+                     <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                 </div>
               </div>
           </div>
       </div>
@@ -26,43 +29,41 @@
               </div>
            </div>
            <div class="card-body">
-              <p>Images in Bootstrap are made responsive with <code>.img-fluid</code>. <code>max-width: 100%;</code> and <code>height: auto;</code> are applied to the image so that it scales with the parent element.</p>
               <div class="table-responsive">
                  <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                        <tr>
-                        <th>Nombre Completo</th>
-                        <th>C.I.</th>
-                        <th>E-mail</th>
-                        <th>Telefono</th>
-                        <th>Direccion</th>
-                        <th>Tipo</th>
-                        <th>Estado</th>
-                        <th>Tags</th>
+                          <th>Nombre</th>
+                          <th>Aula</th>
+                          <th>Cupos</th>
+                          <th>Fecha Docente</th>
+                          <th>Fecha Inicio</th>
+                          <th>Fecha Fin</th>
+                          <th>Estado</th>
+                          <th>Tags</th>
                        </tr>
                     </thead>
                     <tbody>
-                      @foreach ($users as $item)
                         <tr>
-                            <td><p>{{ $item->name }}</p></td>
+                            <td><p>item->name</p></td>
                             <td>
-                            <p><a href="#0">{{ $item->email }}</a></p>
-                            </td>
-                            <td>
-                            <p>(303)555 3343523</p>
-                            </td>
-                            <td>
-                            <p>UIdeck digital agency</p>
+                              <p><a href="#0">$item->email</a></p>
                             </td>
                             <td>
                               <p>(303)555 3343523</p>
-                              </td>
-                              <td>
+                            </td>
+                            <td>
                               <p>UIdeck digital agency</p>
-                           </td>
-                           <td>
+                            </td>
+                            <td>
                               <p>(303)555 3343523</p>
-                           </td>
+                            </td>
+                            <td>
+                              <p>UIdeck digital agency</p>
+                            </td>
+                            <td>
+                              <p>UIdeck digital agency</p>
+                            </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
@@ -80,7 +81,6 @@
                               </div>
                             </td>
                         </tr>
-                      @endforeach
                     </tbody>
                  </table>
               </div>

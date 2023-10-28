@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\Admin\CalendarioController;
 use App\Http\Controllers\admin\ChefsController;
+use App\Http\Controllers\Admin\CocinaController;
+use App\Http\Controllers\Admin\CursoController;
 use App\Http\Controllers\admin\EstudianteController;
 use App\Http\Controllers\ChefController;
 use App\Http\Controllers\HomeController;
@@ -30,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.home');
     //Estudiantes
     Route::get('/admin-estudiantes', [EstudianteController::class, 'index'])->name('admin.estudinte');
+    Route::get('/admin-inscripcions', [EstudianteController::class, 'formInscripcion'])->name('admin.inscripcion');
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
     Route::get('/create-docentes', [ChefsController::class, 'create'])->name('create.docentes');
@@ -43,6 +47,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     
     //Perfil de Usuario
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
+    
+    //Calendario
+    Route::get('/calendar', [CalendarioController::class, 'index'])->name('admin.calendario');
+    //Cursos
+    Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
+    Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
+    Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
+
+    //Cocina
+    Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
 });
 
 Route::middleware(['auth', 'role:chef'])->group(function () {

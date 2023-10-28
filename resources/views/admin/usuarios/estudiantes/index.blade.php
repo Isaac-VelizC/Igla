@@ -11,7 +11,7 @@
                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
                   </div>
                   <div>
-                     <a class="btn bg-gray text-white d-inline-flex align-items-center" href="{{ route('create.docentes') }}">
+                     <a class="btn bg-gray text-white d-inline-flex align-items-center" href="{{ route('admin.inscripcion') }}">
                         <i class="fa fa-heart"></i> Inscribir
                      </a>
                  </div>
@@ -35,11 +35,12 @@
                  <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                        <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Salary</th>
+                        <th>Nombre Completo</th>
+                        <th>C.I.</th>
+                        <th>E-mail</th>
+                        <th>Telefono</th>
+                        <th>Estado</th>
+                        <th>Tags</th>
                        </tr>
                     </thead>
                     <tbody>
@@ -53,8 +54,11 @@
                             <p>(303)555 3343523</p>
                             </td>
                             <td>
-                            <p>UIdeck digital agency</p>
-                            </td>
+                              <p>(303)555 3343523</p>
+                              </td>
+                              <td>
+                              <p>UIdeck digital agency</p>
+                              </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">

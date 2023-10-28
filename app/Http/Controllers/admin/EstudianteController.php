@@ -12,4 +12,8 @@ class EstudianteController extends Controller
         $estudiantes = User::all();
         return view('admin.usuarios.estudiantes.index', compact('estudiantes'));
     }
+
+    public function formInscripcion() {
+        return view('admin.inscripciones.form_inscripcion');
+    }
 }

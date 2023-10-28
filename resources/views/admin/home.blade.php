@@ -25,12 +25,14 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-primary">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-people"></i>
                            </div>
-                          <div class="progress-detail">
-                             <p  class="mb-2">Total de Usuarios</p>
-                             <h4 class="counter">{{ $users->count() }}</h4>
-                          </div>
+                           <a href="{{ route('admin.users') }}">
+                              <div class="progress-detail">
+                                 <p  class="mb-2">Total de Usuarios</p>
+                                 <h4 class="counter">{{ $users->count() }}</h4>
+                              </div>
+                           </a>
                        </div>
                     </div>
                  </li>
@@ -40,10 +42,12 @@
                            <div class="rounded p-3 bg-soft-success">
                               <i class="fa fa-users"></i>
                            </div>
-                          <div class="progress-detail">
-                             <p  class="mb-2">Estudiantes</p>
-                             <h4 class="counter">{{ $estudiantes->count() }}</h4>
-                          </div>
+                           <a href="{{ route('admin.estudinte') }}">
+                              <div class="progress-detail">
+                                 <p  class="mb-2">Estudiantes</p>
+                                 <h4 class="counter">{{ $estudiantes->count() }}</h4>
+                              </div>
+                           </a>
                        </div>
                     </div>
                  </li>
@@ -53,10 +57,12 @@
                            <div class="rounded p-3 bg-soft-danger">
                               <i class="fa fa-users"></i>
                            </div>
-                          <div class="progress-detail">
-                             <p  class="mb-2">Docentes</p>
-                             <h4 class="counter">{{ $docentes->count() }}</h4>
-                          </div>
+                           <a href="{{ route('admin.docentes') }}">
+                              <div class="progress-detail">
+                                 <p  class="mb-2">Docentes</p>
+                                 <h4 class="counter">{{ $docentes->count() }}</h4>
+                              </div>
+                           </a>
                        </div>
                     </div>
                  </li>
@@ -66,10 +72,12 @@
                            <div class="rounded p-3 bg-soft-warning">
                               <i class="fa fa-users"></i>
                            </div>
-                          <div class="progress-detail">
-                             <p  class="mb-2">Inscribir</p>
-                             <h4 class="counter">$742K</h4>
-                          </div>
+                           <a href="{{ route('admin.inscripcion') }}">
+                              <div class="progress-detail">
+                                 <p  class="mb-2">Inscribir</p>
+                                 <h4 class="counter">$742K</h4>
+                              </div>
+                           </a>
                        </div>
                     </div>
                  </li>
@@ -110,7 +118,7 @@
       <div class="col-lg-12">
           <div class="row">
               <div class="col-lg-12">
-                  <div class="card  ">
+                  <div class="card">
                       <div class="card-body">
                           <div id="calendar1" class="calendar-s"></div>
                       </div>

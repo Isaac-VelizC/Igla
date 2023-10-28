@@ -107,7 +107,7 @@
               <li class="nav-item">
                   <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-auth" role="button" aria-expanded="false" aria-controls="sidebar-user">
                       <i class="bi bi-bookshelf"></i>
-                      <span class="item-name">Materias</span>
+                      <span class="item-name">Cursos</span>
                       <i class="right-icon">
                           <svg class="icon-18" xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -116,7 +116,20 @@
                   </a>
                   <ul class="sub-nav collapse" id="sidebar-auth" data-bs-parent="#sidebar-menu">
                       <li class="nav-item">
-                          <a class="nav-link" href="../../dashboard/auth/sign-in.html">
+                          <a class="nav-link" href="{{ route('admin.cursos.new') }}">
+                              <i class="icon">
+                                  <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                      <g>
+                                      <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                      </g>
+                                  </svg>
+                              </i>
+                              <i class="sidenav-mini-icon"> C </i>
+                              <span class="item-name">Crear</span>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('admin.cursos') }}">
                               <i class="icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -125,19 +138,6 @@
                                   </svg>
                               </i>
                               <i class="sidenav-mini-icon"> L </i>
-                              <span class="item-name">Crear</span>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="../../dashboard/auth/sign-up.html">
-                              <i class="icon">
-                                  <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                      <g>
-                                      <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                      </g>
-                                  </svg>
-                              </i>
-                              <i class="sidenav-mini-icon"> R </i>
                               <span class="item-name">Lista</span>
                           </a>
                       </li>
@@ -195,14 +195,26 @@
                       </li>
                   </ul>
               </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('admin.lista.pagos') }}">
+                        <i class="bi bi-receipt"></i>
+                        <span class="item-name">Pagos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.calendario') }}">
+                        <i class="bi bi-calendar"></i>
+                        <span class="item-name">Calendario</span>
+                    </a>
+                </li>
               <li class="nav-item">
-                  <a class="nav-link "  href="../../dashboard/admin.html">
+                  <a class="nav-link" href="{{ route('admin.ingredientes') }}">
                         <i class="bi bi-basket"></i>
-                        <span class="item-name">Inventario</span>
+                        <span class="item-name">Ingredientes</span>
                   </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="../../dashboard/admin.html">
+                <a class="nav-link" href="{{ route('admin.ingredientes') }}">
                     <i class="bi bi-journals"></i>
                     <span class="item-name">Recetas</span>
                 </a>

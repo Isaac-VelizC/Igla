@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html class="no-js" lang="es">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -57,7 +57,7 @@
                       <a class="page-scroll active" href="#home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="#about">Acerda</a>
+                      <a class="page-scroll" href="#about">Acerca</a>
                     </li>
                     <li class="nav-item">
                       <a class="page-scroll" href="#service">Servicios</a>
@@ -100,24 +100,23 @@
 
     <!-- ========================= hero-section start ========================= -->
     <section id="home" class="hero-section">
-      <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <div class="hero-content">
-                    <span class="wow fadeInLeft" data-wow-delay=".2s">BIENVENIDOS A IGLA</span>
-                    <h1 class="wow fadeInUp" data-wow-delay=".4s">You are using free lite version of Bliss.</h1>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">
-                        Please, purchase full version of the template to get all sections, elements and permission to remove footer credits.
-                    </p>
-                    <a href="javascript:void(0)" class="main-btn btn-hover wow fadeInUp" data-wow-delay=".6s">Buy Now</a>
-                </div>
-			</div>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-6">
+					<div class="hero-content">
+						<span class="wow fadeInLeft" data-wow-delay=".2s">BIENVENIDOS A IGLA</span>
+						<h1 class="wow fadeInUp" data-wow-delay=".4s">You are using free lite version of Bliss.</h1>
+						<p class="wow fadeInUp" data-wow-delay=".6s">
+							Please, purchase full version of the template to get all sections, elements and permission to remove footer credits.
+						</p>
+					</div>
+				</div>
 				<div class="col-lg-6">
 					<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
 						<img src="{{ asset('client/img/hero/hero-img.svg')}}" alt="">
 					</div>
 				</div>
-            </div>
+			</div>
 		</div>
     </section>
 	<!-- ========================= hero-section end ========================= -->

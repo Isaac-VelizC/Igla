@@ -19,9 +19,11 @@
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/daygrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/timegrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/list/main.css')}}' />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!--script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script-->
 </head>
-<body>    
+<body>
     <!-- ======== Preloader =========== -->
     <!--div id="loading">
         <div class="loader simple-loader">
@@ -41,6 +43,7 @@
             @yield('content')
     </main>
 
+
     <script src="{{ asset('assets2/js/core/libs.min.js')}}"></script>
     <script src="{{ asset('assets2/js/core/external.min.js')}}"></script>
     <script src="{{ asset('assets2/js/charts/widgetcharts.js')}}"></script>
@@ -52,6 +55,7 @@
     <script src="{{ asset('assets2/js/plugins/form-wizard.js')}}"></script>
     <script src="{{ asset('assets2/js/hope-ui.js')}}" defer></script>
     <script src='{{ asset('assets2/vendor/fullcalendar/core/main.js')}}'></script>
+    <script src='{{ asset('assets2/vendor/fullcalendar/core/locales/es.js')}}'></script>
     <script src='{{ asset('assets2/vendor/fullcalendar/daygrid/main.js')}}'></script>
     <script src='{{ asset('assets2/vendor/fullcalendar/timegrid/main.js')}}'></script>
     <script src='{{ asset('assets2/vendor/fullcalendar/list/main.js')}}'></script>

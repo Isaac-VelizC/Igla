@@ -12,6 +12,7 @@ if (document.querySelectorAll('#calendar1').length) {
       displayEventTime:false,
       contentHeight: "auto",
       eventLimit: true,
+      droppable: true,
       dayMaxEvents: 4,
       header: {
           left: "prev,next today",
@@ -164,7 +165,6 @@ if (document.querySelectorAll('#calendar1').length) {
       ]
   });
   calendar1.render();
-  calendar1.setOption('locale', 'es');
   });
   
 }

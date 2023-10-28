@@ -31,11 +31,12 @@
                  <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                        <tr>
-                          <th>Name</th>
-                          <th>Position</th>
-                          <th>Office</th>
-                          <th>Age</th>
-                          <th>Salary</th>
+                        <th>Nombre Completo</th>
+                        <th>C.I.</th>
+                        <th>E-mail</th>
+                        <th>Telefono</th>
+                        <th>Estado</th>
+                        <th>Tags</th>
                        </tr>
                     </thead>
                     <tbody>
@@ -50,6 +51,9 @@
                             </td>
                             <td>
                             <p>UIdeck digital agency</p>
+                            </td>
+                            <td>
+                            <p>(303)555 3343523</p>
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">

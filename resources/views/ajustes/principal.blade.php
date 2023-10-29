@@ -54,26 +54,6 @@
 <div class="card">
     <div class="card-header d-flex justify-content-between">
         <div class="header-title">
-            <h4 class="card-title">Form Grid</h4>
-        </div>
-    </div>
-    <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-        <form>
-            <div class="row">
-                <div class="col">
-                <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col">
-                <input type="text" class="form-control" placeholder="Last name">
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <div class="header-title">
             <h4 class="card-title">Input</h4>
         </div>
     </div>
@@ -132,30 +112,6 @@
             <button type="submit" class="btn btn-danger">cancel</button>
         </form>
     </div>
-</div>
-<div class="card">
-<div class="card-header d-flex justify-content-between">
-    <div class="header-title">
-        <h4 class="card-title">Input Size</h4>
-    </div>
-</div>
-<div class="card-body">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-    <form>
-        <div class="form-group">
-            <label class="form-label" for="colFormLabelSm">Small</label>
-            <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="form-control-sm">
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="colFormLabel">Default</label>
-            <input type="email" class="form-control" id="colFormLabel" placeholder="form-control">
-        </div>
-        <div class="form-group mb-0">
-            <label class="form-label pb-0" for="colFormLabelLg">Large</label>
-            <input type="email" class="form-control form-control-lg" id="colFormLabelLg" placeholder="form-control-lg">
-        </div>
-    </form>
-</div>
 </div>
 <div class="card">
 <div class="card-header d-flex justify-content-between">
@@ -231,26 +187,6 @@
         </div>
     </form>
 </div>
-</div>
-<div class="card">
-    <div class="card-header d-flex justify-content-between">
-        <div class="header-title">
-            <h4 class="card-title">Form row</h4>
-        </div>
-    </div>
-    <div class="card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vulputate, ex ac venenatis mollis, diam nibh finibus leo</p>
-        <form>
-            <div class="row">
-                <div class="col">
-                <input type="text" class="form-control" placeholder="First name">
-                </div>
-                <div class="col">
-                <input type="text" class="form-control" placeholder="Last name">
-                </div>
-            </div>
-        </form>
-    </div>
 </div>
 <div class="card">
 <div class="card-header d-flex justify-content-between">

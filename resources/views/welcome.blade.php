@@ -42,8 +42,8 @@
           <div class="row align-items-center">
             <div class="col-lg-12">
               <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="index.html">
-                  <img src="{{ asset('imagenes/IGLA.jpg')}}" alt="Logo" />
+                <a class="navbar-brand" href="{{ url('/') }}">
+                  <img src="{{ asset('imagenes/igla.svg')}}" alt="Logo" height="50" width="50" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="toggler-icon"></span>
@@ -169,7 +169,6 @@
 									</div>
 								</div>
 							</div>
-							<a href="javascript:void(0)" class="main-btn btn-hover">View More</a>
 						</div>
 					</div>
 				</div>
@@ -252,7 +251,7 @@
 						<div class="col-xl-6 col-md-12">
 							<div class="footer-widget">
 								<div class="logo mb-35">
-									<a href="index.html"> <img src="{{ asset('client/img/logo/logo.svg')}}" alt=""> </a>
+									<a href="index.html"> <img src="{{ asset('imagenes/icono.svg')}}" alt=""> </a>
 								</div>
 								<p class="desc mb-35">We are expert designer team, There have a lot of designer and developer If you have any project you can hire Create a website.</p>
 								<ul class="socials">

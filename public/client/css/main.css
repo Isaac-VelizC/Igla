@@ -672,7 +672,7 @@ p {
   position: relative;
   z-index: 1;
   padding: 160px 0 120px;
-  background-image: url("../img/hero/hero-bg.jpg");
+  background-image: url("../../imagenes/hero-bg.jpg");
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: cover;
@@ -864,7 +864,7 @@ p {
 
 /* ============== service css ==============*/
 .service-section {
-  background-image: url("../img/service/service-bg.jpg");
+  background-image: url("../../imagenes/service-bg.jpg");
 }
 
 .service-section .single-service {
@@ -994,7 +994,7 @@ p {
 
 /* =========== footer css =========== */
 .footer {
-  background-image: url("../img/footer/footer-bg.svg");
+  background-image: url("../../imagenes/footer-bg.png");
   background-size: cover;
   background-position: top center;
   padding-top: 150px;

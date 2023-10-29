@@ -9,9 +9,9 @@
           <div class="auth-cover-wrapper bg-primary-100">
             <div class="auth-cover">
               <div class="title text-center">
-                <h1 class="text-primary mb-10">Welcome Back</h1>
+                <h1 class="text-primary mb-10">Bienvenido</h1>
                 <p class="text-medium">
-                  Sign in to your Existing account to continue
+                  Inicie sesión en su cuenta existente para continuar
                 </p>
               </div>
               <div class="cover-image">
@@ -27,7 +27,7 @@
         <div class="col-lg-6">
           <div class="signin-wrapper">
             <div class="form-wrapper">
-              <h6 class="mb-15">Sign In Form</h6>
+              <h6 class="mb-15">Instituto Tecnico IGLA</h6>
               <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="row">

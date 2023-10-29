@@ -1,22 +1,12 @@
 <aside class="sidebar sidebar-default sidebar-white sidebar-base navs-rounded-all ">
   <div class="sidebar-header d-flex align-items-center justify-content-start">
-      <a href="{{ route('admin.home') }}" class="navbar-brand">
+      <a href="{{ route('chef.home') }}" class="navbar-brand">
           <div class="logo-main">
               <div class="logo-normal">
-                  <svg class=" icon-30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
-                      <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
-                      <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
-                      <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
-                  </svg>
+                <img src="{{ asset('imagenes/igla.svg')}}" alt="logo" height="35">
               </div>
               <div class="logo-mini">
-                  <svg class=" icon-30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <rect x="-0.757324" y="19.2427" width="28" height="4" rx="2" transform="rotate(-45 -0.757324 19.2427)" fill="currentColor"/>
-                      <rect x="7.72803" y="27.728" width="28" height="4" rx="2" transform="rotate(-45 7.72803 27.728)" fill="currentColor"/>
-                      <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
-                      <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
-                  </svg>
+                <img src="{{ asset('imagenes/igla.svg')}}" alt="logo" height="35">
               </div>
           </div>
           <h4 class="logo-title">IGLA</h4>
@@ -34,21 +24,15 @@
       <div class="sidebar-list">
           <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
               <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="{{ route('admin.home') }}">
+                  <a class="nav-link " aria-current="page" href="{{ route('chef.home') }}">
                       <i class="bi bi-house"></i>
                       <span class="item-name">Inicio</span>
                   </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="../../dashboard/admin.html">
+                <a class="nav-link "  href="{{ route('chef.cursos') }}">
                   <i class="bi bi-bookshelf"></i>
                   <span class="item-name">Cursos</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link "  href="../../dashboard/admin.html">
-                  <i class="bi bi-calendar"></i>
-                  <span class="item-name">Calendario</span>
                 </a>
               </li>
               <li class="nav-item">

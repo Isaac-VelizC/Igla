@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CocinaController;
 use App\Http\Controllers\Admin\CursoController;
 use App\Http\Controllers\admin\EstudianteController;
 use App\Http\Controllers\ChefController;
+use App\Http\Controllers\docente\CursoController as DocenteCursoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -61,6 +62,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::middleware(['auth', 'role:chef'])->group(function () {
     Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
+    //Cursos
+    Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
 });
 
 Route::middleware(['auth', 'role:estudiante'])->group(function () {

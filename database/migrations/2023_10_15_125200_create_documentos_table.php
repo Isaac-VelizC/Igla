@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sesions', function (Blueprint $table) {
-            $table->string('id')->unique();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->text('user_agent')->nullable();
-            $table->text('carga_util');
-            $table->integer('ultima_actividad');
+        Schema::create('documentos', function (Blueprint $table) {
+            $table->id();
+            $table->string('archivo');
+            $table->dateTime('fecha')->default(now());
+            $table->timestamps();
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sesions');
+        Schema::dropIfExists('documentos');
     }
 };

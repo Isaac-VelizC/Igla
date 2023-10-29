@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inscripcions', function (Blueprint $table) {
+        Schema::create('asistencias', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('estudiante_id')->nullable();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
-            $table->unsignedBigInteger('responsable_id')->nullable();
-            $table->foreign('responsable_id')->references('id')->on('users')->onDelete('restrict');
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('restrict');
-            $table->datetime('inscrito')->default(now());
+            $table->boolean('asistencia')->default(false);
+            $table->date('fecha');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('inscripcions');
+        Schema::dropIfExists('asistencias');
     }
 };

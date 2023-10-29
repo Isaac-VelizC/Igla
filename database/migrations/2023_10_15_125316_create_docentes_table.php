@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('docentes', function (Blueprint $table) {
+            //$table->increments('id');
+            $table->unsignedBigInteger('id')->nullable();
+            $table->foreign('id')->references('id')->on('personas')->onDelete('cascade');
+            $table->timestamp('contratado_en')->nullable();
+            $table->decimal('max_hora_trabajos', 4, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('docentes');
     }
 };

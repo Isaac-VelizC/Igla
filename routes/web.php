@@ -55,6 +55,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
+    Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
 
     //Cocina
     Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'role:chef'])->group(function () {
     Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
     //Cursos
     Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
+    Route::get('/curso', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
 });
 
 Route::middleware(['auth', 'role:estudiante'])->group(function () {

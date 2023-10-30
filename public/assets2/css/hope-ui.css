@@ -17035,6 +17035,28 @@ thead, tbody, tfoot, tr, td, th {
   text-decoration: none;
 }
 
+.upload-icone-portada {
+  position: absolute;
+  top: auto;
+  left: 269px;
+  bottom: -9px;
+  -webkit-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -o-transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  height: 2.188rem;
+  width: 2.188rem;
+  text-align: center;
+  font-size: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  border: 5px solid #ffffff;
+}
+.upload-icone-portada .file-upload {
+  display: none;
+}
+
 .upload-icone {
   position: absolute;
   top: auto;
@@ -20782,6 +20804,15 @@ body {
   width: 2.75rem;
 }
 
+.portada-300 {
+  object-fit: cover;
+  height: 300px;
+  width: 300px;
+  min-width: 300px;
+  -webkit-border-radius: 0.25rem;
+          border-radius: 0.25rem;
+}
+
 .avatar {
   position: relative;
 }
@@ -20899,6 +20930,7 @@ body {
 }
 
 .avatar-235 {
+  object-fit: cover;
   height: 235px;
   width: 235px;
   min-width: 235px;

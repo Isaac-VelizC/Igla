@@ -10,4 +10,8 @@ class CursoController extends Controller
     public function index() {
         return view('profesor.cursos.index');
     }
+
+    public function curso() {
+        return view('profesor.cursos.curso');
+    }
 }

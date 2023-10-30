@@ -7,8 +7,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center">
                     <div>
-                        <h1>Hello Devs!</h1>
-                        <p>We are on a mission to help developers like you build successful projects for FREE.</p>
+                        <h1 style="color: black">Nuevo Curso</h1>
                     </div>
                 </div>
             </div>
@@ -31,71 +30,44 @@
                           <div class="row">
                               <div class="col-sm-12 col-lg-6">
                                   <div class="row">
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="fname">Nombres:</label>
-                                      <input type="text" class="form-control" id="fname" placeholder="Nombres">
+                                      <div class="form-group">
+                                      <label class="form-label" for="fname">Nombre:</label>
+                                      <input type="text" class="form-control" id="fname" placeholder="Nombre">
                                       </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="lname">Apellidos:</label>
-                                      <input type="text" class="form-control" id="lname" placeholder="Apellidos">
-                                      </div>
-                                      <div class="form-group col-md-12">
-                                      <label class="form-label" for="cname">Cedula de Identidad:</label>
-                                      <input type="text" class="form-control" id="cname" placeholder="Cedula de Identidad">
-                                      </div>
-                                      <div class="form-group col-md-12">
-                                          <label class="form-label" for="cname">Fecha Nacimiento:</label>
-                                          <input type="date" class="form-control" id="cname" placeholder="Fecha Nacimiento">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="add1">Dirección 1:</label>
-                                      <input type="text" class="form-control" id="add1" placeholder="Dirección 1">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="add2">Dirección 2:</label>
-                                      <input type="text" class="form-control" id="add2" placeholder="Dirección 2">
-                                      </div>
-                                      <div class="form-group col-sm-12">
-                                      <label class="form-label">Genero:</label>
-                                      <select name="type" class="selectpicker form-control" data-style="py-0">
-                                          <option>Seleccionar Genero</option>
-                                          <option>Hombre</option>
-                                          <option>Mujer</option>
-                                      </select>
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="mobno">Numero Celular:</label>
-                                      <input type="text" class="form-control" id="mobno" placeholder="Numero de Celular">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="email">E mail:</label>
-                                      <input type="email" class="form-control" id="email" placeholder="E mail">
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="col-sm-12 col-lg-6">
-                                  <h5 class="mb-3">Información de Contacto</h5>
-                                  <div class="row">
-                                      <div class="form-group col-md-6">
-                                          <label class="form-label" for="nomb">Nombre:</label>
-                                          <input type="text" class="form-control" id="nomb" placeholder="Nombre">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                          <label class="form-label" for="apell">Apellido:</label>
-                                          <input type="text" class="form-control" id="apell" placeholder="Apellidos">
-                                      </div>
-                                      <div class="form-group col-md-12">
-                                      <label class="form-label" for="ci">Cedular de Identidad:</label>
-                                      <input type="text" class="form-control" id="ci" placeholder="Cedular de Identidad">
-                                      </div>
-                                      <div class="form-group col-md-6">
-                                      <label class="form-label" for="numcel">Numero de Celular:</label>
-                                      <input type="text" class="form-control" id="numcel" placeholder="Numero de Celular">
-                                      </div>
+                                      <div class="form-group">
+                                        <label class="form-label" for="exampleFormControlSelect2">Seleccionar Aula</label>
+                                        <select multiple="" class="form-select" id="exampleFormControlSelect2">
+                                        <option>select-1</option>
+                                        <option>select-2</option>
+                                        <option>select-3</option>
+                                        <option>select-4</option>
+                                        <option>select-5</option>
+                                        <option>select-6</option>
+                                        <option>select-7</option>
+                                        <option>select-8</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="exampleFormControlSelect2">seleccionar Modulo</label>
+                                        <select multiple="" class="form-select" id="exampleFormControlSelect2">
+                                        <option>select-1</option>
+                                        <option>select-2</option>
+                                        <option>select-3</option>
+                                        <option>select-4</option>
+                                        <option>select-5</option>
+                                        <option>select-6</option>
+                                        <option>select-7</option>
+                                        <option>select-8</option>
+                                        </select>
+                                    </div>
+                                      <div class="form-group">
+                                        <label class="form-label" for="exampleInputcolor">Input Color </label>
+                                        <input type="color" class="form-control" id="exampleInputcolor" value="#50b5ff">
+                                    </div>
                                   </div>
                               </div>
                           </div>
-                           <button type="submit" class="btn btn-primary">Inscribir Estudiante</button>
+                           <button type="submit" class="btn btn-primary">Guardar Curso</button>
                         </form>
                      </div>
                 </div>

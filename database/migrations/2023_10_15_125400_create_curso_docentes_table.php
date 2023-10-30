@@ -26,6 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('commet_id')->nullable();
             $table->foreign('commet_id')->references('id')->on('comentarios')->onDelete('cascade');
             $table->text('descripcion')->nullable();
+            $table->string('imagen')->nullable();
             $table->date('fecha_ini');
             $table->date('fecha_fin');
             $table->boolean('asistencia_exacta')->nullable();

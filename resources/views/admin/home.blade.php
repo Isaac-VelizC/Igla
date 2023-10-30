@@ -8,7 +8,6 @@
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
                       <h1 style="color: black">Hello Devs!</h1>
-                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
                   </div>
               </div>
           </div>

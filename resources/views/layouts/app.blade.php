@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="es" dir="ltr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('assets2/images/favicon.ico')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/core/libs.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/hope-ui.min.css?v=2.0.0')}}" />
+    <link rel="stylesheet" href="{{ asset('assets2/css/hope-ui.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/custom.min.css?v=2.0.0')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/dark.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets2/css/customizer.min.css')}}" />

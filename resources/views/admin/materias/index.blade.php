@@ -7,11 +7,10 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1 style="color: black">Hello Devs!</h1>
-                     <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
+                     <h1 style="color: black">Cursos</h1>
                   </div>
                   <div>
-                     <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                     <a href="{{ route('admin.cursos.new') }}" class="btn btn-outline-secondary">Nuevo Curso</a>
                  </div>
               </div>
           </div>
@@ -66,7 +65,7 @@
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
+                                 <a href="{{ route('admin.asignar.curso') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Asignar">
                                     <i class="bi bi-person-gear"></i>
                                  </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">

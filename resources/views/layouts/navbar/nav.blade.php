@@ -89,7 +89,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="py-0 nav-link d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{{ asset('assets2/images/avatars/01.png')}}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
+              <img src="{{ asset('imagenes/user.jpg')}}" alt="User-Profile" class="theme-color-default-img img-fluid avatar avatar-50 avatar-rounded">
               <div class="caption ms-3 d-none d-md-block ">
                 <h6 class="mb-0 caption-title">{{ Auth::user()->name }}</h6>
                     @foreach(Auth::user()->getRoleNames()->toArray() as $role)

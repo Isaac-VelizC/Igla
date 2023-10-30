@@ -19,4 +19,8 @@ class CursoController extends Controller
     public function allPagos() {
         return View('admin.pagos.index');
     }
+
+    public function asignarCurso() {
+        return view('admin.materias.asignar_curso');
+    }
 }

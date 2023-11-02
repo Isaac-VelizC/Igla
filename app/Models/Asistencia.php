@@ -9,7 +9,10 @@ class Asistencia extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $table = "asistencias";
+    protected $primaryKey = "id";
+    protected $fillable = ['estudiante_id', 'curso_id', 'asistencia', 'fecha'];
+
 
     protected $with = ['attendanceType'];
 

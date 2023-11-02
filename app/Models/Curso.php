@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Curso extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $table = "cursos";
+    protected $primaryKey = "id";
+    protected $fillable = ['nombre', 'precio', 'aula_id', 'periodo_id', 'color', 'marcado'];
 }

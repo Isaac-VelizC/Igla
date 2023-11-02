@@ -9,7 +9,9 @@ use App\Http\Controllers\admin\EstudianteController;
 use App\Http\Controllers\ChefController;
 use App\Http\Controllers\docente\CursoController as DocenteCursoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\UserController;
+use App\Models\Informacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $info = Informacion::first();
+    return view('welcome', compact('info'));
 });
 
 Auth::routes();
@@ -43,8 +46,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-users', [AdminController::class, 'allUsers'])->name('admin.users');
     //Personals
     Route::get('/admin-personal', [AdminController::class, 'allPersonal'])->name('admin.personal');
-    //Acerda de IGLA
-    Route::get('/infomracion', [HomeController::class, 'acercaDe'])->name('admin.ajustes');
     
     //Perfil de Usuario
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
@@ -59,6 +60,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Cocina
     Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
+    //Acerda de IGLA
+    Route::get('/informacion', [HomeController::class, 'acercaDe'])->name('admin.ajustes');
+    Route::post('/guardar-info', [InformacionController::class, 'guardarInformacion'])->name('admin.guardar-registro');
+    Route::put('/actualizar-info/{id}', [InformacionController::class, 'actualizarInformacion'])->name('admin.actualizar-registro');
+
 });
 
 Route::middleware(['auth', 'role:chef'])->group(function () {

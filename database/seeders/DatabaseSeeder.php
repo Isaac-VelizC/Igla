@@ -60,8 +60,8 @@ class DatabaseSeeder extends Seeder
             'icon' => 'la-check',
         ]);*/
 
-        MetodoPago::create(['id' => '1', 'nombre' => 'Cuotas', 'code' => 'CT']);
-        MetodoPago::create(['id' => '2', 'nombre' => 'Todo', 'code' => 'TD']);
+        MetodoPago::create(['id' => '1', 'nombre' => 'Cuotas']);
+        MetodoPago::create(['id' => '2', 'nombre' => 'Todo']);
 
         /*factory(Periodo::class)->create([
             'start' => now()->subDays(rand(1, 30))->format('Y-m-d'),

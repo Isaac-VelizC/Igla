@@ -10,8 +10,9 @@ class Año extends Model
     use HasFactory;
 
     public $timestamps = false;
-
-    protected $guarded = ['id'];
+    protected $table = "años";
+    protected $primaryKey = "id";
+    protected $fillable = ['nombre'];
 
     public function periods()
     {

@@ -9,6 +9,9 @@ class Aula extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $table = "aulas";
+    protected $primaryKey = "id";
+    protected $fillable = ['nombre', 'codigo', 'capacidad'];
 
     protected $guarded = ['id'];
 

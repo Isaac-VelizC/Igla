@@ -98,28 +98,27 @@
     </header>
     <!-- ========================= header end ========================= -->
 
-    <!-- ========================= hero-section start ========================= -->
-    <section id="home" class="hero-section">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<div class="hero-content">
-						<span class="wow fadeInLeft" data-wow-delay=".2s">BIENVENIDOS A IGLA</span>
-						<h1 class="wow fadeInUp" data-wow-delay=".4s">You are using free lite version of Bliss.</h1>
-						<p class="wow fadeInUp" data-wow-delay=".6s">
-							Please, purchase full version of the template to get all sections, elements and permission to remove footer credits.
-						</p>
+		<!-- ========================= hero-section start ========================= -->
+		<section id="home" class="hero-section">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-lg-6">
+						<div class="hero-content">
+							<span class="wow fadeInLeft" data-wow-delay=".2s">{{ $info->titulo }}</span>
+							<h1 class="wow fadeInUp" data-wow-delay=".4s">{{ $info->subtitulo1 }}</h1>
+							<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion1 }}</p>
+							<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion2 }}</p>
+						</div>
 					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-						<img src="{{ asset('client/img/hero/hero-img.svg')}}" alt="">
+					<div class="col-lg-6">
+						<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+							<img src="{{ asset($info->imagen1)}}" alt="" height="1000">
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-    </section>
-	<!-- ========================= hero-section end ========================= -->
+		</section>
+		<!-- ========================= hero-section end ========================= -->
 
 		<!-- ========================= about-section start ========================= -->
 		<section id="about" class="about-section pt-150">
@@ -182,12 +181,11 @@
 				<div class="row justify-content-center">
 					<div class="col-xxl-5 col-xl-6 col-lg-7 col-md-10">
 						<div class="section-title text-center mb-50">
-							<h1>Our services</h1>
+							<h1>Servicios</h1>
 							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt labore.</p>
 						</div>
 					</div>
 				</div>
-
 				<div class="row">
 					<div class="col-xl-3 col-md-6">
 						<div class="single-service">
@@ -253,19 +251,22 @@
 								<div class="logo mb-35">
 									<a href="index.html"> <img src="{{ asset('imagenes/icono.svg')}}" alt=""> </a>
 								</div>
-								<p class="desc mb-35">We are expert designer team, There have a lot of designer and developer If you have any project you can hire Create a website.</p>
+								<p class="desc mb-35"> {{ $info->subtitulo2 }} </p>
 								<ul class="socials">
 									<li>
-										<a href="jvascript:void(0)"> <i class="lni lni-facebook-filled"></i> </a>
+										<a href="{{ $info->facebook }}"> <i class="lni lni-facebook-filled"></i> </a>
 									</li>
 									<li>
-										<a href="jvascript:void(0)"> <i class="lni lni-twitter-filled"></i> </a>
+										<a href="{{ $info->twitter }}"> <i class="lni lni-twitter-filled"></i> </a>
 									</li>
 									<li>
-										<a href="jvascript:void(0)"> <i class="lni lni-instagram-filled"></i> </a>
+										<a href="{{ $info->instagram }}"> <i class="lni lni-instagram-filled"></i> </a>
 									</li>
 									<li>
-										<a href="jvascript:void(0)"> <i class="lni lni-linkedin-original"></i> </a>
+										<a href="{{ $info->linkedin }}"> <i class="lni lni-linkedin-original"></i> </a>
+									</li>
+									<li>
+										<a href="{{ $info->youtube }}"> <i class="lni lni-youtube"></i> </a>
 									</li>
 								</ul>
 							</div>
@@ -273,10 +274,10 @@
 
 						<div class="col-xl-6 col-md-12">
 							<div class="footer-widget">
-								<h3>Contact</h3>
+								<h3>Contacto</h3>
 								<ul>
-									<li>+003894372632</li>
-									<li>helldesigner@gmail.ccom</li>
+									<li>+591 {{ $info->telefono }}</li>
+									<li>{{ $info->correo }}</li>
 									<li>United state of America</li>
 								</ul>
 								<div class="contact_map" style="width: 100%; height: 150px; margin-top: 25px;">
@@ -296,7 +297,6 @@
     <a href="#" class="scroll-top btn-hover">
       <i class="lni lni-chevron-up"></i>
     </a>
-
     <!-- ========================= JS here ========================= -->
     <script src="{{ asset('client/js/bootstrap-5.0.0-beta2.min.js')}}"></script>
     <script src="{{ asset('client/js/count-up.min.js')}}"></script>

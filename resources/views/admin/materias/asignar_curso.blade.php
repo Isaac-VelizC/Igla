@@ -119,7 +119,7 @@
                                   </div>
                               </div>
                           </div>
-                           <button type="submit" class="btn btn-primary">Inscribir Estudiante</button>
+                           <button type="submit" class="btn btn-primary">Habilitar</button>
                         </form>
                      </div>
                 </div>

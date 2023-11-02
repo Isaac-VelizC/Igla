@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Documentos extends Model
 {
     use HasFactory;
+    protected $table = "documentos";
+    protected $primaryKey = "id";
+    protected $fillable = ['archivo', 'fecha'];
+
 }

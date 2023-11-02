@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Periodo extends Model
 {
     use HasFactory;
+    protected $table = "periodos";
+    protected $primaryKey = "id";
+    protected $fillable = ['nombre', 'anio_id'];
+
 }

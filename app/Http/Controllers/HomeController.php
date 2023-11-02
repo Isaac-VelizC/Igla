@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Informacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,7 @@ class HomeController extends Controller
     }
 
     public function acercaDe() {
-        return view('ajustes.principal');
+        $informacion = Informacion::first();
+        return view('ajustes.principal', compact('informacion'));
     }
 }

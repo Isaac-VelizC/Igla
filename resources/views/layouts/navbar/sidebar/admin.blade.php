@@ -114,7 +114,7 @@
                                       </g>
                                   </svg>
                               </i>
-                              <i class="sidenav-mini-icon"> C </i>
+                              <i class="sidenav-mini-icon"> CC </i>
                               <span class="item-name">Crear</span>
                           </a>
                       </li>
@@ -127,10 +127,23 @@
                                       </g>
                                   </svg>
                               </i>
-                              <i class="sidenav-mini-icon"> L </i>
+                              <i class="sidenav-mini-icon"> LC </i>
                               <span class="item-name">Lista</span>
                           </a>
                       </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.cursos') }}">
+                            <i class="icon">
+                                <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
+                                    <g>
+                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
+                                    </g>
+                                </svg>
+                            </i>
+                            <i class="sidenav-mini-icon"> CA </i>
+                            <span class="item-name">Cursos Activos</span>
+                        </a>
+                    </li>
                   </ul>
               </li>
               <li class="nav-item">
@@ -220,6 +233,12 @@
                 <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
                     <i class="bi bi-archive"></i>
                     <span class="item-name">Archivos</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="bi bi-person-exclamation"></i>
+                    <span class="item-name">Administración</span>
                 </a>
               </li>
               <li class="nav-item">

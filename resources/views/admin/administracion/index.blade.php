@@ -66,6 +66,9 @@
              </div>
           </div>
       </div> 
+      @if ($modulos->count() > 0)
+         @include('admin.administracion.modal_modulo_edit')
+      @endif
       @include('admin.administracion.modal_modulo')
       <div class="col-md-12 col-lg-12">
          <div class="card-header d-flex justify-content-between">
@@ -114,7 +117,9 @@
             </div>
          </div>
       </div>
-      @include('admin.administracion.modal_aula_edit')
+      @if ($aulas->count() > 0)
+         @include('admin.administracion.modal_aula_edit')
+      @endif
       @include('admin.administracion.modal_aula')
       <div class="col-md-12 col-lg-12">
          <div class="card-header d-flex justify-content-between">
@@ -163,7 +168,9 @@
             </div>
          </div>
       </div> 
-      @include('admin.administracion.modal_horario_edit')
+      @if ($horarios->count() > 0)
+         @include('admin.administracion.modal_horario_edit')
+      @endif
       @include('admin.administracion.modal_horario')
       <div class="col-md-12 col-lg-12">
          <div class="card-header d-flex justify-content-between">
@@ -259,6 +266,7 @@
    $(document).on('click', '[data-bs-toggle="modal"]', function () {
       var aulaId = $(this).data('aula-id');
       var horaId = $(this).data('hora-id');
+      var moduloId = $(this).data('modulo-id');
       
       if (aulaId !== undefined) {
          $('#aula_id').val(aulaId);
@@ -266,6 +274,10 @@
       
       if (horaId !== undefined) {
          $('#hora_id').val(horaId);
+      }
+      
+      if (moduloId !== undefined) {
+         $('#modulo_id').val(moduloId);
       }
    });
 </script>

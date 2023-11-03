@@ -13,19 +13,13 @@
                         <input type="text" class="form-control" name="nombre" id="recipient-name">
                     </div>
                     <div class="mb-3">
-                        <label class="col-form-label" for="year_select">Seleccionar Año</label>
-                        <select class="form-control" id="year_select" name="anio">
-                            @php
-                                $currentYear = date('Y');
-                                $startYear = $currentYear - 10;
-                                $endYear = $currentYear + 10;
-                            @endphp
-                            @for ($year = $startYear; $year <= $endYear; $year++)
-                                <option value="{{ $year }}" {{ $year == $currentYear ? 'selected' : '' }}>{{ $year }}</option>
-                            @endfor
-                        </select>
+                        <label for="recipient-costo" class="col-form-label">Costo:</label>
+                        <input type="text" class="form-control" name="costo" id="recipient-costo">
                     </div>
-                    
+                    <div class="mb-3">
+                        <label class="col-form-label" for="DescripcionId">Descripción</label>
+                        <textarea class="form-control" id="DescripcionId" rows="3" name="descrip"></textarea>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Guardar</button>

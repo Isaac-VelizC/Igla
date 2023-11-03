@@ -14,9 +14,8 @@ class Aula extends Model
     protected $fillable = ['nombre', 'codigo', 'capacidad'];
 
     protected $guarded = ['id'];
-
-    public function events()
+    public function cursos()
     {
-        return $this->hasMany(Evento::class);
+        return $this->hasMany(Curso::class, 'aula_id');
     }
 }

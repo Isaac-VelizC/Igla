@@ -150,24 +150,28 @@ class InformacionController extends Controller
     }
 
     public function storeModalidad(Request $request) {
-        dd($request);
         $this->validate($request, [
-            'horarios' => 'required|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'descrip' => 'string|max:255',
         ]);
-        $hora = new Horario();
-        $hora->horarios = $request->horarios;
-        $hora->save();
+        $modulo = new Periodo();
+        $modulo->nombre = $request->nombre;
+        $modulo->costo = $request->costo;
+        $modulo->descripcion = $request->descrip;
+        $modulo->save();
         return back()->with('success', 'La información se ha guardado con éxito.');
     }
 
     public function updateModalidad(Request $request, $id) {
-        dd($request);
         $this->validate($request, [
-            'horarios' => 'required|string|max:255',
+            'nombre' => 'required|string|max:255',
+            'descrip' => 'string|max:255',
         ]);
-        $hora = Horario::find($id);
-        $hora->horarios = $request->horarios;
-        $hora->update();
-        return back()->with('success', 'La información se ha actualizado con éxito.');
+        $modulo = Periodo::find($id);
+        $modulo->nombre = $request->nombre;
+        $modulo->costo = $request->costo;
+        $modulo->descripcion = $request->descrip;
+        $modulo->update();
+        return back()->with('success', 'La información se ha guardado con éxito.');
     }
 }

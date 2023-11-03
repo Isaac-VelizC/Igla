@@ -9,6 +9,12 @@
                     <div>
                         <h1 style="color: black">Nuevo Curso</h1>
                     </div>
+                    @if(session('success'))
+                        <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
+                            <span>{{ session('success') }}</span>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -26,7 +32,7 @@
                             </div>
                         </div>
                         <br>
-                        <form method="POST" action="{{ $isEditing ? route('admin.actualizar-curso', $task->id) : route('admin.guardar-curso') }}">
+                        <form method="POST" action="{{ $isEditing ? route('admin.actualizar-curso', $curso->id) : route('admin.guardar-curso') }}">
                             @csrf
                             @if($isEditing)
                                 @method('PUT')
@@ -36,7 +42,7 @@
                                   <div class="row">
                                     <div class="form-group">
                                       <label class="form-label" for="fname">Nombre de Curso:</label>
-                                      <input type="text" class="form-control" id="fname" name="nombre" value="{{ old('nombre', $isEditing ? $task->nombre : '') }}" placeholder="Nombre">
+                                      <input type="text" class="form-control" id="fname" name="nombre" value="{{ old('nombre', $isEditing ? $curso->nombre : '') }}" placeholder="Nombre">
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="aula_select">Seleccionar Aula</label>
@@ -47,15 +53,16 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="exampleFormControlSelect2">seleccionar Modulo</label>
-                                        <select class="form-select" id="exampleFormControlSelect2">
-                                        <option>select-1</option>
-                                        <option>select-2</option>
+                                        <label class="form-label" for="modulo_select">seleccionar Modulo</label>
+                                        <select class="form-select" id="modulo_select" name="modulo_id">
+                                            @foreach ($modulos as $mod)
+                                                <option value="{{ $mod->id }}">{{ $mod->nombre }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                       <div class="form-group">
                                         <label class="form-label" for="exampleInputcolor">Color del Curso</label>
-                                        <input type="color" class="form-control" id="exampleInputcolor" name="color" value="{{ old('color', $isEditing ? $task->color : '#DD4B27') }}">
+                                        <input type="color" class="form-control" id="exampleInputcolor" name="color" value="{{ old('color', $isEditing ? $curso->color : '#DD4B27') }}">
                                     </div>
                                   </div>
                               </div>

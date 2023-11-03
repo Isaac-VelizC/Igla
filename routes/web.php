@@ -15,17 +15,6 @@ use App\Models\Informacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     $info = Informacion::first();
     return view('welcome', compact('info'));
@@ -41,7 +30,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
     Route::get('/create-docentes', [ChefsController::class, 'create'])->name('create.docentes');
-    Route::post('/create-docentes', [ChefsController::class, 'store'])->name('store.docentes');
+    Route::post('/create-docentes-store', [ChefsController::class, 'store'])->name('store.docentes');
+    Route::get('/create-docentes-{id}-edits', [ChefsController::class, 'edit'])->name('edit.docentes');
+    Route::post('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docentes');
     //Users
     Route::get('/admin-users', [AdminController::class, 'allUsers'])->name('admin.users');
     //Personals
@@ -56,6 +47,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
     Route::post('/curso-info', [CursoController::class, 'guardarCurso'])->name('admin.guardar-curso');
     Route::put('/curso-info/{id}/edit', [CursoController::class, 'actualizarCurso'])->name('admin.actualizar-curso');
+    Route::get('/admin-cursos/{id}/edit', [CursoController::class, 'edit'])->name('admin.cursos.edit');
+    Route::delete('admin/cursos/{id}', [CursoController::class, 'deleteCurso'])->name('admin.cursos.destroy');
+    Route::get('admin/show/{id}', [CursoController::class, 'showCurso'])->name('admin.cursos.show');
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
     Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');

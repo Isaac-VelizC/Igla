@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('periodos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre')->unique();
-            $table->date('inicio');
-            $table->date('fin');
-            $table->unsignedBigInteger('anio_id')->nullable();
-            $table->integer('orden')->nullable();
+            $table->text('descripcion')->nullable();
+            $table->decimal('costo', 10, 2)->nullable();
         });
     }
 

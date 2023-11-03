@@ -54,6 +54,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/calendar', [CalendarioController::class, 'index'])->name('admin.calendario');
     //Cursos
     Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
+    Route::post('/curso-info', [CursoController::class, 'guardarCurso'])->name('admin.guardar-curso');
+    Route::put('/curso-info/{id}/edit', [CursoController::class, 'actualizarCurso'])->name('admin.actualizar-curso');
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
     Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
@@ -64,6 +66,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/informacion', [HomeController::class, 'acercaDe'])->name('admin.ajustes');
     Route::post('/guardar-info', [InformacionController::class, 'guardarInformacion'])->name('admin.guardar-registro');
     Route::put('/actualizar-info/{id}', [InformacionController::class, 'actualizarInformacion'])->name('admin.actualizar-registro');
+    //Administracion de informacion
+    Route::get('/administrar-info', [InformacionController::class, 'adminstrarInfo'])->name('admin.administracion');
+    Route::post('/administrar-aula-add', [InformacionController::class, 'storeAula'])->name('admin.guardar-aula');
+    Route::put('/administrar-aula/{id}/edit', [InformacionController::class, 'updateAula'])->name('admin.actualizar-aula');
+    Route::post('/administrar-modalidad-add', [InformacionController::class, 'storeModalidad'])->name('admin.guardar-modalidad');
+    Route::put('/administrar-modalidad/{id}/edit', [InformacionController::class, 'updateModalidad'])->name('admin.actualizar-modalidad');
+    Route::post('/administrar-horario-add', [InformacionController::class, 'storeHorario'])->name('admin.guardar-horario');
+    Route::put('/administrar-horario/{id}/edit', [InformacionController::class, 'updateHorario'])->name('admin.actualizar-horario');
 
 });
 

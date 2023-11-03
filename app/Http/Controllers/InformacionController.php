@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aula;
+use App\Models\Horario;
 use App\Models\Informacion;
+use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -88,6 +91,83 @@ class InformacionController extends Controller
             }
         }
         $nuevaInformacion->update();
+        return back()->with('success', 'La información se ha actualizado con éxito.');
+    }
+
+    public function adminstrarInfo() {
+        $horarios = Horario::all();
+        $aulas = Aula::all();
+        $modulos = Periodo::all();
+        return view('admin.administracion.index', compact('aulas', 'horarios', 'modulos'));
+    }
+
+    public function storeAula(Request $request) {
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'capacidad' => 'required|numeric',
+        ]);
+        $aula = new Aula();
+        $aula->nombre = $request->nombre;
+        $aula->codigo = $request->codigo;
+        $aula->capacidad = $request->capacidad;
+        $aula->save();
+        return back()->with('success', 'La información se ha guardado con éxito.');
+    }
+
+    public function updateAula(Request $request, $id) {
+        dd($request);
+        $this->validate($request, [
+            'nombre' => 'required|string|max:255',
+            'capacidad' => 'required|numeric',
+        ]);
+        $aula = Aula::find($id);
+        $aula->nombre = $request->nombre;
+        $aula->codigo = $request->codigo;
+        $aula->capacidad = $request->capacidad;
+        $aula->update();
+        return back()->with('success', 'La información se ha actualizado con éxito.');
+    }
+
+    public function storeHorario(Request $request) {
+        $this->validate($request, [
+            'horarios' => 'required|string|max:255',
+        ]);
+        $hora = new Horario();
+        $hora->horarios = $request->horarios;
+        $hora->save();
+        return back()->with('success', 'La información se ha guardado con éxito.');
+    }
+
+    public function updateHorario(Request $request, $id) {
+        dd($request);
+        $this->validate($request, [
+            'horarios' => 'required|string|max:255',
+        ]);
+        $hora = Horario::find($id);
+        $hora->horarios = $request->horarios;
+        $hora->update();
+        return back()->with('success', 'La información se ha actualizado con éxito.');
+    }
+
+    public function storeModalidad(Request $request) {
+        dd($request);
+        $this->validate($request, [
+            'horarios' => 'required|string|max:255',
+        ]);
+        $hora = new Horario();
+        $hora->horarios = $request->horarios;
+        $hora->save();
+        return back()->with('success', 'La información se ha guardado con éxito.');
+    }
+
+    public function updateModalidad(Request $request, $id) {
+        dd($request);
+        $this->validate($request, [
+            'horarios' => 'required|string|max:255',
+        ]);
+        $hora = Horario::find($id);
+        $hora->horarios = $request->horarios;
+        $hora->update();
         return back()->with('success', 'La información se ha actualizado con éxito.');
     }
 }

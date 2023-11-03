@@ -177,7 +177,7 @@
                             </div>
                           </div>
                           <button type="submit" class="btn btn-primary">{{ $informacion ? 'Actualizar' : 'Guardar' }}</button>
-                          <button type="submit" class="btn btn-danger">Cancelar</button>
+                          <button type="button" class="btn btn-danger">Cancelar</button>
                         </form>
                      </div>
                 </div>

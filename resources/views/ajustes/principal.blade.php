@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <br>
-                        <form class="needs-validation" novalidate method="POST" action="{{ $informacion ? route('admin.actualizar-registro', ['id' => $informacion->id]) : route('admin.guardar-registro') }}"  enctype="multipart/form-data">
+                        <form class="needs-validation" novalidate method="POST" action="{{ $informacion ? route('admin.actualizar-registro', ['id' => $informacion->id]) : route('admin.guardar-registro') }}" enctype="multipart/form-data">
                             @csrf
                             @if($informacion)
                                 @method('PUT')

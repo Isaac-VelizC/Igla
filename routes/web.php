@@ -32,7 +32,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/create-docentes', [ChefsController::class, 'create'])->name('create.docentes');
     Route::post('/create-docentes-store', [ChefsController::class, 'store'])->name('store.docentes');
     Route::get('/create-docentes-{id}-edits', [ChefsController::class, 'edit'])->name('edit.docentes');
-    Route::post('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docentes');
+    Route::put('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docentes');
+    Route::delete('/docentes/{id}/baja', [ChefsController::class, 'darBajaDocente'])->name('admin.docentes.baja');
+    Route::get('/show/{id}/docente', [ChefsController::class, 'showDocente'])->name('admin.docentes.show');
+    Route::put('/reset/{id}/pass/dc', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.docent');
     //Users
     Route::get('/admin-users', [AdminController::class, 'allUsers'])->name('admin.users');
     //Personals

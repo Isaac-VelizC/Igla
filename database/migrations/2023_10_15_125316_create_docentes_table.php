@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_persona')->nullable();
             $table->foreign('id_persona')->references('id')->on('personas')->onDelete('cascade');
-            $table->timestamp('contratado_en')->nullable();
+            $table->date('contratado_en')->nullable();
             $table->decimal('max_hora_trabajos', 4, 2)->nullable();
             $table->timestamps();
             $table->softDeletes();

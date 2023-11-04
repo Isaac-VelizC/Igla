@@ -59,10 +59,10 @@
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.docentes.show', [$item->id]) }}">
                                     <i class="bi bi-eye"></i>
                                  </a>
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="#">
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="{{ route('edit.docentes', [$item->id]) }}">
                                     <i class="bi bi-pen"></i>
                                  </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">

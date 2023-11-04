@@ -9,6 +9,7 @@ use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 class ChefsController extends Controller
@@ -33,9 +34,9 @@ class ChefsController extends Controller
     }
     public function edit($id)
     {
-        $docente = Docente::find($id);
+        $docente = Persona::find($id);
         $isEditing = true;
-        return view('admin.materias.create', compact('docente', 'isEditing'));
+        return view('admin.usuarios.chefs.create', compact('docente', 'isEditing'));
     }
     public function store(Request $request) {
         // Genera el nombre de usuario basado en el nombre y un número aleatorio
@@ -95,7 +96,65 @@ class ChefsController extends Controller
     }
     
     public function update(Request $request, $id) {
-        dd($request);
-        return back();
+        // Crea y guarda la información personal
+        $docente = Persona::find($id);
+        $docente->nombre = $request->nombre;
+        $docente->ap_paterno = $request->ap_pat;
+        $docente->ap_materno = $request->ap_mat;
+        $docente->ci = $request->ci;
+        $docente->genero = $request->genero;
+        $docente->email = $request->email;
+        if ($request->hasFile('perfil') && $request->file('perfil')->isValid()) {
+            $rutaImagenAnterior = $docente->photo;
+            $nombreArchivo = uniqid() . '.' . $request->file('perfil')->extension();
+            $archivoPath = $request->file('perfil')->storeAs('img/perfil', $nombreArchivo, 'public');
+            $docente->photo = 'storage/' . $archivoPath;
+            // Borrar la imagen anterior (si existe)
+            if ($rutaImagenAnterior && Storage::disk('public')->exists($rutaImagenAnterior)) {
+                Storage::disk('public')->delete($rutaImagenAnterior);
+            }
+        }
+        $docente->update();
+        // Crea y guarda el número de teléfono
+        $numT = NumTelefono::where('id_persona', $id)->first();
+        if ($numT !== null) {
+            $numT->numero_tel = $request->telefono;
+            $numT->update();
+        } else {
+            return back()->with('success', 'Lo siento hubo problemas para actualizar.');
+        }
+        // Crea y guarda la información del docente
+        $doc = Docente::where('id_persona', $id)->first();
+        if ($doc !== null) {
+            $doc->contratado_en = $request->contrato;
+            $doc->max_hora_trabajos = $request->horas;
+            $doc->update();
+        } else {
+            return back()->with('success', 'Lo siento hubo problemas para actualizar.');
+        }
+        // Redirige de vuelta a la página anterior
+        return back()->with('docente', $docente)->with('success', 'La información se actualizo con éxito.');
     }
+
+    public function darBajaDocente($id) {
+        dd($id);
+        return back()->with('success', 'Se dio de baja al docente');
+    }
+    public function showDocente($id) {
+        $docente = Persona::find($id);
+        return view('admin.usuarios.chefs.show', compact('docente'));
+    }
+    
+    public function cambiarPass(Request $request, $id) {
+        $rules = [
+            'pass' => 'required|min:8',
+            'passConfirm' => 'required|same:pass',
+        ];
+        $request->validate($rules);
+        $docente = User::find($id);
+        $docente->password = Hash::make($request->input('passConfirm'));
+        $docente->save();
+        return view('admin.usuarios.chefs.show', compact('docente'))->with('success', 'La información se actualizo con éxito.');;
+    }
+
 }

@@ -7,8 +7,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center">
                     <div>
-                        <h1>Hello Devs!</h1>
-                        <p>We are on a mission to help developers like you build successful projects for FREE.</p>
+                        <h1 style="color: black">Formulario de Inscripción!</h1>
                     </div>
                 </div>
             </div>
@@ -16,6 +15,12 @@
     </div>
 </div>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
+    @if(session('success'))
+       <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
+           <span>{{ session('success') }}</span>
+           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+   @endif
     <div class="row">                
         <div class="col-sm-12 col-lg-12">
             <div class="card">

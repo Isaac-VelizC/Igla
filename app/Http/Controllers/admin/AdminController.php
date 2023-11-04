@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Docente;
 use App\Models\Estudiante;
+use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class AdminController extends Controller
     }
 
     public function allUsers() {
-        $users = User::all();
+        $users = Persona::all();
         return view('admin.usuarios.lista_users', compact('users'));
     }
 }

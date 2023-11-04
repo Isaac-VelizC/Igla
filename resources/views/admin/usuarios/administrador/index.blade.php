@@ -7,11 +7,10 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1 style="color: black">Hello Devs!</h1>
-                     <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
+                     <h1 style="color: black">Trabajadores!</h1>
                   </div>
                   <div>
-                     <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                     <button type="button" class="btn btn-outline-secondary">Nuevo</button>
                  </div>
               </div>
           </div>
@@ -23,11 +22,6 @@
   <div class="row">
      <div class="col-sm-12">
         <div class="card">
-           <div class="card-header d-flex justify-content-between">
-              <div class="header-title">
-                 <h4 class="card-title">Bootstrap Datatables</h4>
-              </div>
-           </div>
            <div class="card-body">
               <div class="table-responsive">
                  <table id="datatable" class="table table-striped" data-toggle="data-table">

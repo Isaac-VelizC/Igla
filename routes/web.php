@@ -27,6 +27,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Estudiantes
     Route::get('/admin-estudiantes', [EstudianteController::class, 'index'])->name('admin.estudinte');
     Route::get('/admin-inscripcions', [EstudianteController::class, 'formInscripcion'])->name('admin.inscripcion');
+    Route::post('/admin-inscripcions/store', [EstudianteController::class, 'inscripcion'])->name('admin.inscripcion.store');
+    Route::get('/show/{id}/estudiante', [EstudianteController::class, 'showEstudiante'])->name('admin.estudiante.show');
+    Route::put('/reset/{id}/pass/est', [EstudianteController::class, 'cambiarPass'])->name('cambiar.password.estudiante');
+    Route::put('/create-student-{id}-update', [EstudianteController::class, 'update'])->name('update.estudiantes');
+    Route::put('/create-conctato-{id}-update', [EstudianteController::class, 'updateContacto'])->name('update.contacto');
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
     Route::get('/create-docentes', [ChefsController::class, 'create'])->name('create.docentes');
@@ -56,6 +61,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
     Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
+    Route::post('/curso-info/asignar', [CursoController::class, 'asignarGuardarCurso'])->name('admin.asignar.guardar.curso');
+    Route::put('/curso-info/{id}/edit/asignar', [CursoController::class, 'asignarActualizarCurso'])->name('admin.asignar.actualizar-curso');
 
     //Cocina
     Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');

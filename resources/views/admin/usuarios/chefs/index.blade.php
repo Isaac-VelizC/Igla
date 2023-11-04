@@ -10,7 +10,7 @@
                      <h1 style="color: black">Docentes</h1>
                   </div>
                   <div>
-                     <a href="{{ route('create.docentes') }}" class="btn btn-outline-secondary">Nuevo Docente</a>
+                     <a href="{{ route('create.docentes') }}" type="button" class="btn btn-outline-secondary">Nuevo Docente</a>
                  </div>
               </div>
           </div>

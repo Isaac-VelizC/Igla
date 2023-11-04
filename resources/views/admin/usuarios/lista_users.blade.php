@@ -7,8 +7,7 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1 style="color: black">Hello Devs!</h1>
-                     <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
+                     <h1 style="color: black">Todos los Usuarios</h1>
                   </div>
               </div>
           </div>
@@ -20,23 +19,15 @@
   <div class="row">
      <div class="col-sm-12">
         <div class="card">
-           <div class="card-header d-flex justify-content-between">
-              <div class="header-title">
-                 <h4 class="card-title">Bootstrap Datatables</h4>
-              </div>
-           </div>
            <div class="card-body">
-              <p>Images in Bootstrap are made responsive with <code>.img-fluid</code>. <code>max-width: 100%;</code> and <code>height: auto;</code> are applied to the image so that it scales with the parent element.</p>
               <div class="table-responsive">
                  <table id="datatable" class="table table-striped" data-toggle="data-table">
                     <thead>
                        <tr>
                         <th>Nombre Completo</th>
-                        <th>C.I.</th>
                         <th>E-mail</th>
-                        <th>Telefono</th>
-                        <th>Direccion</th>
-                        <th>Tipo</th>
+                        <th>C.I.</th>
+                        <th>Rol</th>
                         <th>Estado</th>
                         <th>Tags</th>
                        </tr>
@@ -44,24 +35,18 @@
                     <tbody>
                       @foreach ($users as $item)
                         <tr>
-                            <td><p>{{ $item->name }}</p></td>
+                            <td><p>{{ $item->nombre }} {{ $item->ap_parteno }} {{ $item->ap_materno }}</p></td>
                             <td>
                             <p><a href="#0">{{ $item->email }}</a></p>
                             </td>
                             <td>
-                            <p>(303)555 3343523</p>
+                            <p>{{ $item->ci }}</p>
                             </td>
                             <td>
-                            <p>UIdeck digital agency</p>
+                            <p> Admin</p>
                             </td>
-                            <td>
-                              <p>(303)555 3343523</p>
-                              </td>
-                              <td>
-                              <p>UIdeck digital agency</p>
-                           </td>
                            <td>
-                              <p>(303)555 3343523</p>
+                              <p>(303)555 </p>
                            </td>
                             <td>
                               <div class="flex align-items-center list-user-action">

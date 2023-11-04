@@ -26,4 +26,9 @@ class Persona extends Model
     {
         return $this->hasOne(NumTelefono::class, 'id_persona');
     }
+
+    public function estudiantes()
+    {
+        return $this->hasMany(Estudiante::class, 'pers_id');
+    }
 }

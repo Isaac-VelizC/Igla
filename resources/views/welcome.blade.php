@@ -102,19 +102,33 @@
 		<section id="home" class="hero-section">
 			<div class="container">
 				<div class="row align-items-center">
-					<div class="col-lg-6">
-						<div class="hero-content">
-							<span class="wow fadeInLeft" data-wow-delay=".2s">{{ $info->titulo }}</span>
-							<h1 class="wow fadeInUp" data-wow-delay=".4s">{{ $info->subtitulo1 }}</h1>
-							<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion1 }}</p>
-							<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion2 }}</p>
+					@if ($info)
+						<div class="col-lg-6">
+							<div class="hero-content">
+								<span class="wow fadeInLeft" data-wow-delay=".2s">{{ $info->titulo }}</span>
+								<h1 class="wow fadeInUp" data-wow-delay=".4s">{{ $info->subtitulo1 }}</h1>
+								<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion1 }}</p>
+								<p class="wow fadeInUp" data-wow-delay=".6s">{{ $info->descripcion2 }}</p>
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
-							<img src="{{ asset($info->imagen1)}}" alt="" height="1000">
+						<div class="col-lg-6">
+							<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+								<img src="{{ asset($info->imagen1)}}" alt="" height="1000">
+							</div>
 						</div>
-					</div>
+					@else
+						<div class="col-lg-6">
+							<div class="hero-content">
+								<span class="wow fadeInLeft" data-wow-delay=".2s">Titulo</span>
+								<h1 class="wow fadeInUp" data-wow-delay=".4s">subtitulo1</h1>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="hero-img wow fadeInUp" data-wow-delay=".5s">
+								<img src="{{ asset('imagenes/user.jpg')}}" alt="" height="300" width="300">
+							</div>
+						</div>
+					@endif
 				</div>
 			</div>
 		</section>
@@ -251,35 +265,45 @@
 								<div class="logo mb-35">
 									<a href="index.html"> <img src="{{ asset('imagenes/icono.svg')}}" alt=""> </a>
 								</div>
-								<p class="desc mb-35"> {{ $info->subtitulo2 }} </p>
-								<ul class="socials">
-									<li>
-										<a href="{{ $info->facebook }}"> <i class="lni lni-facebook-filled"></i> </a>
-									</li>
-									<li>
-										<a href="{{ $info->twitter }}"> <i class="lni lni-twitter-filled"></i> </a>
-									</li>
-									<li>
-										<a href="{{ $info->instagram }}"> <i class="lni lni-instagram-filled"></i> </a>
-									</li>
-									<li>
-										<a href="{{ $info->linkedin }}"> <i class="lni lni-linkedin-original"></i> </a>
-									</li>
-									<li>
-										<a href="{{ $info->youtube }}"> <i class="lni lni-youtube"></i> </a>
-									</li>
-								</ul>
+								@if ($info)
+									<p class="desc mb-35"> {{ $info->subtitulo2 }} </p>
+									<ul class="socials">
+										<li>
+											<a href="{{ $info->facebook }}"> <i class="lni lni-facebook-filled"></i> </a>
+										</li>
+										<li>
+											<a href="{{ $info->twitter }}"> <i class="lni lni-twitter-filled"></i> </a>
+										</li>
+										<li>
+											<a href="{{ $info->instagram }}"> <i class="lni lni-instagram-filled"></i> </a>
+										</li>
+										<li>
+											<a href="{{ $info->linkedin }}"> <i class="lni lni-linkedin-original"></i> </a>
+										</li>
+										<li>
+											<a href="{{ $info->youtube }}"> <i class="lni lni-youtube"></i> </a>
+										</li>
+									</ul>
+								@endif
 							</div>
 						</div>
 
 						<div class="col-xl-6 col-md-12">
 							<div class="footer-widget">
 								<h3>Contacto</h3>
-								<ul>
-									<li>+591 {{ $info->telefono }}</li>
-									<li>{{ $info->correo }}</li>
-									<li>United state of America</li>
-								</ul>
+								@if ($info)
+									<ul>
+										<li>+591 {{ $info->telefono }}</li>
+										<li>{{ $info->correo }}</li>
+										<li>Bolivia de America</li>
+									</ul>
+								@else
+									<ul>
+										<li>Numero de Telefono</li>
+										<li>Correo Electronico</li>
+										<li>Bolivia de America</li>
+									</ul>
+								@endif
 								<div class="contact_map" style="width: 100%; height: 150px; margin-top: 25px;">
 									<div class="gmap_canvas">
 										<iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Mission%20District%2C%20San%20Francisco%2C%20CA%2C%20USA&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" style="width: 100%;"></iframe>

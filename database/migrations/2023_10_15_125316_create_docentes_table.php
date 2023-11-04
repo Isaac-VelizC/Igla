@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('docentes', function (Blueprint $table) {
-            //$table->increments('id');
-            $table->unsignedBigInteger('id')->nullable();
-            $table->foreign('id')->references('id')->on('personas')->onDelete('cascade');
+            $table->id();
+            $table->unsignedBigInteger('id_persona')->nullable();
+            $table->foreign('id_persona')->references('id')->on('personas')->onDelete('cascade');
             $table->timestamp('contratado_en')->nullable();
             $table->decimal('max_hora_trabajos', 4, 2)->nullable();
             $table->timestamps();

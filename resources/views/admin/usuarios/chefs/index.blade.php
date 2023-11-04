@@ -62,9 +62,6 @@
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.docentes.show', [$item->id]) }}">
                                     <i class="bi bi-eye"></i>
                                  </a>
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="{{ route('edit.docentes', [$item->id]) }}">
-                                    <i class="bi bi-pen"></i>
-                                 </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
                                     <i class="bi bi-trash"></i>
                                  </a>

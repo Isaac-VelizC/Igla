@@ -48,7 +48,7 @@
                                         <label class="form-label" for="aula_select">Seleccionar Aula</label>
                                         <select class="form-select" id="aula_select" name="aula_id">
                                             @foreach ($aulas as $aula)
-                                                <option value="{{ $aula->id }}" @if ($aula->id == $curso->aula_id) selected @endif>{{ $aula->nombre }}</option>
+                                                <option value="{{ $aula->id }}" @if ($isEditing && $aula->id == $curso->aula_id) selected @endif>{{ $aula->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -56,7 +56,7 @@
                                         <label class="form-label" for="modulo_select">seleccionar Modulo</label>
                                         <select class="form-select" id="modulo_select" name="modulo_id">
                                             @foreach ($modulos as $mod)
-                                                <option value="{{ $mod->id }}" @if ($mod->id == $curso->periodo_id) selected @endif>{{ $mod->nombre }}</option>
+                                                <option value="{{ $mod->id }}" @if ($isEditing && $mod->id == $curso->periodo_id) selected @endif>{{ $mod->nombre }}</option>
                                             @endforeach
                                         </select>
                                     </div>

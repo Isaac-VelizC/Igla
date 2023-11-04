@@ -151,9 +151,10 @@ class ChefsController extends Controller
             'passConfirm' => 'required|same:pass',
         ];
         $request->validate($rules);
-        $docente = User::find($id);
-        $docente->password = Hash::make($request->input('passConfirm'));
-        $docente->save();
+        $doc = User::find($id);
+        $doc->password = Hash::make($request->input('passConfirm'));
+        $doc->save();
+        $docente = Persona::find($doc->persona->id);
         return view('admin.usuarios.chefs.show', compact('docente'))->with('success', 'La información se actualizo con éxito.');;
     }
 

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('inscrito_id')->references('id')->on('inscripcions')->onDelete('cascade');
             $table->datetime('fecha')->default(now());
             $table->string('codigo');
-            
+            $table->boolean('estado')->default(true);
         });
     }
 

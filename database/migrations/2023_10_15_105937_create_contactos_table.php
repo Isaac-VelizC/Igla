@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('pers_id')->nullable();
             $table->foreign('pers_id')->references('id')->on('personas')->onDelete('cascade');
             $table->string('direccion')->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

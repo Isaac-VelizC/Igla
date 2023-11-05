@@ -56,7 +56,6 @@ class EstudianteController extends Controller
         $estud->pers_id = $pers->id;
         $estud->direccion = $request->direccion;
         $estud->fecha_nacimiento = $request->fNac;
-        $estud->estado = $request->estado;
         $estud->save();
 
         $contacto = new Persona();

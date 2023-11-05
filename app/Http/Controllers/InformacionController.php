@@ -134,17 +134,20 @@ class InformacionController extends Controller
         ]);
         $hora = new Horario();
         $hora->horarios = $request->horarios;
+        $hora->inicio = $request->horaInicio;
+        $hora->fin = $request->horaFin;
         $hora->save();
         return back()->with('success', 'La información se ha guardado con éxito.');
     }
 
     public function updateHorario(Request $request, $id) {
-        dd($request);
         $this->validate($request, [
             'horarios' => 'required|string|max:255',
         ]);
         $hora = Horario::find($id);
         $hora->horarios = $request->horarios;
+        $hora->inicio = $request->horaInicio;
+        $hora->fin = $request->horaFin;
         $hora->update();
         return back()->with('success', 'La información se ha actualizado con éxito.');
     }

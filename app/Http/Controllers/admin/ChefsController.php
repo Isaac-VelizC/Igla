@@ -15,7 +15,7 @@ use Spatie\Permission\Models\Role;
 class ChefsController extends Controller
 {
     public function index() {
-        $chefRole = Role::where('name', 'chef')->first();
+        $chefRole = Role::where('name', 'Chef')->first();
         if ($chefRole) {
             $chefs = User::role($chefRole)->get();
             return view('admin.usuarios.chefs.index', compact('chefs'));

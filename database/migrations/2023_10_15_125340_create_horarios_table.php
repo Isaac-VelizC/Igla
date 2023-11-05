@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('horarios')->nullable();
             $table->time('inicio');
             $table->time('fin');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

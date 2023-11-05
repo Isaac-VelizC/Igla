@@ -15,26 +15,26 @@ class RolesAndPermissionsSeeder extends Seeder
     public function run(): void
     {
         // Crear roles
-        Role::create(['name' => 'admin']);
-        Role::create(['name' => 'estudiante']);
-        Role::create(['name' => 'chef']);
-        Role::create(['name' => 'personal']);
+        Role::create(['name' => 'Admin']);
+        Role::create(['name' => 'Estudiante']);
+        Role::create(['name' => 'Chef']);
+        Role::create(['name' => 'Personal']);
 
         // Crear permisos
         Permission::create(['name' => 'editar contenido']);
         Permission::create(['name' => 'ver contenido']);
 
         // Asignar permisos a roles
-        $adminRole = Role::findByName('admin');
+        $adminRole = Role::findByName('Admin');
         $adminRole->givePermissionTo(['editar contenido', 'ver contenido']);
-        $chefRole = Role::findByName('chef');
+        $chefRole = Role::findByName('Chef');
         $chefRole->givePermissionTo(['ver contenido']);
 
         // Asignar roles a usuarios
         $userAdmin = User::find(1);
-        $userAdmin->assignRole('admin');
+        $userAdmin->assignRole('Admin');
         $userChef = User::find(2);
-        $userChef->assignRole('chef');
+        $userChef->assignRole('Chef');
     }
 }
 

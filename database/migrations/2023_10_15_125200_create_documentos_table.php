@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('archivo');
             $table->dateTime('fecha')->default(now());
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

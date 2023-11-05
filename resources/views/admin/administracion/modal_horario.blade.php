@@ -9,8 +9,16 @@
                 @csrf
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="recipient-name" class="col-form-label">Horario:</label>
-                        <input type="text" class="form-control" name="horarios" id="recipient-name">
+                        <label for="hora-name" class="col-form-label">Horario:</label>
+                        <input type="text" class="form-control" name="horarios" id="hora-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inicio-name" class="col-form-label">Hora Inico:</label>
+                        <input type="time" class="form-control" name="horaInicio" id="inicio-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fin-name" class="col-form-label">Hora Fin:</label>
+                        <input type="time" class="form-control" name="horaFin" id="fin-name">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

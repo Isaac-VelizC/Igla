@@ -67,15 +67,15 @@
                             <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Iniciar Sesión</a>
                         @else
 							@auth
-								@if(Auth::user()->hasRole('admin'))
+								@if(Auth::user()->hasRole('Admin'))
 									<a href="{{ route('admin.home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
 										{{ Auth::user()->name }}
 									</a>
-								@elseif(Auth::user()->hasRole('chef'))
+								@elseif(Auth::user()->hasRole('Chef'))
 									<a href="{{ route('chef.home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
 										{{ Auth::user()->name }}
 									</a>
-								@elseif(Auth::user()->hasRole('estudiante'))
+								@elseif(Auth::user()->hasRole('Estudiante'))
 									<a href="{{ route('estudiante.home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
 										{{ Auth::user()->name }}
 									</a>

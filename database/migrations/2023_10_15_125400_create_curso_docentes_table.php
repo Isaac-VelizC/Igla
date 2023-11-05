@@ -30,6 +30,7 @@ return new class extends Migration
             $table->date('fecha_ini');
             $table->date('fecha_fin');
             $table->boolean('asistencia_exacta')->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <br>
-                        <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $curso->id) : route('admin.asignar.guardar.curso') }}">
+                        <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $asignado->id) : route('admin.asignar.guardar.curso') }}">
                             @csrf
                             @if($isEditing)
                                 @method('PUT')
@@ -39,10 +39,10 @@
                                         <select name="id_docente" class="form-select" id="docenteSelect" required>
                                             @if ($docentes->count() > 0)
                                                 @foreach ($docentes as $doc)
-                                                    <option value="{{ $doc->id }}" @if ($isEditing && $doc->id == $curso->periodo_id) selected @endif>{{ $doc->persona->nombre }}</option>
+                                                    <option value="{{ $doc->id }}" @if ($isEditing && $doc->id == $asignado->periodo_id) selected @endif>{{ $doc->persona->nombre }}</option>
                                                 @endforeach
                                             @else
-                                                <option value="0">No hay docentes</option>
+                                                <option value="">No hay docentes</option>
                                             @endif
                                         </select>
                                     </div>
@@ -51,10 +51,10 @@
                                         <select name="id_curso" class="form-select" id="cursoSelect" required>
                                             @if ($cursos->count() > 0)
                                                 @foreach ($cursos as $cur)
-                                                    <option value="{{ $cur->id }}" @if ($isEditing && $cur->id == $curso->periodo_id) selected @endif>{{ $cur->nombre }}</option>
+                                                    <option value="{{ $cur->id }}" @if ($isEditing && $cur->id == $asignado->curso_id) selected @endif>{{ $cur->nombre }}</option>
                                                 @endforeach
                                             @else
-                                                <option value="0">No hay cursos</option>
+                                                <option value="">No hay cursos</option>
                                             @endif
                                         </select>
                                     </div>
@@ -62,28 +62,28 @@
                                         <label class="form-label" for="hora">Horarios:</label>
                                         @foreach ($horarios as $item)
                                             <div class="form-check d-block">
-                                                <input class="form-check-input" type="radio" name="horario" value="{{ $item->id }}" id="horario{{ $item->id }}" required>
+                                                <input class="form-check-input" type="radio" name="horario" value="{{ $item->id }}" id="horario{{ $item->id }}" required {{ (old('horario', $isEditing ? $asignado->horario_id : '') == $item->id) ? 'checked' : '' }}>
                                                 <label class="form-check-label" for="horario{{ $item->id }}">{{ $item->horarios }}</label>
                                             </div>
                                         @endforeach
                                     </div>
                                     <div class="form-group col-md-6">
                                       <label class="form-label" for="cupoid">Cupos:</label>
-                                      <input type="number" class="form-control" id="cupoid" name="cupo" placeholder="Cupos de Curso" required min="1">
+                                      <input type="number" class="form-control" id="cupoid" name="cupo" placeholder="Cupos de Curso" value="{{ old('cupo', $isEditing ? $asignado->asistencia_exacta : '') }}" required min="1">
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="fechaIniId">Fecha Inicio</label>
-                                            <input type="date" class="form-control" id="fechaIniId" name="fInico" value="" required min="{{ date('Y-m-d') }}">
+                                            <input type="date" class="form-control" id="fechaIniId" name="fInico" value="{{ old('fInico', $isEditing ? $asignado->fecha_ini : '') }}" required min="{{ date('Y-m-d') }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="fechaFinId">Fecha Fin</label>
-                                            <input type="date" class="form-control" id="fechaFinId" name="fFin" value="" required min="{{ date('Y-m-d') }}">
+                                            <input type="date" class="form-control" id="fechaFinId" name="fFin" value="{{ old('fFin', $isEditing ? $asignado->fecha_fin : '') }}" required min="{{ date('Y-m-d') }}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label" for="descrip">Descripción</label>
-                                        <textarea class="form-control" id="descrip" name="descripcion" rows="3"></textarea>
+                                        <textarea class="form-control" id="descrip" name="descripcion" rows="3">{{ old('descripcion', $isEditing ? $asignado->descripcion : '') }}</textarea>
                                     </div>
                                   </div>
                               </div>

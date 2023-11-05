@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('periodo_id')->nullable();
             $table->foreign('periodo_id')->references('id')->on('periodos')->onDelete('restrict');
             $table->string('color')->nullable();
-            $table->boolean('marcado')->default(false);
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

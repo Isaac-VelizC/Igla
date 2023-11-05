@@ -27,7 +27,7 @@ return new class extends Migration
             $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
             $table->dateTime('fecha');
             $table->bigInteger('valor');
-            $table->unsignedInteger('estado')->nullable();
+            $table->boolean('estado')->default(true);
             $table->string('comentario')->nullable();
             $table->timestamps();
         });

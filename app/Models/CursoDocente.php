@@ -26,4 +26,29 @@ class CursoDocente extends Model
         'fin',
     ];
 
+    public function curso()
+    {
+        return $this->belongsTo(Curso::class, 'curso_id');
+    }
+
+    public function docente()
+    {
+        return $this->belongsTo(Docente::class, 'docente_id');
+    }
+
+    public function responsable()
+    {
+        return $this->belongsTo(User::class, 'responsable_id');
+    }
+
+    public function horario()
+    {
+        return $this->belongsTo(Horario::class, 'horario_id');
+    }
+
+    public function documento()
+    {
+        return $this->belongsTo(Documentos::class, 'doc_id');
+    }
+
 }

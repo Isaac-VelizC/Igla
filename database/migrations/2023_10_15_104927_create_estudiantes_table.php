@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('pers_id')->references('id')->on('personas')->onDelete('cascade');
             $table->string('direccion')->nullable();
             $table->date('fecha_nacimiento')->nullable();
-            $table->string('estado')->nullable();
-            $table->string('titulo_cuenta')->nullable();
+            $table->boolean('estado')->default(true);
+            $table->string('titulo')->nullable();
             $table->timestamps();
         });
     }

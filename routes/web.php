@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.home');
     //Estudiantes
     Route::get('/admin-estudiantes', [EstudianteController::class, 'index'])->name('admin.estudinte');
@@ -63,6 +63,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
     Route::post('/curso-info/asignar', [CursoController::class, 'asignarGuardarCurso'])->name('admin.asignar.guardar.curso');
     Route::put('/curso-info/{id}/edit/asignar', [CursoController::class, 'asignarActualizarCurso'])->name('admin.asignar.actualizar-curso');
+    Route::get('/cursos-curso/meshgv', [CursoController::class, 'cursosActivos'])->name('admin.cursos.activos');
+    Route::get('/asignados/cursos/{id}/edit', [CursoController::class, 'editCursoAsignado'])->name('admin.asigando.edit');
 
     //Cocina
     Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
@@ -81,13 +83,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 });
 
-Route::middleware(['auth', 'role:chef'])->group(function () {
+Route::middleware(['auth', 'role:Chef'])->group(function () {
     Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
     //Cursos
     Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
     Route::get('/curso', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
 });
 
-Route::middleware(['auth', 'role:estudiante'])->group(function () {
+Route::middleware(['auth', 'role:Estudiante'])->group(function () {
     Route::get('/estud-dashboard', 'EstudController@index')->name('estudiante.home');
 });

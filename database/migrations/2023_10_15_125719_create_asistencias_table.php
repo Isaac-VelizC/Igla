@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('restrict');
             $table->boolean('asistencia')->default(false);
             $table->date('fecha');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

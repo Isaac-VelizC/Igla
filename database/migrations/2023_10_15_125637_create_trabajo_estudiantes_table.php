@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('commet_id')->nullable();
             $table->foreign('commet_id')->references('id')->on('comentarios')->onDelete('cascade');
             $table->decimal('nota')->default(0);
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

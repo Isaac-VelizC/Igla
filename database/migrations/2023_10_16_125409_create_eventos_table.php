@@ -31,6 +31,7 @@ return new class extends Migration
             $table->time('fin');
             $table->string('nombre');
             $table->text('descripcion')->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

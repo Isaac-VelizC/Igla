@@ -14,6 +14,14 @@
                         <label for="recipient-name" class="col-form-label">Horario:</label>
                         <input type="text" class="form-control" name="horarios" value="{{ $hora ? old('horarios', $hora->horarios) : '' }}" id="recipient-name">
                     </div>
+                    <div class="mb-3">
+                        <label for="inicio-name" class="col-form-label">Hora Inico:</label>
+                        <input type="time" class="form-control" name="horaInicio" value="{{ $hora ? old('horaInicio', $hora->inicio) : '' }}" id="inicio-name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="fin-name" class="col-form-label">Hora Fin:</label>
+                        <input type="time" class="form-control" name="horaFin" value="{{ $hora ? old('horaFin', $hora->fin) : '' }}" id="fin-name">
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-primary">Actualizar</button>

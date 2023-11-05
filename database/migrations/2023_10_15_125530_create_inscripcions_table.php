@@ -20,6 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('restrict');
             $table->datetime('inscrito')->default(now());
+            $table->boolean('estado')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

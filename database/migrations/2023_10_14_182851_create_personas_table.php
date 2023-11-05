@@ -22,6 +22,7 @@ return new class extends Migration
             $table->enum('genero', ['Hombre', 'Mujer']);
             $table->string('email', 55)->nullable();
             $table->string('photo', 255)->default('user.jpg');
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

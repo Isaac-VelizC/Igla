@@ -91,7 +91,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="fcontratado">Fecha Contratado:</label>
-                                            <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $isEditing ? $docente->docente->contratado_en : date('Y-m-d')) }}">
+                                            <input type="date" class="form-control" id="fcontratado" name="contrato" max="{{ date('Y-m-d') }}" value="{{ old('contrato', $isEditing ? $docente->docente->contratado_en : date('Y-m-d')) }}">
                                         </div>                                        
                                         <div class="form-group col-md-6">
                                         <label class="form-label" for="horas">Horas de Trabajo:</label>

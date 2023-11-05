@@ -32,9 +32,9 @@
         </div>
     </div-->
     <!-- ======== Preloader =========== -->
-    @if (in_array('admin', Auth::user()->getRoleNames()->toArray()))
+    @if (in_array('Admin', Auth::user()->getRoleNames()->toArray()))
       @include('layouts.navbar.sidebar.admin')
-    @elseif (in_array('chef', Auth::user()->getRoleNames()->toArray()))
+    @elseif (in_array('Chef', Auth::user()->getRoleNames()->toArray()))
         @include('layouts.navbar.sidebar.chef')
     @else
         @include('layouts.navbar.sidebar.estud')

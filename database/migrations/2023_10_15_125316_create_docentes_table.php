@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreign('id_persona')->references('id')->on('personas')->onDelete('cascade');
             $table->date('contratado_en')->nullable();
             $table->decimal('max_hora_trabajos', 4, 2)->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -28,6 +28,20 @@
           <div class="row row-cols-1">
              <div class="overflow-hidden d-slider1 ">
                 <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
+                  <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
+                     <div class="card-body">
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#modal_modulo">
+                             <div class="progress-widget">
+                                 <div class="rounded p-4 bg-soft-warning">
+                                    <i class="fa fa-plus"></i>
+                                 </div>
+                                <div class="progress-detail">
+                                  <h3>Nuevo Modulo</h3>
+                                </div>
+                             </div>
+                        </a>
+                     </div>
+                  </li>
                   @if ($modulos->count() > 0)
                      @foreach ($modulos as $modulo)
                         <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
@@ -38,7 +52,8 @@
                                        <i class="fa fa-plus"></i>
                                     </div>
                                     <div class="progress-detail">
-                                       <h3>{{ $modulo->nombre }}</h3>
+                                       <p  class="mb-2">{{ $modulo->nombre }}</p>
+                                       <h4 class="counter">{{ $modulo->costo }}</h4>
                                     </div>
                                  </div>
                               </a>
@@ -46,20 +61,6 @@
                         </li>
                      @endforeach
                   @endif
-                     <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
-                        <div class="card-body">
-                           <a type="button" data-bs-toggle="modal" data-bs-target="#modal_modulo">
-                                <div class="progress-widget">
-                                    <div class="rounded p-4 bg-soft-warning">
-                                       <i class="fa fa-plus"></i>
-                                    </div>
-                                   <div class="progress-detail">
-                                     <h3>Nuevo Modulo</h3>
-                                   </div>
-                                </div>
-                           </a>
-                        </div>
-                     </li>
                 </ul>
                 <div class="swiper-button swiper-button-next"></div>
                 <div class="swiper-button swiper-button-prev"></div>
@@ -79,24 +80,6 @@
          <div class="row row-cols-1">
             <div class="overflow-hidden d-slider1 ">
                <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-                  @if ($aulas->count() > 0)
-                     @foreach ($aulas as $aula)
-                        <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
-                           <div class="card-body">
-                              <a type="button" data-bs-toggle="modal" data-bs-target="#modal_aula_edit" data-aula-id="{{ $aula ? $aula->id : '' }}">
-                                 <div class="progress-widget">
-                                    <div class="rounded p-4 bg-soft-warning">
-                                       <i class="fa fa-plus"></i>
-                                    </div>
-                                    <div class="progress-detail">
-                                       <h3>{{ $aula->capacidad }}</h3>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                        </li>
-                     @endforeach
-                  @endif
                   <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
                      <div class="card-body">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#modal_aula">
@@ -111,6 +94,25 @@
                         </a>
                      </div>
                   </li>
+                  @if ($aulas->count() > 0)
+                     @foreach ($aulas as $aula)
+                        <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
+                           <div class="card-body">
+                              <a type="button" data-bs-toggle="modal" data-bs-target="#modal_aula_edit" data-aula-id="{{ $aula ? $aula->id : '' }}">
+                                 <div class="progress-widget">
+                                    <div class="rounded p-4 bg-soft-warning">
+                                       <i class="fa fa-plus"></i>
+                                    </div>
+                                    <div class="progress-detail">
+                                       <p  class="mb-2">{{ $aula->nombre }} {{ $aula->codigo }}</p>
+                                       <h4 class="counter">{{ $aula->capacidad }}</h4>
+                                    </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </li>
+                     @endforeach
+                  @endif
                </ul>
                <div class="swiper-button swiper-button-next"></div>
                <div class="swiper-button swiper-button-prev"></div>
@@ -130,24 +132,6 @@
          <div class="row row-cols-1">
             <div class="overflow-hidden d-slider1 ">
                <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-                  @if ($horarios->count() > 0)
-                     @foreach ($horarios as $hora)
-                        <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
-                           <div class="card-body">
-                              <a type="button" data-bs-toggle="modal" data-bs-target="#modal_horario_edit" data-hora-id="{{ $hora ? $hora->id : '' }}">
-                                 <div class="progress-widget">
-                                    <div class="rounded p-4 bg-soft-warning">
-                                       <i class="fa fa-plus"></i>
-                                    </div>
-                                    <div class="progress-detail">
-                                       <h3>{{ $hora->horarios }}</h3>
-                                    </div>
-                                 </div>
-                              </a>
-                           </div>
-                        </li>
-                     @endforeach
-                  @endif
                   <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
                      <div class="card-body">
                         <a type="button" data-bs-toggle="modal" data-bs-target="#modal_horario">
@@ -162,6 +146,25 @@
                         </a>
                      </div>
                   </li>
+                  @if ($horarios->count() > 0)
+                     @foreach ($horarios as $hora)
+                        <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
+                           <div class="card-body">
+                              <a type="button" data-bs-toggle="modal" data-bs-target="#modal_horario_edit" data-hora-id="{{ $hora ? $hora->id : '' }}">
+                                 <div class="progress-widget">
+                                    <div class="rounded p-4 bg-soft-warning">
+                                       <i class="fa fa-plus"></i>
+                                    </div>
+                                    <div class="progress-detail">
+                                       <p  class="mb-2">{{ $hora->horarios }}</p>
+                                       <h6>{{ $hora->inicio }} - {{ $hora->fin }}</h6>
+                                    </div>
+                                 </div>
+                              </a>
+                           </div>
+                        </li>
+                     @endforeach
+                  @endif
                </ul>
                <div class="swiper-button swiper-button-next"></div>
                <div class="swiper-button swiper-button-prev"></div>

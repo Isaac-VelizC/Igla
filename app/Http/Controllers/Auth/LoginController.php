@@ -40,11 +40,11 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        if ($user->hasRole('admin')) {
+        if ($user->hasRole('Admin')) {
             return redirect()->route('admin.home');
-        } elseif ($user->hasRole('chef')) {
+        } elseif ($user->hasRole('Chef')) {
             return redirect()->route('chef.home');
-        } elseif ($user->hasRole('estudiante')) {
+        } elseif ($user->hasRole('Estudiante')) {
             return redirect()->route('estudiante.home');
         }
         // Si el usuario no tiene un rol específico, redirige a la página de inicio

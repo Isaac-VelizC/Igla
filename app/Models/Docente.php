@@ -16,5 +16,9 @@ class Docente extends Model
     {
         return $this->belongsTo(Persona::class, 'id_persona');
     }
+    public function cursos()
+    {
+        return $this->hasMany(CursoDocente::class, 'docente_id');
+    }
 
 }

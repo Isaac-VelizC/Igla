@@ -34,6 +34,7 @@ return new class extends Migration
             $table->dateTime('fin');
             $table->boolean('visible')->default(false);
             $table->string('whatsapp', 100);
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }

@@ -80,6 +80,11 @@ class CursoController extends Controller
         return View('admin.pagos.index');
     }
 
+    public function cursosActivos() {
+        $cursos = CursoDocente::all();
+        return view('admin.materias.curso_activo', compact('cursos'));
+    }
+
     public function asignarCurso() {
         $docentes = Docente::all();
         $cursos = Curso::all();
@@ -95,28 +100,32 @@ class CursoController extends Controller
             'horario' => 'string|numeric',
             'cupo' => 'string|numeric',
         ]);
-        dd($request);
         $curso = new CursoDocente();
         $curso->docente_id = $request->id_docente;
         $curso->curso_id = $request->id_curso;
         $curso->responsable_id = auth()->user()->id;
         $curso->horario_id = $request->horario;
-        //$curso->doc_id = $request->;
-        //$curso->commet_id = $request->;
         $curso->descripcion = $request->descripcion;
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
             $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
             $archivoPath = $request->file('imagen')->storeAs('img/cursos', $nombreArchivo, 'public');
             $curso->imagen = 'storage/' . $archivoPath;
         }
-        $curso->fecha_ini = $request->fInicio;
+        $curso->fecha_ini = $request->fInico;
         $curso->fecha_fin = $request->fFin;
         $curso->asistencia_exacta = $request->cupo;
         $curso->save();
-        return redirect()->route('')->with('success', 'El curso se habilito con éxito.');
+        return redirect()->route('admin.cursos.activos')->with('success', 'El curso se habilito con éxito.');
+    }
+    public function editCursoAsignado($id) {
+        $docentes = Docente::all();
+        $cursos = Curso::all();
+        $horarios = Horario::all();
+        $asignado = CursoDocente::find($id);
+        $isEditing = true;
+        return view('admin.materias.asignar_curso', compact('docentes', 'cursos', 'horarios', 'isEditing', 'asignado'));
     }
     public function asignarActualizarCurso(Request $request, $id) {
-        dd($request);
         $this->validate($request, [
             'id_docente' => 'required|string|max:255',
             'id_curso' => 'string|numeric',
@@ -129,7 +138,6 @@ class CursoController extends Controller
         $curso->responsable_id = auth()->user()->id;
         $curso->horario_id = $request->horario;
         $curso->descripcion = $request->descripcion;
-        $curso->imagen = $request->imagen;
         if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
             $rutaImagenAnterior = $curso->imagen;
             $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
@@ -139,10 +147,10 @@ class CursoController extends Controller
                 Storage::disk('public')->delete($rutaImagenAnterior);
             }
         }
-        $curso->fecha_ini = $request->fInicio;
+        $curso->fecha_ini = $request->fInico;
         $curso->fecha_fin = $request->fFin;
         $curso->asistencia_exacta = $request->cupo;
         $curso->update();
-        return redirect()->route('')->with('success', 'El curso se actualizo con éxito.');
+        return redirect()->route('admin.cursos.activos')->with('success', 'El curso se actualizo con éxito.');
     }
 }

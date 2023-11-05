@@ -21,47 +21,23 @@
           <div class="row row-cols-1">
              <div class="overflow-hidden d-slider1 ">
                 <ul  class="p-0 m-0 mb-2 swiper-wrapper list-inline">
-                   <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
-                      <div class="card-body">
-                        <a href="{{ route('cursos.curso') }}">
+                  @foreach ($cursos_A as $item)
+                     <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
+                        <div class="card-body">
+                        <a href="{{ route('cursos.asistencia', [$item->id]) }}">
                            <div class="progress-widget">
-                              <div class="rounded p-3 bg-soft-warning">
+                              <div class="rounded p-3 bg-soft" style="background-color: {{ $item->curso->color }}">
                                  <i class="fa fa-users"></i>
                               </div>
                               <div class="progress-detail">
-                                 <p  class="mb-2">Cursos</p>
-                                 <h4 class="counter">$742K</h4>
+                                 <p  class="mb-2">{{ $item->curso->nombre }}</p>
+                                 <h4>{{ $item->horario->horarios }}</h4>
                               </div>
                            </div>
                         </a>
-                      </div>
-                   </li>
-                   <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1100">
-                      <div class="card-body">
-                         <div class="progress-widget">
-                             <div class="rounded p-3 bg-soft-dack">
-                                <i class="fa fa-users"></i>
-                             </div>
-                            <div class="progress-detail">
-                               <p  class="mb-2">Recetas</p>
-                               <h4 class="counter">$150K</h4>
-                            </div>
-                         </div>
-                      </div>
-                   </li>
-                   <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1200">
-                      <div class="card-body">
-                         <div class="progress-widget">
-                             <div class="rounded p-3 bg-soft-warning">
-                                <i class="fa fa-users"></i>
-                             </div>
-                            <div class="progress-detail">
-                               <p  class="mb-2">Eventos</p>
-                               <h4 class="counter">$4600</h4>
-                            </div>
-                         </div>
-                      </div>
-                   </li>
+                        </div>
+                     </li>
+                  @endforeach
                 </ul>
                 <div class="swiper-button swiper-button-next"></div>
                 <div class="swiper-button swiper-button-prev"></div>
@@ -86,52 +62,41 @@
                                      <tr>
                                         <th>Nombre</th>
                                         <th>Aula</th>
-                                        <th>Cupos</th>
-                                        <th>Fecha Docente</th>
+                                        <th>Horario</th>
+                                        <th>Modalidad</th>
                                         <th>Fecha Inicio</th>
                                         <th>Fecha Fin</th>
-                                        <th>Estado</th>
                                         <th>Tags</th>
                                      </tr>
                                   </thead>
                                   <tbody>
-                                      <tr>
-                                          <td><p>item->name</p></td>
-                                          <td>
-                                            <p><a href="#0">$item->email</a></p>
-                                          </td>
-                                          <td>
-                                            <p>(303)555 3343523</p>
-                                          </td>
-                                          <td>
-                                            <p>UIdeck digital agency</p>
-                                          </td>
-                                          <td>
-                                            <p>(303)555 3343523</p>
-                                          </td>
-                                          <td>
-                                            <p>UIdeck digital agency</p>
-                                          </td>
-                                          <td>
-                                            <p>UIdeck digital agency</p>
-                                          </td>
-                                          <td>
-                                            <div class="flex align-items-center list-user-action">
-                                               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
-                                                  <i class="bi bi-person-gear"></i>
-                                               </a>
-                                               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
-                                                  <i class="bi bi-eye"></i>
-                                               </a>
-                                               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="#">
-                                                  <i class="bi bi-pen"></i>
-                                               </a>
-                                               <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
-                                                  <i class="bi bi-trash"></i>
-                                               </a>
-                                            </div>
-                                          </td>
-                                      </tr>
+                                    @foreach ($cursos_I as $item)
+                                    <tr>
+                                       <td><p>{{ $item->curso->nombre }}</p></td>
+                                       <td>
+                                         <p>{{ $item->curso->aula->codigo }}</p>
+                                       </td>
+                                       <td>
+                                         <p>{{ $item->horario->horarios }}</p>
+                                       </td>
+                                       <td>
+                                         <p>{{ $item->curso->periodo->nombre }}</p>
+                                       </td>
+                                       <td>
+                                         <p>{{ $item->fecha_ini }}</p>
+                                       </td>
+                                       <td>
+                                         <p>{{ $item->fecha_fin }}</p>
+                                       </td>
+                                       <td>
+                                         <div class="flex align-items-center list-user-action">
+                                            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="#">
+                                               <i class="bi bi-eye"></i>
+                                            </a>
+                                         </div>
+                                       </td>
+                                   </tr>
+                                    @endforeach
                                   </tbody>
                                </table>
                             </div>
@@ -143,3 +108,8 @@
     </div>
 </div>
 @endsection
+
+
+
+
+@extends('layouts.app')

@@ -24,6 +24,7 @@ class CursoDocente extends Model
         'asistencia_exacta',
         'inicio',
         'fin',
+        'estado'
     ];
 
     public function curso()

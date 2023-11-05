@@ -87,7 +87,11 @@ Route::middleware(['auth', 'role:Chef'])->group(function () {
     Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
     //Cursos
     Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
-    Route::get('/curso', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
+    Route::get('/curso/{id}/docente', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
+    //Rutas de curso
+    Route::get('/curso/{id}/asistencia', [DocenteCursoController::class, 'cursoAistencia'])->name('cursos.asistencia');
+    Route::get('/curso/{id}/estudiantes', [DocenteCursoController::class, 'cursoEstudiantes'])->name('cursos.estudiantes');
+    Route::get('/curso/{id}/trabajos', [DocenteCursoController::class, 'cursoTrabajos'])->name('cursos.trabajos');
 });
 
 Route::middleware(['auth', 'role:Estudiante'])->group(function () {

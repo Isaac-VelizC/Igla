@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="iq-navbar-header" style="height: 215px;">
-  <div class="container-fluid iq-container">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="flex-wrap d-flex justify-content-between align-items-center">
-                  <div>
-                      <h1 style="color: black">Hello Devs!</h1>
-                      <p style="color: black">We are on a mission to help developers like you build successful projects for FREE.</p>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="iq-navbar-header" style="height: 90px;">
 </div> 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
   <div class="row">
@@ -27,10 +15,10 @@
                            <div class="rounded p-3 bg-soft-warning">
                               <i class="fa fa-users"></i>
                            </div>
-                           <a href="{{ route('admin.inscripcion') }}">
+                           <a href="{{ route('chef.cursos') }}">
                               <div class="progress-detail">
                                  <p  class="mb-2">Cursos</p>
-                                 <h4 class="counter">$742K</h4>
+                                 <h4 class="counter">{{ $cursos->count() }}</h4>
                               </div>
                            </a>
                        </div>

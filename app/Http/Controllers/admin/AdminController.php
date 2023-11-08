@@ -24,7 +24,7 @@ class AdminController extends Controller
     }
 
     public function allUsers() {
-        $users = Persona::all();
+        $users = Persona::join('users', 'personas.user_id', '=', 'users.id')->select('personas.*')->get();
         return view('admin.usuarios.lista_users', compact('users'));
     }
 }

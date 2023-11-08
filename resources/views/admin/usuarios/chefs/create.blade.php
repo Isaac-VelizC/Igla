@@ -39,18 +39,30 @@
                                         <div class="form-group col-md-12">
                                             <label class="form-label" for="fname">Nombre de docente:</label>
                                             <input type="text" class="form-control" id="fname" name="nombre" value="{{ old('nombre', $isEditing ? $docente->nombre : '') }}" placeholder="Nombre" required>
+                                            @error('nombre')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="ap_pat">Apellido Paterno:</label>
                                             <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ old('paterno', $isEditing ? $docente->ap_paterno : '') }}" placeholder="Apellido Paterno">
+                                            @error('ap_pat')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="ap_mat">Apellido Materno:</label>
                                             <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ old('materno', $isEditing ? $docente->ap_materno : '') }}" placeholder="Apellido Materno">
+                                            @error('ap_mat')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-12">
                                             <label class="form-label" for="ci">Cedula de Identidad:</label>
                                             <input type="text" class="form-control" id="ci" name="ci" value="{{ old('ci', $isEditing ? $docente->ci : '') }}" placeholder="Cedula de Identidad" required>
+                                            @error('ci')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-sm-12">
                                             <label class="form-label">Genero:</label>
@@ -59,14 +71,23 @@
                                                 <option value="Hombre" {{ old('genero', $isEditing && $docente->genero == 'Hombre' ? 'selected' : '') }}>Hombre</option>
                                                 <option value="Mujer" {{ old('genero', $isEditing && $docente->genero == 'Mujer' ? 'selected' : '') }}>Mujer</option>
                                             </select>
+                                            @error('genero')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="mobno">Numero Celular:</label>
                                             <input type="text" class="form-control" id="mobno" name="telefono" value="{{ old('telefono', $isEditing ? $docente->numTelefono->numero_tel : '') }}" placeholder="Numero de Celular">
+                                            @error('telefono')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="email">E mail:</label>
                                             <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $isEditing ? $docente->email : '') }}" placeholder="E mail" required>
+                                            @error('email')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -76,9 +97,9 @@
                                             <div class="row">
                                                 <div class="position-relative">
                                                     @if ($isEditing && $docente->photo)
-                                                        <img id="img2" src="{{ asset($docente->photo) }}" alt="icono" class="theme-color-default-img rounded avatar-100">
+                                                        <img id="img" src="{{ asset($docente->photo) }}" alt="icono" class="theme-color-default-img rounded avatar-100">
                                                     @else
-                                                        <img id="img2" src="{{ asset('imagenes/fondo_blanco.jpg') }}" alt="icono" class="theme-color-default-img rounded avatar-100">
+                                                        <img id="img" src="{{ asset('imagenes/fondo_blanco.jpg') }}" alt="icono" class="theme-color-default-img rounded avatar-100">
                                                     @endif
                                                     <label class="upload-icone bg-primary">
                                                             <input class="file-upload" type="file" name="perfil" id="customFile" accept="image/*">
@@ -88,14 +109,23 @@
                                                     </label>
                                                 </div>
                                             </div>
+                                            @error('perfil')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label class="form-label" for="fcontratado">Fecha Contratado:</label>
                                             <input type="date" class="form-control" id="fcontratado" name="contrato" max="{{ date('Y-m-d') }}" value="{{ old('contrato', $isEditing ? $docente->docente->contratado_en : date('Y-m-d')) }}">
+                                            @error('contrato')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>                                        
                                         <div class="form-group col-md-6">
                                         <label class="form-label" for="horas">Horas de Trabajo:</label>
                                         <input type="number" class="form-control" id="horas" name="horas" value="{{ old('horas', $isEditing ? $docente->docente->max_hora_trabajos : '') }}">
+                                        @error('horas')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                         </div>
                                     </div>
                                 </div>

@@ -60,7 +60,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/show/{id}', [CursoController::class, 'showCurso'])->name('admin.cursos.show');
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
-    Route::get('/asignando-curso', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
+    Route::get('/asignando-curso/{id}', [CursoController::class, 'asignarCurso'])->name('admin.asignar.curso');
     Route::post('/curso-info/asignar', [CursoController::class, 'asignarGuardarCurso'])->name('admin.asignar.guardar.curso');
     Route::put('/curso-info/{id}/edit/asignar', [CursoController::class, 'asignarActualizarCurso'])->name('admin.asignar.actualizar-curso');
     Route::get('/cursos-curso/meshgv', [CursoController::class, 'cursosActivos'])->name('admin.cursos.activos');

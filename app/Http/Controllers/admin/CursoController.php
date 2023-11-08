@@ -11,6 +11,7 @@ use App\Models\Horario;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class CursoController extends Controller
 {
@@ -39,7 +40,7 @@ class CursoController extends Controller
         $this->validate($request, [
             'nombre' => 'required|string|max:255',
             'aula_id' => 'string|numeric',
-            'modulo_id' => 'string|numeric',
+            'modulo_id' => 'required|string|numeric',
         ]);
         $curso = new Curso();
         $curso->nombre = $request->nombre;
@@ -47,7 +48,7 @@ class CursoController extends Controller
         $curso->periodo_id = $request->modulo_id;
         $curso->color = $request->color;
         $curso->save();
-        return back()->with('success', 'La información se ha guardado con éxito.');
+        return back()->with('success', 'La materia se registro con éxito.');
     }
 
     public function actualizarCurso(Request $request, $id)
@@ -85,21 +86,27 @@ class CursoController extends Controller
         return view('admin.materias.curso_activo', compact('cursos'));
     }
 
-    public function asignarCurso() {
+    public function asignarCurso($id) {
         $docentes = Docente::all();
-        $cursos = Curso::all();
+        $cursos = Curso::find($id);
         $horarios = Horario::all();
         $isEditing = false;
         return view('admin.materias.asignar_curso', compact('docentes', 'cursos', 'horarios', 'isEditing'));
     }
 
     public function asignarGuardarCurso(Request $request) {
-        $this->validate($request, [
+        $rules = [
             'id_docente' => 'required|string|max:255',
             'id_curso' => 'string|numeric',
             'horario' => 'string|numeric',
-            'cupo' => 'string|numeric',
-        ]);
+            'cupo' => 'string|numeric|min:1',
+            'fInico' => 'required|date',
+            'fFin' => 'required|date|after:fInico',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
+        ];
+        $request->validate($rules);
+
+        dd('Todo Listo');
         $curso = new CursoDocente();
         $curso->docente_id = $request->id_docente;
         $curso->curso_id = $request->id_curso;

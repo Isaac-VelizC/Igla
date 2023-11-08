@@ -36,17 +36,15 @@
                       @foreach ($users as $item)
                         <tr>
                             <td><p>{{ $item->nombre }} {{ $item->ap_parteno }} {{ $item->ap_materno }}</p></td>
-                            <td>
-                            <p><a href="#0">{{ $item->email }}</a></p>
-                            </td>
-                            <td>
-                            <p>{{ $item->ci }}</p>
-                            </td>
-                            <td>
-                            <p> Admin</p>
-                            </td>
+                            <td><p><a href="#0">{{ $item->email }}</a></p></td>
+                            <td><p>{{ $item->ci }}</p></td>
+                            <td><p>{{ $item->user->getRoleNames()->first() }}</p></td>
                            <td>
-                              <p>(303)555 </p>
+                              @if ($item->estado == true)
+                                 <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
+                              @else
+                                 <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
+                              @endif
                            </td>
                             <td>
                               <div class="flex align-items-center list-user-action">

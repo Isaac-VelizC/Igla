@@ -39,6 +39,20 @@ class ChefsController extends Controller
         return view('admin.usuarios.chefs.create', compact('docente', 'isEditing'));
     }
     public function store(Request $request) {
+
+        $rules = [
+            'nombre' => 'required|string',
+            'ap_pat' => 'nullable|string',
+            'ap_mat' => 'nullable|string',
+            'ci' => 'required|string|unique:personas,ci',
+            'genero' => 'required|in:Mujer,Hombre',
+            'email' => 'required|email|unique:personas,email',
+            'contrato' => 'required|date',
+            'horas' => 'nullable|numeric',
+            'telefono' => 'nullable|string',
+            'perfil' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
+        ];
+        $request->validate($rules);
         // Genera el nombre de usuario basado en el nombre y un número aleatorio
         $username = $this->generateUniqueUsername($request->nombre);
         // Verifica si el nombre de usuario ya existe
@@ -54,7 +68,7 @@ class ChefsController extends Controller
             'password' => Hash::make('u.'.$request->ci)
         ]);
         // Asigna el rol 'chef' al usuario
-        $user->assignRole('chef');
+        $user->assignRole('Chef');
         // Crea y guarda la información personal
         $pers = new Persona();
         $pers->user_id = $user->id;
@@ -96,6 +110,19 @@ class ChefsController extends Controller
     }
     
     public function update(Request $request, $id) {
+        $rules = [
+            'nombre' => 'required|string',
+            'ap_pat' => 'nullable|string',
+            'ap_mat' => 'nullable|string',
+            'ci' => 'required|string|unique:personas,ci,' . $id,
+            'genero' => 'required|in:Mujer,Hombre',
+            'email' => 'required|email|unique:personas,email,' . $id,
+            'contrato' => 'required|date',
+            'horas' => 'nullable|numeric',
+            'telefono' => 'nullable|string',
+            //'perfil' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000|max:2048',
+        ];
+        $request->validate($rules);
         // Crea y guarda la información personal
         $docente = Persona::find($id);
         $docente->nombre = $request->nombre;

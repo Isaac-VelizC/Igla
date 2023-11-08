@@ -1,18 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="iq-navbar-header" style="height: 215px;">
-  <div class="container-fluid iq-container">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="flex-wrap d-flex justify-content-between align-items-center">
-                  <div>
-                      <h1 style="color: black">Hello Devs!</h1>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+<div class="iq-navbar-header" style="height: 80px;">
 </div> 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
   <div class="row">
@@ -39,7 +28,7 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-success">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-users"></i>
                            </div>
                            <a href="{{ route('admin.estudinte') }}">
                               <div class="progress-detail">
@@ -54,7 +43,7 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-danger">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-users"></i>
                            </div>
                            <a href="{{ route('admin.docentes') }}">
                               <div class="progress-detail">
@@ -69,7 +58,7 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-warning">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-users"></i>
                            </div>
                            <a href="{{ route('admin.inscripcion') }}">
                               <div class="progress-detail">
@@ -84,10 +73,10 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-dack">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-users"></i>
                            </div>
                           <div class="progress-detail">
-                             <p  class="mb-2">Cursos</p>
+                             <p  class="mb-2">Materias</p>
                              <h4 class="counter">$150K</h4>
                           </div>
                        </div>
@@ -97,7 +86,7 @@
                     <div class="card-body">
                        <div class="progress-widget">
                            <div class="rounded p-3 bg-soft-warning">
-                              <i class="fa fa-users"></i>
+                              <i class="bi bi-users"></i>
                            </div>
                           <div class="progress-detail">
                              <p  class="mb-2">Eventos</p>

@@ -9,9 +9,6 @@
                   <div>
                      <h1 style="color: black">Cursos activos</h1>
                   </div>
-                  <div>
-                     <a href="{{ route('admin.asignar.curso') }}" class="btn btn-outline-secondary">Nuevo Curso</a>
-                 </div>
               </div>
           </div>
       </div>
@@ -59,7 +56,11 @@
                             <p>{{ $item->horario->horarios }}</p>
                             </td>
                             <td>
-                            <p>{{ $item->curso->periodo->nombre }}</p>
+                              @if ($item->estado == true)
+                                 <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
+                              @else
+                                 <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
+                              @endif
                             </td>
                            <td>
                               <div class="flex align-items-center list-user-action">

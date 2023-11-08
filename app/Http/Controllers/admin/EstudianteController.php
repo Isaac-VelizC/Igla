@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class EstudianteController extends Controller
 {
     public function index() {
-        $estudiantes = Estudiante::with('persona')->get();
+        $estudiantes = Estudiante::with('persona')->orderBy('created_at', 'desc')->get();
         return view('admin.usuarios.estudiantes.index', compact('estudiantes'));
     }
 
@@ -23,6 +23,25 @@ class EstudianteController extends Controller
     }
 
     public function inscripcion(Request $request) {
+        $rules = [
+            'nombre' => 'required|string',
+            'ap_pat' => 'string',
+            'ap_mat' => 'string',
+            'ci' => 'required|string|unique:personas,ci',
+            'genero' => 'required|in:Mujer,Hombre',
+            'email' => 'required|email|unique:personas,ci',
+            'telefono' => 'string|unique:personas,ci',
+            'direccion' => 'required|string',
+            'fNac' => 'required|date',
+            'nombreC' => 'required|string',
+            'ap_patC' => 'string',
+            'ap_matC' => 'string',
+            'ciC' => 'required|string|unique:personas,ci',
+            'generoC' => 'required|in:Mujer,Hombre',
+            'emailC' => 'email',
+            'telefonoC' => 'required|string',
+        ];
+        $request->validate($rules);
 
         $username = $this->generateUniqueUsername($request->nombre);
         $count = User::where('name', $username)->count();
@@ -35,7 +54,7 @@ class EstudianteController extends Controller
             'email' => $request->email,
             'password' => Hash::make('u.'.$request->ci)
         ]);
-        $user->assignRole('estudiante');
+        $user->assignRole('Estudiante');
         // Crea y guarda la información personal
         $pers = new Persona();
         $pers->user_id = $user->id;
@@ -77,18 +96,16 @@ class EstudianteController extends Controller
         $contac->pers_id = $contacto->id;
         $contac->save();
         // Redirige de vuelta a la página anterior
-        return back()->with('success', 'La inscripción se ejecuto con éxito.');
+        return redirect()->route('admin.estudinte')->with('success', 'La inscripción se ejecuto con éxito.');
     }
     private function generateUniqueUsername($nombre) {
         $username = strtolower($nombre);
         $numeroAleatorio = mt_rand(1000, 9999);
         return $username . $numeroAleatorio;
     }
-    
     private function makeUsernameUnique($username, $count) {
         return $username . $count;
     }
-
     public function showEstudiante($id) {
         $estudiante = Persona::find($id);
         $est = Estudiante::where('pers_id', $estudiante->id)->first();
@@ -96,15 +113,21 @@ class EstudianteController extends Controller
         $num = NumTelefono::where('id_persona', $contac->persona->id)->first();
         return view('admin.usuarios.estudiantes.show', compact('estudiante', 'est', 'contac', 'num'));
     }
-
     public function update(Request $request, $id) {
-        /*$rules = [
-            'pass' => 'required|min:8',
-            'passConfirm' => 'required|same:pass',
-        ];
-        $request->validate($rules);*/
-        // Crea y guarda la información del docente
+        
         $estud = Estudiante::find($id);
+        $rules = [
+            'nombre' => 'required|string',
+            'ap_pat' => 'nullable|string',
+            'ap_mat' => 'nullable|string',
+            'ci' => 'required|string|unique:personas,ci,' . $estud->persona->id,
+            'genero' => 'required|in:Mujer,Hombre',
+            'email' => 'required|email|unique:personas,email,' . $estud->persona->id,
+            'direccion' => 'required|string',
+            'telefono' => 'nullable|string',
+            'fnac' => 'required|date',
+        ];
+        $request->validate($rules);
         $estud->direccion = $request->direccion;
         $estud->fecha_nacimiento = $request->fnac;
         $estud->update();
@@ -124,12 +147,16 @@ class EstudianteController extends Controller
         return back()->with('success', 'La informacion se actualizo con éxito.');
     }
     public function updateContacto(Request $request, $id) {
-        /*$rules = [
-            'pass' => 'required|min:8',
-            'passConfirm' => 'required|same:pass',
-        ];
-        $request->validate($rules);*/
         $cont = Contacto::find($id);
+        $rules = [
+            'nombre' => 'required|string',
+            'ap_pat' => 'string',
+            'ap_mat' => 'string',
+            'ci' => 'required|string|unique:personas,ci,' . $cont->pers_id,
+            'genero' => 'required|in:Mujer,Hombre',
+            'email' => 'nullable|email|unique:personas,email,' . $cont->pers_id,
+        ];
+        $request->validate($rules);
         $pers = Persona::find($cont->pers_id);
         $pers->nombre = $request->nombre;
         $pers->ap_paterno = $request->ap_pat;
@@ -143,7 +170,7 @@ class EstudianteController extends Controller
             ['id_persona' => $pers->id],
             ['numero_tel' => $request->telefono]
         );
-        return back()->with('success', 'La informacion se actualizo con éxito.');
+        return back()->with('success', 'La informacion del contacto se actualizo con éxito.');
     }
     public function cambiarPass(Request $request, $id) {
         $rules = [

@@ -51,6 +51,9 @@
                          <label class="form-label" for="pass">Contraseña:</label>
                          <input type="password" class="form-control" name="pass" id="pass" placeholder="***********">
                       </div>
+                      @if ($errors->has('pass'))
+                        <span class="text-danger">{{ $errors->first('passConfirm') }}</span>
+                     @endif
                       <div class="form-group">
                          <label class="form-label" for="passConfirm">Confirmar Contraseña:</label>
                          <input type="password" class="form-control" name="passConfirm" id="passConfirm" placeholder="***********">
@@ -105,6 +108,17 @@
         const cancelarBtn = document.getElementById('cancelarBtn');
         const generoSelect = document.getElementById('generoSelect');
         const campos = formulario.querySelectorAll('input');
+        const valoresOriginales = {};
+        campos.forEach(function (campo) {
+            valoresOriginales[campo.name] = campo.value;
+        });
+        valoresOriginales['generoSelect'] = generoSelect.value;
+        function restaurarValoresOriginales() {
+            campos.forEach(function (campo) {
+                campo.value = valoresOriginales[campo.name];
+            });
+            generoSelect.value = valoresOriginales['generoSelect'];
+        }
         // Función para habilitar o deshabilitar todos los campos y el select
         function habilitarDesabilitarCampos(habilitar) {
             campos.forEach(function (campo) {
@@ -120,9 +134,9 @@
             habilitarDesabilitarCampos(true); // Habilitar
         });
         cancelarBtn.addEventListener('click', function () {
-            habilitarDesabilitarCampos(false); // Deshabilitar al cancelar
+            restaurarValoresOriginales();
+            habilitarDesabilitarCampos(false);
         });
-        // El formulario está deshabilitado inicialmente
         habilitarDesabilitarCampos(false);
     });
 </script>

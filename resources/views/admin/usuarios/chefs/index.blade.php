@@ -6,12 +6,8 @@
       <div class="row">
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
-                  <div>
-                     <h1 style="color: black">Docentes</h1>
-                  </div>
-                  <div>
-                     <a href="{{ route('create.docentes') }}" type="button" class="btn btn-outline-secondary">Nuevo Docente</a>
-                 </div>
+                  <h1 style="color: rgb(7, 6, 6)">Docentes</h1>
+                  <a class="btn btn-warning" href="{{ route('create.docentes') }}" role="button">Nuevo Docente</a>
               </div>
           </div>
       </div>
@@ -45,17 +41,15 @@
                       @foreach ($docentes as $item)
                         <tr>
                             <td><p>{{ $item->nombre }} {{$item->ap_paterno}} {{$item->ap_materno}}</p></td>
+                            <td><p><a href="#0">{{ $item->email }}</a></p></td>
+                            <td><p>{{ $item->ci }}</p></td>
+                            <td><p>{{ $item->genero }}</p></td>
                             <td>
-                            <p><a href="#0">{{ $item->email }}</a></p>
-                            </td>
-                            <td>
-                            <p>{{ $item->ci }}</p>
-                            </td>
-                            <td>
-                            <p>{{ $item->genero }}</p>
-                            </td>
-                            <td>
-                            <p>(303)555 </p>
+                              @if ($item->estado == true)
+                                 <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
+                              @else
+                                 <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
+                              @endif
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">

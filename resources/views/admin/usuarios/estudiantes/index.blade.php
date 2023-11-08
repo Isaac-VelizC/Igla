@@ -6,14 +6,10 @@
       <div class="row">
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
-                  <div>
-                     <h1 style="color: black">Estudiantes!</h1>
-                  </div>
-                  <div>
-                     <a class="btn bg-gray text-white d-inline-flex align-items-center" href="{{ route('admin.inscripcion') }}">
-                        <i class="fa fa-heart"></i> Inscribir
-                     </a>
-                 </div>
+                  <h1 style="color: black">Estudiantes</h1>
+                  <a class="btn btn-warning" href="{{ route('admin.inscripcion') }}">
+                     <i class="bi bi-heart"></i> Inscribir
+                  </a>
               </div>
           </div>
       </div>
@@ -21,6 +17,12 @@
 </div> 
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
+   @if(session('success'))
+       <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
+           <span>{{ session('success') }}</span>
+           <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+       </div>
+   @endif
   <div class="row">
      <div class="col-sm-12">
         <div class="card">
@@ -32,7 +34,7 @@
                         <th>Nombre Completo</th>
                         <th>E-mail</th>
                         <th>C.I.</th>
-                        <th>fecha nacimiento</th>
+                        <th>Fecha Nacimiento</th>
                         <th>Estado</th>
                         <th>Tags</th>
                        </tr>
@@ -45,7 +47,11 @@
                             <td><p>{{ $item->persona->ci }}</p></td>
                             <td><p>{{ $item->fecha_nacimiento }}</p></td>
                             <td>
-                              <p>{{$item->persona->id}}</p>
+                              @if ($item->estado == true)
+                                 <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
+                              @else
+                                 <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
+                              @endif
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">

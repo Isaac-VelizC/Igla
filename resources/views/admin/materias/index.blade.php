@@ -34,7 +34,7 @@
                     <thead>
                        <tr>
                           <th>Nombre</th>
-                          <th>Aula</th>
+                          <th>Color</th>
                           <th>Periodo</th>
                           <th>Estado</th>
                           <th>Tags</th>
@@ -45,19 +45,29 @@
                         <tr>
                            <td><p>{{ $item->nombre }}</p></td>
                            <td>
-                           <p><a href="#0">{{ $item->aula->nombre }}</a></p>
+                              <p><span class="badge" style="background-color: {{ $item->color }}">Color</span></p>
                            </td>
                            <td>
                            <p>{{ $item->periodo->nombre }}</p>
                            </td>
                            <td>
-                           <p>UIdeck digital agency</p>
+                              @if ($item->estado == true)
+                                 <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
+                              @else
+                                 <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
+                              @endif
                            </td>
                            <td>
                               <div class="flex align-items-center list-user-action">
-                                 <a href="{{ route('admin.asignar.curso') }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Asignar">
-                                    <i class="bi bi-person-gear"></i>
-                                 </a>
+                                 @if ($item->estado == true)
+                                    <a href="{{ route('admin.asignar.curso', [$item->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Asignar">
+                                       <i class="bi bi-person-gear"></i>
+                                    </a>
+                                 @else
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Habilitar">
+                                       <i class="bi bi-person-gear"></i>
+                                    </a>
+                                 @endif
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="{{ route('admin.cursos.edit', [$item->id]) }}">
                                     <i class="bi bi-pen"></i>
                                  </a>

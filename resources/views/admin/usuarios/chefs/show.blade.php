@@ -63,7 +63,7 @@
              <div class="card">
                 <div class="card-header d-flex justify-content-between">
                    <div class="header-title">
-                      <h4 class="card-title">Informacion del Usuario</h4>
+                      <h4 class="card-title">Informacion del Docente</h4>
                    </div>
                 </div>
                 <div class="card-body">
@@ -76,18 +76,30 @@
                                 <label class="form-label" for="fname">Nombre de docente:</label>
                                 <input type="text" class="form-control" id="fname" name="nombre" value="{{ $docente->nombre }}" placeholder="Nombre" required>
                             </div>
+                            @error('nombre')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="ap_pat">Apellido Paterno:</label>
                                 <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ $docente->ap_paterno }}" placeholder="Apellido Paterno">
                             </div>
+                            @error('ap_pat')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="ap_mat">Apellido Materno:</label>
                                 <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ $docente->ap_materno }}" placeholder="Apellido Materno">
                             </div>
+                            @error('ap_mat')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-12">
                                 <label class="form-label" for="ci">Cedula de Identidad:</label>
                                 <input type="text" class="form-control" id="ci" name="ci" value="{{ old('ci', $docente->ci ) }}" placeholder="Cedula de Identidad" required>
                             </div>
+                            @error('ci')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-sm-12">
                                 <label class="form-label">Genero:</label>
                                 <select name="genero" class="selectpicker form-control" data-style="py-0" id="generoSelect">
@@ -96,22 +108,37 @@
                                     <option value="Mujer" {{ old('genero', $docente->genero == 'Mujer' ? 'selected' : '') }}>Mujer</option>
                                 </select>
                             </div>
+                            @error('genero')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="mobno">Numero Celular:</label>
                                 <input type="text" class="form-control" id="mobno" name="telefono" value="{{ old('telefono',  $docente->numTelefono->numero_tel) }}" placeholder="Numero de Celular">
                             </div>
+                            @error('telefono')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="email">E mail:</label>
                                 <input type="email" class="form-control" id="email" name="email" value="{{ old('email',  $docente->email) }}" placeholder="E mail" required>
                             </div>
+                            @error('email')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="fcontratado">Fecha Contratado:</label>
                                 <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $docente->docente->contratado_en ) }}">
-                            </div>                                        
+                            </div>    
+                            @error('contrato')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror                                    
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="horas">Horas de Trabajo:</label>
                                 <input type="number" class="form-control" id="horas" name="horas" value="{{ old('horas', $docente->docente->max_hora_trabajos ) }}">
                             </div>
+                            @error('horas')
+                                <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
                          </div>
                          <hr>
                          <button type="button" class="btn btn-primary" id="editarBtn">Editar</button>
@@ -132,6 +159,7 @@
     </div>
 </div>
 
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const formulario = document.getElementById('formHabilitarDesabilitar');
@@ -140,6 +168,17 @@
         const cancelarBtn = document.getElementById('cancelarBtn');
         const generoSelect = document.getElementById('generoSelect');
         const campos = formulario.querySelectorAll('input');
+        const valoresOriginales = {};
+        campos.forEach(function (campo) {
+            valoresOriginales[campo.name] = campo.value;
+        });
+        valoresOriginales['generoSelect'] = generoSelect.value;
+        function restaurarValoresOriginales() {
+            campos.forEach(function (campo) {
+                campo.value = valoresOriginales[campo.name];
+            });
+            generoSelect.value = valoresOriginales['generoSelect'];
+        }
         // Función para habilitar o deshabilitar todos los campos y el select
         function habilitarDesabilitarCampos(habilitar) {
             campos.forEach(function (campo) {
@@ -155,12 +194,13 @@
             habilitarDesabilitarCampos(true); // Habilitar
         });
         cancelarBtn.addEventListener('click', function () {
-            habilitarDesabilitarCampos(false); // Deshabilitar al cancelar
+            restaurarValoresOriginales();
+            habilitarDesabilitarCampos(false);
         });
-        // El formulario está deshabilitado inicialmente
         habilitarDesabilitarCampos(false);
     });
 </script>
+    
     
     
 @endsection

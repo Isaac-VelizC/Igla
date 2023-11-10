@@ -8,6 +8,7 @@ use App\Models\Curso;
 use App\Models\CursoDocente;
 use App\Models\Docente;
 use App\Models\Horario;
+use App\Models\Pago;
 use App\Models\Periodo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -78,7 +79,8 @@ class CursoController extends Controller
     }
 
     public function allPagos() {
-        return View('admin.pagos.index');
+        $pagos = Pago::all();
+        return View('admin.pagos.index', compact('pagos'));
     }
 
     public function cursosActivos() {

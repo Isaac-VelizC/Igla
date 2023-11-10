@@ -42,7 +42,7 @@
                   </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="../../dashboard/admin.html">
+                <a class="nav-link "  href="{{ route('recetas') }}">
                     <i class="bi bi-journals"></i>
                     <span class="item-name">Recetas</span>
                 </a>

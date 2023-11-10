@@ -30,9 +30,8 @@ class Persona extends Model
     {
         return $this->hasOne(Miembro::class, 'pers_id', 'id');
     }
-
-    public function estudiantes()
+    public function estudiante()
     {
-        return $this->hasMany(Estudiante::class, 'pers_id');
+        return $this->hasOne(Estudiante::class, 'pers_id');
     }
 }

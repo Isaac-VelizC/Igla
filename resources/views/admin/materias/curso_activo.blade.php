@@ -44,7 +44,7 @@
                         <tr>
                            <td><p>{{ $item->curso->nombre }}</p></td>
                            <td>
-                           <p><a href="#0">{{ $item->docente->persona->nombre }} {{ $item->docente->persona->ap_paterno }} {{ $item->docente->persona->ap_materno }}</a></p>
+                           <p><a href="{{ route('admin.docentes.show', [$item->docente->persona->id]) }}">{{ $item->docente->persona->nombre }} {{ $item->docente->persona->ap_paterno }} {{ $item->docente->persona->ap_materno }}</a></p>
                            </td>
                            <td>
                            <p>{{ $item->curso->aula->nombre }}</p>

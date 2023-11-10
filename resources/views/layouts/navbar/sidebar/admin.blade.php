@@ -210,45 +210,51 @@
                         <span class="item-name">Calendario</span>
                     </a>
                 </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ route('admin.ingredientes') }}">
-                        <i class="bi bi-basket"></i>
-                        <span class="item-name">Ingredientes</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.ingredientes') }}">
-                    <i class="bi bi-journals"></i>
-                    <span class="item-name">Recetas</span>
-                </a>
-              </li>
-              <li><hr class="hr-horizontal"></li>
-              <li class="nav-item">
-                  <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                        <i class="bi bi-postcard"></i>
-                        <span class="item-name">Publicaciones</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                    <i class="bi bi-archive"></i>
-                    <span class="item-name">Archivos</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.administracion') }}">
-                    <i class="bi bi-person-exclamation"></i>
-                    <span class="item-name">Administración</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.ajustes') }}">
-                    <i class="bi bi-sliders"></i>
-                    <span class="item-name">Acerca De</span>
-                </a>
-              </li>
-          </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.administracion') }}">
+                        <i class="bi bi-person-exclamation"></i>
+                        <span class="item-name">Evaluación Docente</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.ingredientes') }}">
+                            <i class="bi bi-basket"></i>
+                            <span class="item-name">Ingredientes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.ingredientes') }}">
+                        <i class="bi bi-journals"></i>
+                        <span class="item-name">Recetas</span>
+                    </a>
+                </li>
+                <li><hr class="hr-horizontal"></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
+                            <i class="bi bi-postcard"></i>
+                            <span class="item-name">Publicaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
+                        <i class="bi bi-archive"></i>
+                        <span class="item-name">Archivos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.administracion') }}">
+                        <i class="bi bi-person-exclamation"></i>
+                        <span class="item-name">Administración</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.ajustes') }}">
+                        <i class="bi bi-sliders"></i>
+                        <span class="item-name">Acerca De</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-  </div>
-  <div class="sidebar-footer"></div>
+    </div>
+    <div class="sidebar-footer"></div>
 </aside>

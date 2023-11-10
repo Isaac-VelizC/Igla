@@ -19,24 +19,17 @@
     <div class="conatiner-fluid content-inner mt-n5 py-0">
       <div class="row">
         <div class="col-lg-12">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between">
-                            <nav class="nav">
-                                <a class="nav-link active" aria-current="page" href="{{ route('cursos.asistencia', [$curso->id]) }}">Asistencia</a>
-                                <a class="nav-link" href="{{ route('cursos.trabajos', [$curso->id]) }}">Trabajos</a>
-                                <a class="nav-link" href="{{ route('cursos.estudiantes', [$curso->id]) }}">Estudiantes</a>
-                                <a class="nav-link" href="{{ route('cursos.estudiantes', [$curso->id]) }}">Configuración</a>
-                            </nav>
-                         </div>
-                         <div class="card-body">
-                            <div class="table-responsive">
-                               @yield('curso')
-                            </div>
-                         </div>
-                    </div>
+            <div class="card d-flex justify-content-between">
+                <nav class="nav">
+                    <a class="nav-link" aria-current="page" href="{{ route('cursos.asistencia', [$curso->id]) }}">Asistencia</a>
+                    <a class="nav-link active" href="{{ route('cursos.trabajos', [$curso->id]) }}">Trabajos</a>
+                    <a class="nav-link" href="{{ route('cursos.estudiantes', [$curso->id]) }}">Calificaciones</a>
+                    <a class="nav-link" href="{{ route('cursos.estudiantes', [$curso->id]) }}">Configuración</a>
+                </nav>
                 </div>
+                <hr>
+            <div class="card-body">
+                @yield('curso')
             </div>
         </div>
     </div>

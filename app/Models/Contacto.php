@@ -14,9 +14,9 @@ class Contacto extends Model
     protected $primaryKey = "id";
     protected $fillable = ['estudiante_id', 'pers_id', 'direccion'];
 
-    public function estudiante()
+    public function estudiantes()
     {
-        return $this->belongsTo(Estudiante::class, 'estudiante_id');
+        return $this->hasMany(Estudiante::class, 'estudiante_id');
     }
 
     public function persona()

@@ -27,20 +27,19 @@
           <div class="col-xl-3 col-lg-4">
              <div class="card">
                 <div class="card-body">
-                     <div class="form-group">
-                        <div class="profile-img-edit position-relative">
-                           <img src="{{ asset($docente->photo) }}" alt="profile-pic" class="theme-color-default-img profile-pic rounded avatar-100">
+                    <div class="text-center">
+                        <div class="user-profile">
+                           @if ($docente->photo)
+                              <img src="{{ asset($docente->photo) }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
+                           @else
+                              <img src="{{ asset('imagenes/user.jpg') }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
+                           @endif
+                        </div>
+                        <div class="mt-3">
+                           <p class="d-inline-block pl-3"> {{ $docente->user->getRoleNames()->first() }}</p>
                         </div>
                      </div>
-                      <div class="form-group">
-                         <label class="form-label">Roles De Usuario:</label>
-                         <select name="type" class="selectpicker form-control" data-style="py-0" disabled>
-                           @foreach($docente->user->getRoleNames()->toArray() as $role)
-                              <option>{{ $role }}</option>
-                           @endforeach
-                         </select>
-                      </div>
-                   <form method="POST" action="{{ route('cambiar.password.docent', $docente->user_id) }}">
+                   <form method="POST" action="{{ route('cambiar.password.'.$docente->user->getRoleNames()->first(), $docente->user_id) }}">
                      @csrf
                      @method('PUT')
                       <div class="form-group">

@@ -25,19 +25,10 @@ class ChefsController extends Controller
 
     public function allDocentes() {
         $docentes = Persona::whereHas('docente')->get();
-        return view('admin.usuarios.chefs.index', compact('docentes'));
+        $formType = true;
+        return view('admin.usuarios.chefs.index', compact('docentes', 'formType'));
     }
-    public function create()
-    {
-        $isEditing = false;
-        return view('admin.usuarios.chefs.create', compact('isEditing'));
-    }
-    public function edit($id)
-    {
-        $docente = Persona::find($id);
-        $isEditing = true;
-        return view('admin.usuarios.chefs.create', compact('docente', 'isEditing'));
-    }
+
     public function store(Request $request) {
 
         $rules = [
@@ -53,6 +44,11 @@ class ChefsController extends Controller
             'perfil' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
         ];
         $request->validate($rules);
+        
+        if ($request->fails()) {
+            return redirect()->back()->withErrors($request)->withInput();
+        }
+        dd('docentes');
         // Genera el nombre de usuario basado en el nombre y un número aleatorio
         $username = $this->generateUniqueUsername($request->nombre);
         // Verifica si el nombre de usuario ya existe

@@ -26,6 +26,10 @@ class Persona extends Model
     {
         return $this->hasOne(NumTelefono::class, 'id_persona');
     }
+    public function miembro()
+    {
+        return $this->hasOne(Miembro::class, 'pers_id', 'id');
+    }
 
     public function estudiantes()
     {

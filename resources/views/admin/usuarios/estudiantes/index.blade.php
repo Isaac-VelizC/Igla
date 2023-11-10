@@ -55,9 +55,6 @@
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Registrar"  href="#">
-                                    <i class="bi bi-person-gear"></i>
-                                 </a>
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.estudiante.show', $item->persona->id) }}">
                                     <i class="bi bi-eye"></i>
                                  </a>

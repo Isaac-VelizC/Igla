@@ -7,14 +7,31 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <h1 style="color: rgb(7, 6, 6)">Docentes</h1>
-                  <a class="btn btn-warning" href="{{ route('create.docentes') }}" role="button">Nuevo Docente</a>
-              </div>
+                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Nuevo Docente</button>
+               </div>
           </div>
       </div>
   </div>
 </div> 
 
+@if ($formType)
+   @include('admin.usuarios.chefs.widgets.form_modal', ['formType' => $formType])
+@else
+   <p>No hay existe la variable</p>
+@endif
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
+   @if(session('errors'))
+      <div id="myAlert" class="alert alert-left alert-danger alert-dismissible fade show mb-3 alert-fade" role="alert">
+         <span>La validación ha fallado debido a los siguientes errores:</span>
+         <ul>
+               @foreach (session('errors')->all() as $error)
+                  <li>{{ $error }}</li>
+               @endforeach
+         </ul>
+         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+   @endif
    @if(session('success'))
        <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
            <span>{{ session('success') }}</span>
@@ -71,5 +88,4 @@
      </div>
   </div>
 </div>
-
 @endsection

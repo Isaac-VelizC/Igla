@@ -34,14 +34,13 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/create-conctato-{id}-update', [EstudianteController::class, 'updateContacto'])->name('update.contacto');
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
-    Route::get('/create-docentes', [ChefsController::class, 'create'])->name('create.docentes');
     Route::post('/create-docentes-store', [ChefsController::class, 'store'])->name('store.docentes');
-    Route::get('/create-docentes-{id}-edits', [ChefsController::class, 'edit'])->name('edit.docentes');
     Route::put('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docentes');
     Route::delete('/docentes/{id}/baja', [ChefsController::class, 'darBajaDocente'])->name('admin.docentes.baja');
     Route::get('/show/{id}/docente', [ChefsController::class, 'showDocente'])->name('admin.docentes.show');
     Route::put('/reset/{id}/pass/dc', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.docent');
-    //Users
+    //Personal de la institucion
+    Route::post('/personal-new', [AdminController::class, 'store'])->name('admin.personal.store');
     Route::get('/admin-users', [AdminController::class, 'allUsers'])->name('admin.users');
     //Personals
     Route::get('/admin-personal', [AdminController::class, 'allPersonal'])->name('admin.personal');
@@ -80,7 +79,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/administrar-modalidad/{id}/edit', [InformacionController::class, 'updateModalidad'])->name('admin.actualizar-modalidad');
     Route::post('/administrar-horario-add', [InformacionController::class, 'storeHorario'])->name('admin.guardar-horario');
     Route::put('/administrar-horario/{id}/edit', [InformacionController::class, 'updateHorario'])->name('admin.actualizar-horario');
-
 });
 
 Route::middleware(['auth', 'role:Chef'])->group(function () {

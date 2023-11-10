@@ -13,4 +13,8 @@ class Miembro extends Model
     protected $primaryKey = "id";
     protected $fillable = ['pers_id', 'comite'];
 
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'pers_id', 'id');
+    }
 }

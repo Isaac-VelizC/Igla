@@ -93,4 +93,19 @@ class AdminController extends Controller
         $users = Persona::join('users', 'personas.user_id', '=', 'users.id')->select('personas.*')->get();
         return view('admin.usuarios.lista_users', compact('users'));
     }
+    public function showPersonal($id) {
+        $estadoRol = true;
+        $item = Persona::find($id);
+        $rol = "personal";
+        return view('admin.usuarios.chefs.show', compact('item', 'rol', 'estadoRol'));
+    }
+    
+    public function update(Request $request, $id) {
+        dd($request . 'update');
+    }
+    public function darBajaPersonal($id) {
+        $pers = Persona::find($id);
+        dd($pers);
+        return back()->with('success', 'Se dio de baja al personal');
+    }
 }

@@ -11,7 +11,7 @@ class Miembro extends Model
     public $timestamps = false;
     protected $table = "miembros";
     protected $primaryKey = "id";
-    protected $fillable = ['pers_id', 'comite'];
+    protected $fillable = ['pers_id', 'estado', 'fecha_contratado', 'sueldo', 'rol' ];
 
     public function persona()
     {

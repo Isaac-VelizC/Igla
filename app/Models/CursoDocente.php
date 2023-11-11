@@ -16,14 +16,12 @@ class CursoDocente extends Model
         'responsable_id',
         'horario_id',
         'doc_id',
-        'commet_id',
+        'aula_id',
         'descripcion',
         'imagen',
         'fecha_ini',
         'fecha_fin',
-        'asistencia_exacta',
-        'inicio',
-        'fin',
+        'whatsapp',
         'estado'
     ];
 

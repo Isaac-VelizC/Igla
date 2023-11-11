@@ -36,9 +36,15 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
     Route::post('/create-docentes-store', [ChefsController::class, 'store'])->name('store.docentes');
-    Route::put('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docentes');
+    Route::put('/create-docentes-{id}-update', [ChefsController::class, 'update'])->name('update.docente');
     Route::delete('/docentes/{id}/baja', [ChefsController::class, 'darBajaDocente'])->name('admin.docentes.baja');
-    Route::get('/show/{id}/docente', [ChefsController::class, 'showDocente'])->name('admin.docentes.show');
+    //Se usa para ambos
+    Route::get('/show/{id}/docente', [ChefsController::class, 'showDocente'])->name('admin.D.show');
+    Route::get('/show/{id}/personal', [AdminController::class, 'showPersonal'])->name('admin.P.show');
+    Route::put('/create-personal-{id}-update', [AdminController::class, 'update'])->name('update.personal');
+    Route::delete('admin/docente/{id}', [ChefsController::class, 'darBajaDocente'])->name('admin.D.destroy');
+    Route::delete('admin/personal/{id}', [AdminController::class, 'darBajaPersonal'])->name('admin.P.destroy');
+    Route::delete('admin/estudiante/{id}', [EstudianteController::class, 'darBajaEstudiante'])->name('admin.E.destroy');
     //Personal de la institucion
     Route::post('/personal-new', [AdminController::class, 'store'])->name('admin.personal.store');
     Route::get('/admin-users', [AdminController::class, 'allUsers'])->name('admin.users');
@@ -96,6 +102,7 @@ Route::middleware(['auth', 'role:Estudiante'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::put('/reset/{id}/pass/est', [EstudianteController::class, 'cambiarPass'])->name('cambiar.password.Estudiante');
     Route::put('/reset/{id}/pass/dc', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.Chef');
+    Route::put('/reset/{id}/pass/pers', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.Admin'); /////Falta crear la funcion
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
     Route::get('/cursos/carrera', [InfoController::class, 'cursos'])->name('cursos.carrera');
 });

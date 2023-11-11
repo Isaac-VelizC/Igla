@@ -183,4 +183,10 @@ class EstudianteController extends Controller
         $estud->save();
         return back()->with('success', 'La contraseña se cambio con éxito.');
     }
+
+    public function darBajaEstudiante($id) {
+        $est = Persona::find($id);
+        dd($est);
+        return back()->with('success', 'Se dio de baja al estudiante');
+    }
 }

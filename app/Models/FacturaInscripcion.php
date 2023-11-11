@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class FacturaInscripcion extends Model
 {
     use HasFactory;
+    protected $table = "factura_inscripcions";
+    protected $primaryKey = "id";
+    protected $fillable = ['inscrito_id', 'fecha', 'codigo', 'estado'];
+
 }

@@ -11,7 +11,7 @@ class Asistencia extends Model
 
     protected $table = "asistencias";
     protected $primaryKey = "id";
-    protected $fillable = ['estudiante_id', 'curso_id', 'asistencia', 'fecha'];
+    protected $fillable = ['estudiante_id', 'curso_id', 'asistencia', 'fecha', 'estado'];
 
 
     protected $with = ['attendanceType'];

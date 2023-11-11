@@ -36,7 +36,7 @@
                         <th>C.I.</th>
                         <th>Fecha Nacimiento</th>
                         <th>Estado</th>
-                        <th>Tags</th>
+                        <th></th>
                        </tr>
                     </thead>
                     <tbody>
@@ -58,12 +58,13 @@
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.estudiante.show', $item->persona->id) }}">
                                     <i class="bi bi-eye"></i>
                                  </a>
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Borrar"  href="#">
+                                 <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
                                     <i class="bi bi-trash"></i>
-                                 </a>
+                                </a>
                               </div>
                             </td>
                         </tr>
+                        @include('admin.usuarios.modal_de_baja', ['modalId' => $item->id, 'id' => $item->persona->id, 'tipo' => $item->persona->tipo_pers])
                       @endforeach
                     </tbody>
                  </table>

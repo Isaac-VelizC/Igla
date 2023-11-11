@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('email', 55)->nullable();
             $table->string('photo', 255)->default('user.jpg');
             $table->boolean('estado')->default(true);
+            $table->string('tipo_pers')->default('E');
             $table->timestamps();
         });
     }

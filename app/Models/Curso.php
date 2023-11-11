@@ -11,7 +11,7 @@ class Curso extends Model
     public $timestamps = false;
     protected $table = "cursos";
     protected $primaryKey = "id";
-    protected $fillable = ['nombre', 'precio', 'aula_id', 'periodo_id', 'color', 'marcado'];
+    protected $fillable = ['nombre', 'precio', 'periodo_id', 'color', 'estado', 'descripcion'];
 
     public function aula()
     {

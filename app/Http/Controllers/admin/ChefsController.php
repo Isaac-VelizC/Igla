@@ -160,12 +160,15 @@ class ChefsController extends Controller
     }
 
     public function darBajaDocente($id) {
-        dd($id);
+        $doc = Persona::find($id);
+        dd($doc);
         return back()->with('success', 'Se dio de baja al docente');
     }
     public function showDocente($id) {
-        $docente = Persona::find($id);
-        return view('admin.usuarios.chefs.show', compact('docente'));
+        $estadoRol = false;
+        $item = Persona::find($id);
+        $rol = "docente";
+        return view('admin.usuarios.chefs.show', compact('item', 'estadoRol', 'rol'));
     }
     
     public function cambiarPass(Request $request, $id) {
@@ -180,5 +183,6 @@ class ChefsController extends Controller
         $docente = Persona::find($doc->persona->id);
         return view('admin.usuarios.chefs.show', compact('docente'))->with('success', 'La información se actualizo con éxito.');;
     }
+
 
 }

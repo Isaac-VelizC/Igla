@@ -7,7 +7,7 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1 style="color: black">Docente {{$docente->nombre}} {{$docente->ap_paterno}} {{$docente->ap_materno}}</h1>
+                     <h1 style="color: black"> {{ $estadoRol ? 'Personal' : 'Docente' }} {{$item->nombre}} {{$item->ap_paterno}} {{$item->ap_materno}}</h1>
                   </div>
               </div>
           </div>
@@ -29,17 +29,17 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div class="user-profile">
-                           @if ($docente->photo)
-                              <img src="{{ asset($docente->photo) }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
+                           @if ($item->photo)
+                              <img src="{{ asset($item->photo) }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
                            @else
                               <img src="{{ asset('imagenes/user.jpg') }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
                            @endif
                         </div>
                         <div class="mt-3">
-                           <p class="d-inline-block pl-3"> {{ $docente->user->getRoleNames()->first() }}</p>
+                           <p class="d-inline-block pl-3"> {{ $item->user->getRoleNames()->first() }}</p>
                         </div>
                      </div>
-                   <form method="POST" action="{{ route('cambiar.password.'.$docente->user->getRoleNames()->first(), $docente->user_id) }}">
+                   <form method="POST" action="{{ route('cambiar.password.'.$item->user->getRoleNames()->first(), $item->user_id) }}">
                      @csrf
                      @method('PUT')
                       <div class="form-group">
@@ -62,39 +62,39 @@
              <div class="card">
                 <div class="card-header d-flex justify-content-between">
                    <div class="header-title">
-                      <h4 class="card-title">Informacion del Docente</h4>
+                      <h4 class="card-title">Informacion del {{ $estadoRol ? 'Personal' : 'Docente' }}</h4>
                    </div>
                 </div>
                 <div class="card-body">
                    <div class="new-user-info">
-                      <form class="needs-validation" novalidate method="POST" id="formHabilitarDesabilitar" action="{{ route('update.docentes', $docente->id) }}">
+                      <form class="needs-validation" novalidate method="POST" id="formHabilitarDesabilitar" action="{{ route('update.'. $rol, $item->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label class="form-label" for="fname">Nombre de docente:</label>
-                                <input type="text" class="form-control" id="fname" name="nombre" value="{{ $docente->nombre }}" placeholder="Nombre" required>
+                                <input type="text" class="form-control" id="fname" name="nombre" value="{{ $item->nombre }}" placeholder="Nombre" required>
                             </div>
                             @error('nombre')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="ap_pat">Apellido Paterno:</label>
-                                <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ $docente->ap_paterno }}" placeholder="Apellido Paterno">
+                                <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ $item->ap_paterno }}" placeholder="Apellido Paterno">
                             </div>
                             @error('ap_pat')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="ap_mat">Apellido Materno:</label>
-                                <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ $docente->ap_materno }}" placeholder="Apellido Materno">
+                                <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ $item->ap_materno }}" placeholder="Apellido Materno">
                             </div>
                             @error('ap_mat')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group col-md-12">
                                 <label class="form-label" for="ci">Cedula de Identidad:</label>
-                                <input type="text" class="form-control" id="ci" name="ci" value="{{ old('ci', $docente->ci ) }}" placeholder="Cedula de Identidad" required>
+                                <input type="text" class="form-control" id="ci" name="ci" value="{{ old('ci', $item->ci ) }}" placeholder="Cedula de Identidad" required>
                             </div>
                             @error('ci')
                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -103,8 +103,8 @@
                                 <label class="form-label">Genero:</label>
                                 <select name="genero" class="selectpicker form-control" data-style="py-0" id="generoSelect">
                                     <option>Seleccionar Genero</option>
-                                    <option value="Hombre" {{ old('genero', $docente->genero == 'Hombre' ? 'selected' : '') }}>Hombre</option>
-                                    <option value="Mujer" {{ old('genero', $docente->genero == 'Mujer' ? 'selected' : '') }}>Mujer</option>
+                                    <option value="Hombre" {{ old('genero', $item->genero == 'Hombre' ? 'selected' : '') }}>Hombre</option>
+                                    <option value="Mujer" {{ old('genero', $item->genero == 'Mujer' ? 'selected' : '') }}>Mujer</option>
                                 </select>
                             </div>
                             @error('genero')
@@ -112,33 +112,43 @@
                             @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="mobno">Numero Celular:</label>
-                                <input type="text" class="form-control" id="mobno" name="telefono" value="{{ old('telefono',  $docente->numTelefono->numero_tel) }}" placeholder="Numero de Celular">
+                                <input type="text" class="form-control" id="mobno" name="telefono" value="{{ old('telefono', optional($item->numTelefono)->numero_tel) }}" placeholder="Numero de Celular">
                             </div>
                             @error('telefono')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                             <div class="form-group col-md-6">
                                 <label class="form-label" for="email">E mail:</label>
-                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email',  $docente->email) }}" placeholder="E mail" required>
+                                <input type="email" class="form-control" id="email" name="email" value="{{ old('email',  $item->email) }}" placeholder="E mail" required>
                             </div>
                             @error('email')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            <div class="form-group col-md-6">
-                                <label class="form-label" for="fcontratado">Fecha Contratado:</label>
-                                <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $docente->docente->contratado_en ) }}">
-                            </div>    
-                            @error('contrato')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror                                    
-                            <div class="form-group col-md-6">
-                                <label class="form-label" for="horas">Horas de Trabajo:</label>
-                                <input type="number" class="form-control" id="horas" name="horas" value="{{ old('horas', $docente->docente->max_hora_trabajos ) }}">
-                            </div>
-                            @error('horas')
-                                <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
-                         </div>
+                            @if (!$estadoRol)
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="fcontratado">Fecha Contratado:</label>
+                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->docente->contratado_en ) }}">
+                                </div>    
+                                @error('contrato')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            @else
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="fcontratado">Fecha Contratado:</label>
+                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->miembro->fecha_contratado ) }}">
+                                </div>    
+                                @error('contrato')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                                <div class="form-group col-md-6">
+                                    <label class="form-label" for="sueldo">Sueldo:</label>
+                                    <input type="decimal" class="form-control" id="sueldo" name="sueldo" value="{{ old('sueldo', $item->miembro->sueldo ) }}">
+                                </div>    
+                                @error('sueldo')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            @endif
+                        </div>
                          <hr>
                          <button type="button" class="btn btn-primary" id="editarBtn">Editar</button>
                          <div class="row">
@@ -149,7 +159,8 @@
                                <button type="button" class="btn btn-danger" id="cancelarBtn" style="display: none;">Cancelar</button>
                            </div>
                          </div>
-                      </form>
+                      
+                        </form>
                    </div>
                 </div>
              </div>

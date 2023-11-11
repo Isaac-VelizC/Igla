@@ -11,7 +11,7 @@ class Aula extends Model
     public $timestamps = false;
     protected $table = "aulas";
     protected $primaryKey = "id";
-    protected $fillable = ['nombre', 'codigo', 'capacidad'];
+    protected $fillable = ['nombre', 'codigo', 'capacidad', 'estado'];
 
     protected $guarded = ['id'];
     public function cursos()

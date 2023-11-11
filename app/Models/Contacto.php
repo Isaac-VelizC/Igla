@@ -12,7 +12,7 @@ class Contacto extends Model
     public $timestamps = false;
     protected $table = "contactos";
     protected $primaryKey = "id";
-    protected $fillable = ['estudiante_id', 'pers_id', 'direccion'];
+    protected $fillable = ['pers_id', 'direccion', 'estado'];
 
     public function estudiantes()
     {

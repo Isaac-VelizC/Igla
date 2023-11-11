@@ -9,7 +9,7 @@ class TipoEvaluacion extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = "tipo_trabajos";
+    protected $table = "tipo_evaluacions";
     protected $primaryKey = "id";
     protected $fillable = ['nombre'];
 }

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('factura_inscripcions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('inscrito_id')->nullable();
+            $table->unsignedBigInteger('inscrito_id');
             $table->foreign('inscrito_id')->references('id')->on('inscripcions')->onDelete('cascade');
             $table->datetime('fecha')->default(now());
-            $table->string('codigo');
+            $table->string('codigo')->unique();
             $table->boolean('estado')->default(true);
         });
     }

@@ -20,8 +20,18 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('doc_id')->nullable();
             $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
-            $table->unsignedBigInteger('commet_id')->nullable();
-            $table->foreign('commet_id')->references('id')->on('comentarios')->onDelete('cascade');
+            $table->decimal('nota')->default(0);
+            $table->boolean('estado')->default(true);
+            $table->timestamps();
+        });
+
+        Schema::create('preguntas_estudiantes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('pregunta_id')->nullable();
+            $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade');
+            $table->unsignedBigInteger('estudiante_id')->nullable();
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
+            $table->text('respuesta')->nullable();
             $table->decimal('nota')->default(0);
             $table->boolean('estado')->default(true);
             $table->timestamps();

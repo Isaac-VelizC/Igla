@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('codigo')->unique();
-            $table->integer('capacidad')->nullable()->unsigned();
+            $table->integer('capacidad');
+            $table->boolean('estado')->default(true);
             $table->softDeletes();
         });
     }

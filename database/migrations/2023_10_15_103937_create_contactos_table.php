@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comentarios', function (Blueprint $table) {
+        Schema::create('contactos', function (Blueprint $table) {
             $table->id();
-            $table->boolean('privacidad')->default(false);
-            $table->text('body');
-            $table->boolean('action')->default(false)->nullable();
-            $table->unsignedBigInteger('autor_id')->nullable();
-            $table->foreign('autor_id')->references('id')->on('users')->onDelete('restrict');
+            $table->unsignedBigInteger('pers_id')->nullable();
+            $table->foreign('pers_id')->references('id')->on('personas')->onDelete('cascade');
+            $table->string('direccion')->nullable();
+            $table->boolean('estado')->default(true);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('comentarios');
+        Schema::dropIfExists('contactos');
     }
 };

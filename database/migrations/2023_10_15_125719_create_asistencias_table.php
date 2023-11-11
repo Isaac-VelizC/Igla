@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('restrict');
-            $table->boolean('asistencia')->default(false);
-            $table->date('fecha');
+            $table->string('asistencia');
+            $table->date('fecha')->default(now());
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });

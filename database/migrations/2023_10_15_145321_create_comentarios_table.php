@@ -11,18 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('calificacions', function (Blueprint $table) {
+        Schema::create('comentarios', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('estudiante_id');
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
+            $table->boolean('privacidad')->default(false);
+            $table->text('body');
+            $table->boolean('action')->default(false)->nullable();
+            $table->unsignedBigInteger('autor_id')->nullable();
+            $table->foreign('autor_id')->references('id')->on('users')->onDelete('restrict');
             $table->unsignedBigInteger('materia_id')->nullable();
             $table->foreign('materia_id')->references('id')->on('curso_docentes')->onDelete('restrict');
-            $table->bigInteger('num_trabajos')->default(0);
-            $table->bigInteger('num_evaluaciones')->default(0);
-            $table->decimal('calificacion', 3, 2);
-            $table->boolean('estado')->default(false);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('calificacions');
+        Schema::dropIfExists('comentarios');
     }
 };

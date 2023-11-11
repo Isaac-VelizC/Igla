@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('horarios', function (Blueprint $table) {
             $table->id();
-            $table->string('horarios')->nullable();
+            $table->string('turno')->nullable();
             $table->time('inicio');
             $table->time('fin');
             $table->boolean('estado')->default(true);

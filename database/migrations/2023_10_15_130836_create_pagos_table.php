@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('metodo_pagos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
+            $table->string('nombre');
+            $table->string('sigla')->unique();
             $table->timestamps();
         });
 
@@ -26,9 +27,9 @@ return new class extends Migration
             $table->unsignedBigInteger('factura_id');
             $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
             $table->dateTime('fecha');
-            $table->bigInteger('valor');
+            $table->decimal('valor', 10, 2);
             $table->boolean('estado')->default(true);
-            $table->string('comentario')->nullable();
+            $table->text('comentario')->nullable();
             $table->timestamps();
         });
     }

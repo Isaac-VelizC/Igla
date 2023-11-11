@@ -15,12 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->bigInteger('precio')->nullable();
-            $table->unsignedBigInteger('aula_id')->nullable();
-            $table->foreign('aula_id')->references('id')->on('aulas')->onDelete('restrict');
             $table->unsignedBigInteger('periodo_id')->nullable();
             $table->foreign('periodo_id')->references('id')->on('periodos')->onDelete('restrict');
             $table->string('color')->nullable();
             $table->boolean('estado')->default(true);
+            $table->text('descripcion')->nullable();
             $table->timestamps();
         });
     }

@@ -11,6 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('temas', function (Blueprint $table) {
+            $table->id();
+            $table->string('tema');
+            $table->unsignedBigInteger('curso_id')->nullable();
+            $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
+            $table->boolean('estado')->default(true);
+            $table->timestamps();
+        });
+
+        Schema::create('preguntas', function (Blueprint $table) {
+            $table->id();
+            $table->text('pregunta');
+            $table->unsignedBigInteger('curso_id')->nullable();
+            $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
+            $table->boolean('con_nota')->default(true);
+            $table->bigInteger('nota')->nullable();
+            $table->boolean('estado')->default(true);
+            $table->timestamps();
+        });
+
         Schema::create('tipo_trabajos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
@@ -19,12 +39,14 @@ return new class extends Migration
 
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tipo_id')->nullable();
+            $table->unsignedBigInteger('tipo_id');
             $table->foreign('tipo_id')->references('id')->on('tipo_trabajos')->onDelete('cascade');
-            $table->unsignedBigInteger('curso_id')->nullable();
+            $table->unsignedBigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('cat_crit_id');
+            $table->foreign('cat_crit_id')->references('id')->on('categorias_criterio')->onDelete('cascade');
             $table->string('titulo', 100);
             $table->text('descripcion')->nullable();
             $table->unsignedBigInteger('doc_id')->nullable();
@@ -32,8 +54,9 @@ return new class extends Migration
             $table->integer('cantidad')->default(1);
             $table->dateTime('inico')->default(now());
             $table->dateTime('fin');
+            $table->boolean('con_nota')->default(true);
+            $table->bigInteger('nota')->nullable();
             $table->boolean('visible')->default(false);
-            $table->string('whatsapp', 100);
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });
@@ -44,6 +67,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('temas');
+        Schema::dropIfExists('preguntas');
         Schema::dropIfExists('tipo_trabajos');
         Schema::dropIfExists('trabajos');
     }

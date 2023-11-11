@@ -15,9 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pers_id');
             $table->foreign('pers_id')->references('id')->on('personas')->onDelete('cascade');
+            $table->unsignedBigInteger('contact_id')->nullable();
+            $table->foreign('contact_id')->references('id')->on('contactos')->onDelete('cascade');
+            $table->unsignedBigInteger('turno_id')->nullable();
+            $table->foreign('turno_id')->references('id')->on('horarios')->onDelete('restrict');
             $table->string('direccion')->nullable();
             $table->date('fecha_nacimiento')->nullable();
             $table->boolean('estado')->default(true);
+            $table->boolean('graduado')->default(false);
             $table->string('titulo')->nullable();
             $table->timestamps();
         });

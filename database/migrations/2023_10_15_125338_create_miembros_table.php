@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('pers_id')->nullable();
             $table->foreign('pers_id')->references('id')->on('personas')->onDelete('cascade');
-            $table->boolean('comite')->nullable();
+            $table->date('fecha_contratado')->default(now());
+            $table->decimal('sueldo', 10, 2)->nullable();
+            $table->string('rol')->nullable();
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });

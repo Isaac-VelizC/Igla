@@ -16,13 +16,27 @@ return new class extends Migration
             $table->text('nombre');
         });
 
-        Schema::create('curso_evaluacion_tipos', function (Blueprint $table) {
-            
-            $table->unsignedBigInteger('curso_id')->nullable();
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-
-            $table->unsignedBigInteger('evaluacion_tipo_id')->nullable();
+        Schema::create('curso_evaluacion', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('curso_id');
+            $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
+            $table->unsignedBigInteger('evaluacion_tipo_id');
             $table->foreign('evaluacion_tipo_id')->references('id')->on('tipo_evaluacions')->onDelete('cascade');
+            $table->unsignedBigInteger('cat_crit_id');
+            $table->foreign('cat_crit_id')->references('id')->on('categorias_criterio')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('titulo', 100);
+            $table->text('descripcion')->nullable();
+            $table->unsignedBigInteger('doc_id')->nullable();
+            $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
+            $table->integer('cantidad')->default(1);
+            $table->dateTime('inico')->default(now());
+            $table->dateTime('fin');
+            $table->boolean('con_nota')->default(true);
+            $table->bigInteger('nota')->nullable();
+            $table->boolean('visible')->default(false);
+            $table->boolean('estado')->default(true);
         });
     }
 

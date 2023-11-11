@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('docentes', function (Blueprint $table) {
+        Schema::create('recetas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_persona')->nullable();
-            $table->foreign('id_persona')->references('id')->on('personas')->onDelete('cascade');
-            $table->date('contratado_en')->nullable();
-            $table->boolean('estado')->default(true);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('docentes');
+        Schema::dropIfExists('recetas');
     }
 };

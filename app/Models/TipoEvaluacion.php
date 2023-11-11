@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TipoEvaluacion extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+    protected $table = "tipo_trabajos";
+    protected $primaryKey = "id";
+    protected $fillable = ['nombre'];
 }

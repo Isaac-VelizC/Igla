@@ -24,8 +24,6 @@ return new class extends Migration
             $table->foreign('responsable_id')->references('id')->on('users')->onDelete('restrict');
             $table->unsignedBigInteger('metodo_id')->nullable();
             $table->foreign('metodo_id')->references('id')->on('metodo_pagos')->onDelete('restrict');
-            $table->unsignedBigInteger('factura_id');
-            $table->foreign('factura_id')->references('id')->on('facturas')->onDelete('cascade');
             $table->dateTime('fecha');
             $table->decimal('valor', 10, 2);
             $table->boolean('estado')->default(true);

@@ -81,14 +81,29 @@
                                     @error('genero')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                                    <div class="form-group col-md-12">
+                                    <div class="form-group col-md-6">
                                         <label class="form-label" for="add1">Dirección:</label>
                                         <input type="text" class="form-control" id="add1" name="direccion" value="{{ old('direccion') }}" placeholder="Dirección">
                                     </div>
                                     @error('direccion')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
-                    
+                                    <div class="form-group col-sm-6">
+                                        <label class="form-label">Horario:</label>
+                                        <select class="selectpicker form-control" data-style="py-0" name="horario" required>
+                                            <option value="" disabled selected>Seleccionar</option>
+                                            @if ($horarios->count() > 0)
+                                                @foreach ($horarios as $mod)
+                                                    <option value="{{ $mod->id }}">{{ $mod->turno }}</option>
+                                                @endforeach
+                                            @else
+                                                <option value="">No Hay Horarios</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    @error('horario')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="form-group col-md-6">
                                         <label class="form-label" for="mobno">Numero Celular:</label>
                                         <input type="text" class="form-control" id="mobno" name="telefono" value="{{ old('telefono') }}" placeholder="Numero de Celular">

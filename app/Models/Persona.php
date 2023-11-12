@@ -34,4 +34,8 @@ class Persona extends Model
     {
         return $this->hasOne(Estudiante::class, 'pers_id');
     }
+    public function contacto()
+    {
+        return $this->hasOne(Contacto::class, 'pers_id');
+    }
 }

@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div class="user-profile">
-                           @if ($item->photo)
+                           @if (!$item->photo)
                               <img src="{{ asset($item->photo) }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
                            @else
                               <img src="{{ asset('imagenes/user.jpg') }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
@@ -38,6 +38,10 @@
                         <div class="mt-3">
                            <p class="d-inline-block pl-3"> {{ $item->user->getRoleNames()->first() }}</p>
                         </div>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#cambiarRol">
+                            <span class="badge rounded-pill bg-danger text-white">Cambiar Rol</span>
+                        </a>
+                        @include('admin.usuarios.form_rol', ['myRol' => $item->user->getRoleNames()->first(), 'userId' => $item->user->id ])
                      </div>
                    <form method="POST" action="{{ route('cambiar.password.'.$item->user->getRoleNames()->first(), $item->user_id) }}">
                      @csrf
@@ -127,7 +131,7 @@
                             @if (!$estadoRol)
                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="fcontratado">Fecha Contratado:</label>
-                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->docente->contratado_en ) }}">
+                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->docente->contratado_en ) }}" max="{{now()}}">
                                 </div>    
                                 @error('contrato')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -135,7 +139,7 @@
                             @else
                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="fcontratado">Fecha Contratado:</label>
-                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->miembro->fecha_contratado ) }}">
+                                    <input type="date" class="form-control" id="fcontratado" name="contrato" value="{{ old('contrato', $item->miembro->fecha_contratado ) }}" max="{{now()}}">
                                 </div>    
                                 @error('contrato')
                                     <div class="alert alert-danger">{{ $message }}</div>

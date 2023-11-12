@@ -36,10 +36,14 @@
                            @endif
                         </div>
                         <div class="mt-3">
-                           <p class="d-inline-block pl-3"> {{ $user->getRoleNames()->first() }}</p>
+                           <p class="d-inline-block pl-3"> {{ $estudiante->user->getRoleNames()->first() }}</p>
                         </div>
+                        <a type="button" data-bs-toggle="modal" data-bs-target="#cambiarRol">
+                            <span class="badge rounded-pill bg-danger text-white">Cambiar Rol</span>
+                        </a>
+                        @include('admin.usuarios.form_rol', ['myRol' => $estudiante->user->getRoleNames()->first(), 'userId' => $estudiante->user->id ])
                      </div>
-                   <form method="POST" action="{{ route('cambiar.password.'.$user->getRoleNames()->first(), $estudiante->user_id) }}">
+                   <form method="POST" action="{{ route('cambiar.password.'.$estudiante->tipo_pers, $estudiante->user_id) }}">
                      @csrf
                      @method('PUT')
                       <div class="form-group">

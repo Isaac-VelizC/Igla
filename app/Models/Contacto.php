@@ -16,7 +16,7 @@ class Contacto extends Model
 
     public function estudiantes()
     {
-        return $this->hasMany(Estudiante::class, 'estudiante_id');
+        return $this->hasMany(Estudiante::class);
     }
 
     public function persona()

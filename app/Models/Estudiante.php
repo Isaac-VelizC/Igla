@@ -14,7 +14,7 @@ class Estudiante extends Model
 
     public function contacto()
     {
-        return $this->hasOne(Contacto::class, 'estudiante_id');
+        return $this->belongsTo(Contacto::class, 'contact_id');
     }
 
     public function inscripciones()
@@ -26,4 +26,10 @@ class Estudiante extends Model
     {
         return $this->belongsTo(Persona::class, 'pers_id');
     }
+    
+    public function turnos()
+    {
+        return $this->belongsTo(Horario::class, 'turno_id');
+    }
+
 }

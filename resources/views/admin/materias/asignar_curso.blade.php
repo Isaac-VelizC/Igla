@@ -41,7 +41,7 @@
                                             <option value="" selected disabled>Seleccionar</option>
                                             @if ($docentes->count() > 0)
                                                 @foreach ($docentes as $doc)
-                                                    <option value="{{ $doc->id }}" @if ($isEditing && $doc->id == $asignado->periodo_id) selected @endif>{{ $doc->persona->nombre }}</option>
+                                                    <option value="{{ $doc->id }}" @if ($isEditing && $doc->id == $asignado->periodo_id) selected @endif>{{ $doc->persona->nombre }} {{ $doc->persona->ap_paterno }}</option>
                                                 @endforeach
                                             @else
                                                 <option value="">No hay docentes</option>

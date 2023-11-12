@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
+use Throwable;
 
 class ChefsController extends Controller
 {
@@ -22,13 +23,11 @@ class ChefsController extends Controller
         }
         return view('admin.usuarios.chefs.index');
     }
-
     public function allDocentes() {
         $docentes = Persona::whereHas('docente')->get();
         $formType = true;
         return view('admin.usuarios.chefs.index', compact('docentes', 'formType'));
     }
-
     public function store(Request $request) {
 
         $rules = [
@@ -39,31 +38,22 @@ class ChefsController extends Controller
             'genero' => 'required|in:Mujer,Hombre',
             'email' => 'required|email|unique:personas,email',
             'contrato' => 'required|date',
-            'horas' => 'nullable|numeric',
             'telefono' => 'nullable|string',
             'perfil' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
         ];
         $request->validate($rules);
-        
-        if ($request->fails()) {
-            return redirect()->back()->withErrors($request)->withInput();
-        }
-        dd('docentes');
-        // Genera el nombre de usuario basado en el nombre y un número aleatorio
+
         $username = $this->generateUniqueUsername($request->nombre);
         // Verifica si el nombre de usuario ya existe
         $count = User::where('name', $username)->count();
         if ($count > 0) {
-            // Agrega un sufijo numérico si es necesario para hacerlo único
             $username = $this->makeUsernameUnique($username, $count);
         }
-        // Crea el nuevo usuario
         $user = User::create([
             'name' => $username,
             'email' => $request->email,
             'password' => Hash::make('u.'.$request->ci)
         ]);
-        // Asigna el rol 'chef' al usuario
         $user->assignRole('Chef');
         // Crea y guarda la información personal
         $pers = new Persona();
@@ -74,6 +64,7 @@ class ChefsController extends Controller
         $pers->ci = $request->ci;
         $pers->genero = $request->genero;
         $pers->email = $request->email;
+        $pers->tipo_pers = 'D';
         if ($request->hasFile('perfil') && $request->file('perfil')->isValid()) {
             $nombreArchivo = uniqid() . '.' . $request->file('perfil')->extension();
             $archivoPath = $request->file('perfil')->storeAs('img/perfil', $nombreArchivo, 'public');
@@ -89,22 +80,18 @@ class ChefsController extends Controller
         $doc = new Docente();
         $doc->id_persona = $pers->id;
         $doc->contratado_en = $request->contrato;
-        $doc->max_hora_trabajos = $request->horas;
         $doc->save();
         // Redirige de vuelta a la página anterior
         return redirect()->route('admin.docentes')->with('success', 'La información se guardo con éxito.');
     }
-    
     private function generateUniqueUsername($nombre) {
         $username = strtolower($nombre);
         $numeroAleatorio = mt_rand(1000, 9999);
         return $username . $numeroAleatorio;
     }
-    
     private function makeUsernameUnique($username, $count) {
         return $username . $count;
     }
-    
     public function update(Request $request, $id) {
         $rules = [
             'nombre' => 'required|string',
@@ -114,7 +101,6 @@ class ChefsController extends Controller
             'genero' => 'required|in:Mujer,Hombre',
             'email' => 'required|email|unique:personas,email,' . $id,
             'contrato' => 'required|date',
-            'horas' => 'nullable|numeric',
             'telefono' => 'nullable|string',
             //'perfil' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000|max:2048',
         ];
@@ -144,33 +130,46 @@ class ChefsController extends Controller
             $numT->numero_tel = $request->telefono;
             $numT->update();
         } else {
-            return back()->with('success', 'Lo siento hubo problemas para actualizar.');
+            NumTelefono::create(['id_persona' => $id, 'numero_tel' => $request->telefono]);
         }
         // Crea y guarda la información del docente
         $doc = Docente::where('id_persona', $id)->first();
         if ($doc !== null) {
             $doc->contratado_en = $request->contrato;
-            $doc->max_hora_trabajos = $request->horas;
             $doc->update();
         } else {
-            return back()->with('success', 'Lo siento hubo problemas para actualizar.');
+            return back()->with('success', 'Lo siento hubo problemas para actualizar la informacion del docente.');
         }
         // Redirige de vuelta a la página anterior
         return back()->with('docente', $docente)->with('success', 'La información se actualizo con éxito.');
     }
-
     public function darBajaDocente($id) {
-        $doc = Persona::find($id);
-        dd($doc);
-        return back()->with('success', 'Se dio de baja al docente');
+        $persona = Persona::find($id);
+        if ($persona) {
+            $persona->update(['estado' => false]);
+            Docente::where('id_persona', $id)->update(['estado' => false]);
+            return back()->with('success', 'Se dio de baja al docente');
+        } else {
+            return back()->with('error', 'No se encontró la persona');
+        }
+    }
+    public function darAltaDocente($id) {
+        $persona = Persona::find($id);
+        if ($persona) {
+            $persona->update(['estado' => true]);
+            Docente::where('id_persona', $id)->update(['estado' => true]);
+            return back()->with('success', 'Se dio de Alta al docente');
+        } else {
+            return back()->with('error', 'No se encontró la persona');
+        }
     }
     public function showDocente($id) {
         $estadoRol = false;
         $item = Persona::find($id);
         $rol = "docente";
-        return view('admin.usuarios.chefs.show', compact('item', 'estadoRol', 'rol'));
+        $roles = Role::all();
+        return view('admin.usuarios.chefs.show', compact('item', 'estadoRol', 'rol', 'roles'));
     }
-    
     public function cambiarPass(Request $request, $id) {
         $rules = [
             'pass' => 'required|min:8',
@@ -183,6 +182,4 @@ class ChefsController extends Controller
         $docente = Persona::find($doc->persona->id);
         return view('admin.usuarios.chefs.show', compact('docente'))->with('success', 'La información se actualizo con éxito.');;
     }
-
-
 }

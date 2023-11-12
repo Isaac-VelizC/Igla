@@ -11,6 +11,7 @@ use App\Models\Persona;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -97,15 +98,53 @@ class AdminController extends Controller
         $estadoRol = true;
         $item = Persona::find($id);
         $rol = "personal";
-        return view('admin.usuarios.chefs.show', compact('item', 'rol', 'estadoRol'));
+        $roles = Role::all();
+        return view('admin.usuarios.chefs.show', compact('item', 'rol', 'estadoRol', 'roles'));
     }
     
     public function update(Request $request, $id) {
         dd($request . 'update');
     }
     public function darBajaPersonal($id) {
-        $pers = Persona::find($id);
-        dd($pers);
-        return back()->with('success', 'Se dio de baja al personal');
+        $persona = Persona::find($id);
+        if ($persona) {
+            $persona->update(['estado' => false]);
+            Miembro::where('pers_id', $id)->update(['estado' => false]);
+            return back()->with('success', 'Se dio de baja al personal');
+        } else {
+            return back()->with('error', 'No se encontró la persona');
+        }
+    }
+    public function darAltaPersonal($id) {
+        $persona = Persona::find($id);
+        if ($persona) {
+            $persona->update(['estado' => true]);
+            Miembro::where('pers_id', $id)->update(['estado' => true]);
+            return back()->with('success', 'Se dio de Alta al personal');
+        } else {
+            return back()->with('error', 'No se encontró la persona');
+        }
+    }
+    public function cambiarPass(Request $request, $id) {
+        $rules = [
+            'pass' => 'required|min:8',
+            'passConfirm' => 'required|same:pass',
+        ];
+        $request->validate($rules);
+        $doc = User::find($id);
+        $doc->password = Hash::make($request->input('passConfirm'));
+        $doc->save();
+        $docente = Persona::find($doc->persona->id);
+        return view('admin.usuarios.chefs.show', compact('docente'))->with('success', 'La información se actualizo con éxito.');;
+    }
+    public function cambiarRol(Request $request, $id) {
+        $user = User::find($id);
+        $request->validate([
+            'rol' => 'required|string|exists:roles,name',
+        ]);
+        $nuevoRol = $request->input('rol');
+        $user->roles()->detach();
+        $user->assignRole($nuevoRol);
+        return back()->with('success', 'Rol cambiado con éxito.');
     }
 }

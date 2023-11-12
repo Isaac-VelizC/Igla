@@ -8,13 +8,15 @@
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <h1 style="color: black">Estudiantes</h1>
                   <a class="btn btn-warning" href="{{ route('admin.inscripcion') }}">
-                     <i class="bi bi-heart"></i> Inscribir
+                     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                        <path d="M24 21h-3l1-3h1l1 3zm-12.976-4.543l8.976-4.575v6.118c-1.007 2.041-5.607 3-8.5 3-3.175 0-7.389-.994-8.5-3v-6.614l8.024 5.071zm11.976.543h-1v-7.26l-10.923 5.568-11.077-7 12-5.308 11 6.231v7.769z"/>
+                     </svg> Inscribir
                   </a>
               </div>
           </div>
       </div>
   </div>
-</div> 
+</div>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
    @if(session('success'))
@@ -55,12 +57,18 @@
                             </td>
                             <td>
                               <div class="flex align-items-center list-user-action">
-                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.estudiante.show', $item->persona->id) }}">
-                                    <i class="bi bi-eye"></i>
+                                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.E.show', $item->persona->id) }}">
+                                    <i class="bi bi-eye-fill"></i>
                                  </a>
-                                 <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                </a>
+                                 @if ($item->estado == true)
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-down-fill"></i>
+                                    </a>
+                                 @else
+                                    <a data-bs-placement="top" title="Dar de Alta" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-up-fill"></i>
+                                    </a>
+                                 @endif
                               </div>
                             </td>
                         </tr>

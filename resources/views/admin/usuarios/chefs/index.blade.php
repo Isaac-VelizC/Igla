@@ -71,11 +71,17 @@
                             <td>
                               <div class="flex align-items-center list-user-action">
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Ver"  href="{{ route('admin.D.show', [$item->id]) }}">
-                                    <i class="bi bi-eye"></i>
+                                    <i class="bi bi-eye-fill"></i>
                                  </a>
-                                 <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                </a>
+                                 @if ($item->estado == true)
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-down-fill"></i>
+                                    </a>
+                                 @else
+                                    <a data-bs-placement="top" title="Dar de Alta" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-up-fill"></i>
+                                    </a>
+                                 @endif
                               </div>
                             </td>
                         </tr>

@@ -20,14 +20,14 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="ap_pat">Apellido Paterno:</label>
-                                    <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ old('paterno') }}" placeholder="Apellido Paterno">
+                                    <input type="text" class="form-control" id="ap_pat" name="ap_pat" value="{{ old('ap_pat') }}" placeholder="Apellido Paterno">
                                     @error('ap_pat')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="form-label" for="ap_mat">Apellido Materno:</label>
-                                    <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ old('materno') }}" placeholder="Apellido Materno">
+                                    <input type="text" class="form-control" id="ap_mat" name="ap_mat" value="{{ old('ap_mat') }}" placeholder="Apellido Materno">
                                     @error('ap_mat')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -43,8 +43,8 @@
                                     <label class="form-label">Genero:</label>
                                     <select name="genero" class="selectpicker form-control" data-style="py-0">
                                         <option>Seleccionar Genero</option>
-                                        <option value="Hombre" {{ old('genero') }}>Hombre</option>
-                                        <option value="Mujer" {{ old('genero') }}>Mujer</option>
+                                        <option value="Hombre" {{ old('Hombre') }}>Hombre</option>
+                                        <option value="Mujer" {{ old('Mujer') }}>Mujer</option>
                                     </select>
                                     @error('genero')
                                         <div class="alert alert-danger">{{ $message }}</div>
@@ -87,15 +87,8 @@
                                 @if ($formType)
                                     <div class="form-group col-md-12">
                                         <label class="form-label" for="fcontratado">Fecha Contratado:</label>
-                                        <input type="date" class="form-control" id="fcontratado" name="contrato" max="{{ date('Y-m-d') }}" value="{{ old('contrato') }}">
+                                        <input type="date" class="form-control" id="fcontratado" name="contrato" max="{{ date('Y-m-d') }}" value="{{ old('contrato', now()->format('Y-m-d')) }}">
                                         @error('contrato')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        <label class="form-label" for="horas">Horas de Trabajo:</label>
-                                        <input type="number" class="form-control" id="horas" name="horas" value="{{ old('horas') }}">
-                                        @error('horas')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>

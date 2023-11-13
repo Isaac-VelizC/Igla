@@ -40,7 +40,7 @@ class TiposSeeder extends Seeder
         TipoEvaluacion::create(['nombre' => 'Teorica']);
         TipoEvaluacion::create(['nombre' => 'Practica']);
         
-        MetodoPago::create(['id' => '1', 'nombre' => 'Cuotas']);
-        MetodoPago::create(['id' => '2', 'nombre' => 'Todo']);
+        MetodoPago::create(['nombre' => 'Cuotas', 'sigla' => 'CT']);
+        MetodoPago::create(['nombre' => 'Todo', 'sigla' => 'TD']);
     }
 }

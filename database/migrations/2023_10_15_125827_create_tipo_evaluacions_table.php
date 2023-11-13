@@ -28,8 +28,6 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('titulo', 100);
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('doc_id')->nullable();
-            $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
             $table->integer('cantidad')->default(1);
             $table->dateTime('inico')->default(now());
             $table->dateTime('fin');
@@ -47,6 +45,6 @@ return new class extends Migration
     {
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('tipo_evaluacions');
-        Schema::dropIfExists('curso_evaluacion_tipos');
+        Schema::dropIfExists('curso_evaluacion');
     }
 };

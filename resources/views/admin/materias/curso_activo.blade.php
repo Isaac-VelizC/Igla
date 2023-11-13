@@ -36,7 +36,7 @@
                           <th>Modalidad</th>
                           <th>Horario</th>
                           <th>Estado</th>
-                          <th>Tags</th>
+                          <th></th>
                        </tr>
                     </thead>
                     <tbody>
@@ -44,24 +44,18 @@
                         <tr>
                            <td><p>{{ $item->curso->nombre }}</p></td>
                            <td>
-                           <p><a href="{{ route('admin.docentes.show', [$item->docente->persona->id]) }}">{{ $item->docente->persona->nombre }} {{ $item->docente->persona->ap_paterno }} {{ $item->docente->persona->ap_materno }}</a></p>
+                              <p><a href="{{ route('admin.'. $item->docente->persona->tipo_pers .'.show', [$item->docente->persona->id]) }}">{{ $item->docente->persona->nombre }} {{ $item->docente->persona->ap_paterno }} {{ $item->docente->persona->ap_materno }}</a></p>
                            </td>
+                           <td><p>{{ $item->aula->codigo }}</p></td>
+                           <td><p>{{ $item->curso->periodo->nombre }}</p></td>
+                           <td><p>{{ $item->horario->turno }}</p></td>
                            <td>
-                           <p>{{ $item->curso->aula->nombre }}</p>
-                           </td>
-                           <td>
-                           <p>{{ $item->curso->periodo->nombre }}</p>
-                           </td>
-                           <td>
-                            <p>{{ $item->horario->horarios }}</p>
-                            </td>
-                            <td>
                               @if ($item->estado == true)
                                  <p> <span class="badge rounded-pill bg-info text-white">Activo</span></p>
                               @else
                                  <p> <span class="badge rounded-pill bg-danger text-white">Inactivo</span></p>
                               @endif
-                            </td>
+                           </td>
                            <td>
                               <div class="flex align-items-center list-user-action">
                                  <a href="{{ route('admin.cursos.show', [$item->id]) }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Asignar">
@@ -70,12 +64,19 @@
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="{{ route('admin.asigando.edit', [$item->id]) }}">
                                     <i class="bi bi-pen"></i>
                                  </a>
-                                 <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm" data-curso-id="{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                 </a>
+                                 @if ($item->estado == true)
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#estadoConfirm{{ $item->id }}" data-itemid="{{ $item->id }}">
+                                       <i class="bi bi-trash"></i>
+                                    </a>
+                                 @else
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#estadoConfirm{{ $item->id }}" data-itemid="{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-up-fill"></i>
+                                    </a>
+                                 @endif
                               </div>
                            </td>
                         </tr>
+                        @include('admin.materias.modal_activos', ['itemId' => $item->id])
                      @endforeach
                     </tbody>
                  </table>
@@ -86,41 +87,6 @@
   </div>
 </div>
 
-@if ($cursos->count() > 0)
-<div class="modal fade" id="deleteConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-       <div class="modal-content">
-           <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-           </div>
-           <div class="modal-body">
-               ¿Estás seguro de que deseas eliminar este elemento?
-            </div>
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <form method="POST" action="{{ route('admin.cursos.destroy', [$item->id]) }}">
-                     @csrf
-                     @method('DELETE')
-                    <input type="hidden" name="curso_id" id="curso_id" value="">
-                     <button type="submit" class="btn btn-danger">Eliminar</button>
-                  </form>
-            </div>
-       </div>
-   </div>
-</div>
-@endif
 
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-
-<script>
-   $(document).on('click', '[data-bs-toggle="modal"]', function () {
-      var cursoId = $(this).data('curso-id');
-      
-      if (cursoId !== undefined) {
-         $('#curso_id').val(cursoId);
-      }
-   });
-</script>
 
 @endsection

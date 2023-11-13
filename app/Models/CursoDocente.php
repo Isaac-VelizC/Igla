@@ -39,15 +39,16 @@ class CursoDocente extends Model
     {
         return $this->belongsTo(User::class, 'responsable_id');
     }
-
     public function horario()
     {
         return $this->belongsTo(Horario::class, 'horario_id');
     }
-
     public function documento()
     {
         return $this->belongsTo(Documentos::class, 'doc_id');
     }
-
+    public function aula()
+    {
+        return $this->belongsTo(Aula::class, 'aula_id');
+    }
 }

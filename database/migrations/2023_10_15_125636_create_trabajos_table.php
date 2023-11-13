@@ -49,8 +49,6 @@ return new class extends Migration
             $table->foreign('cat_crit_id')->references('id')->on('categorias_criterio')->onDelete('cascade');
             $table->string('titulo', 100);
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('doc_id')->nullable();
-            $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
             $table->integer('cantidad')->default(1);
             $table->dateTime('inico')->default(now());
             $table->dateTime('fin');

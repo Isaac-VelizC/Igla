@@ -36,19 +36,8 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="aula_select">Seleccionar Aula</label>
-                                        <select class="form-select" id="aula_select" name="aula_id">
-                                            @foreach ($aulas as $aula)
-                                                <option value="{{ $aula->id }}" @if ($isEditing && $aula->id == $curso->aula_id) selected @endif>{{ $aula->nombre }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('aula_id')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
                                       <label class="form-label" for="descrip">Descripción</label>
-                                      <textarea class="form-control" id="descrip" name="descripcion" rows="3">{{ old('descripcion') }}</textarea>
+                                      <textarea class="form-control" id="descrip" name="descripcion" rows="3">{{ old('descripcion', $isEditing ? $curso->descripcion : '') }}</textarea>
                                     </div>
                                   </div>
                               </div>
@@ -77,7 +66,8 @@
                                 </div>
                             </div>
                           </div>
-                           <button type="submit" class="btn btn-primary">{{ $isEditing ? 'Actualizar' : 'Guardar' }}</button>
+                            <a href="{{ route('admin.cursos') }}" type="button" class="btn btn-secondary">Volver</a>
+                            <button type="submit" class="btn btn-primary">{{ $isEditing ? 'Actualizar' : 'Guardar' }}</button>
                         </form>
                      </div>
                 </div>

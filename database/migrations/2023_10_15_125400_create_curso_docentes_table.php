@@ -21,15 +21,13 @@ return new class extends Migration
             $table->foreign('responsable_id')->references('id')->on('users')->onDelete('restrict');
             $table->unsignedBigInteger('horario_id')->nullable();
             $table->foreign('horario_id')->references('id')->on('horarios')->onDelete('restrict');
-            $table->unsignedBigInteger('doc_id')->nullable();
-            $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
             $table->unsignedBigInteger('aula_id');
             $table->foreign('aula_id')->references('id')->on('aulas')->onDelete('restrict');
             $table->text('descripcion')->nullable();
             $table->string('imagen')->nullable();
             $table->date('fecha_ini');
             $table->date('fecha_fin');
-            $table->string('whatsapp', 100);
+            $table->string('whatsapp', 100)->nullable();
             $table->boolean('estado')->default(true);
             $table->timestamps();
         });

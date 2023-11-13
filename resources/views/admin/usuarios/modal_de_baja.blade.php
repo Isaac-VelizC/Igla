@@ -8,7 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {{{$item->estado ? '¿Estás seguro de dar de baja al usuario?' : '¿Estás seguro de dar de alta al usuario?' }}}
+                {{$item->estado ? '¿Estás seguro de dar de baja al usuario?' : '¿Estás seguro de dar de alta al usuario?' }}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

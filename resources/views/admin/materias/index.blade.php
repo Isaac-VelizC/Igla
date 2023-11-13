@@ -7,10 +7,15 @@
           <div class="col-md-12">
               <div class="flex-wrap d-flex justify-content-between align-items-center">
                   <div>
-                     <h1 style="color: black">Cursos</h1>
+                     <h1 style="color: black">Materias</h1>
                   </div>
                   <div>
-                     <a href="{{ route('admin.cursos.new') }}" class="btn btn-outline-secondary">Nuevo Curso</a>
+                     <a href="{{ route('admin.cursos.new') }}" class="btn btn-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                           <path d="M24 7v-2c0-2.761-2.238-5-5-5h-14c-2.761 0-5 2.239-5 5v2h10v2h-10v6h4v2h-4v2c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-2h-8v-2h8v-6h-5v-2h5zm-16 11c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm0-8c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4z"/>
+                        </svg>
+                        Nueva Materia
+                     </a>
                  </div>
               </div>
           </div>
@@ -37,7 +42,7 @@
                           <th>Color</th>
                           <th>Periodo</th>
                           <th>Estado</th>
-                          <th>Tags</th>
+                          <th></th>
                        </tr>
                     </thead>
                     <tbody>
@@ -71,12 +76,19 @@
                                  <a data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"  href="{{ route('admin.cursos.edit', [$item->id]) }}">
                                     <i class="bi bi-pen"></i>
                                  </a>
-                                 <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm" data-curso-id="{{ $item->id }}">
-                                    <i class="bi bi-trash"></i>
-                                 </a>
+                                 @if ($item->estado == true)
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}" data-itemid="{{ $item->id }}">
+                                       <i class="bi bi-trash"></i>
+                                    </a>
+                                 @else
+                                    <a data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#deleteConfirm{{ $item->id }}" data-itemid="{{ $item->id }}">
+                                       <i class="bi bi-file-arrow-up-fill"></i>
+                                    </a>
+                                 @endif
                               </div>
                            </td>
                         </tr>
+                        @include('admin.materias.modal_delete', ['itemId' => $item->id])
                      @endforeach
                     </tbody>
                  </table>
@@ -86,42 +98,4 @@
      </div>
   </div>
 </div>
-
-@if ($cursos->count() > 0)
-<div class="modal fade" id="deleteConfirm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-   <div class="modal-dialog">
-       <div class="modal-content">
-           <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Confirmar eliminación</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-           </div>
-           <div class="modal-body">
-               ¿Estás seguro de que deseas eliminar este elemento?
-            </div>
-            <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <form method="POST" action="{{ route('admin.cursos.destroy', [$item->id]) }}">
-                     @csrf
-                     @method('DELETE')
-                    <input type="hidden" name="curso_id" id="curso_id" value="">
-                     <button type="submit" class="btn btn-danger">Eliminar</button>
-                  </form>
-            </div>
-       </div>
-   </div>
-</div>
-@endif
-
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-
-<script>
-   $(document).on('click', '[data-bs-toggle="modal"]', function () {
-      var cursoId = $(this).data('curso-id');
-      
-      if (cursoId !== undefined) {
-         $('#curso_id').val(cursoId);
-      }
-   });
-</script>
-
 @endsection

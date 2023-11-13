@@ -18,8 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('estudiante_id')->nullable();
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->text('descripcion')->nullable();
-            $table->unsignedBigInteger('doc_id')->nullable();
-            $table->foreign('doc_id')->references('id')->on('documentos')->onDelete('cascade');
             $table->decimal('nota')->default(0);
             $table->boolean('estado')->default(true);
             $table->timestamps();

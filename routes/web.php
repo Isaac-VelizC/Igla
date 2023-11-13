@@ -61,7 +61,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/curso-info', [CursoController::class, 'guardarCurso'])->name('admin.guardar-curso');
     Route::put('/curso-info/{id}/edit', [CursoController::class, 'actualizarCurso'])->name('admin.actualizar-curso');
     Route::get('/admin-cursos/{id}/edit', [CursoController::class, 'edit'])->name('admin.cursos.edit');
-    Route::delete('admin/cursos/{id}', [CursoController::class, 'deleteCurso'])->name('admin.cursos.destroy');
+    Route::delete('admin/materia/{id}/baja', [CursoController::class, 'darBajaCurso'])->name('admin.cursos.darBaja');
+    Route::delete('admin/materia/{id}/alta', [CursoController::class, 'darAltaCurso'])->name('admin.cursos.darAlta');
+    Route::get('admin/materia/{id}/delete', [CursoController::class, 'deleteCurso'])->name('admin.cursos.delete');
     Route::get('admin/show/{id}', [CursoController::class, 'showCurso'])->name('admin.cursos.show');
     Route::get('/admin-cursos-new', [CursoController::class, 'create'])->name('admin.cursos.new');
     Route::get('/admin-pagos-all', [CursoController::class, 'allPagos'])->name('admin.lista.pagos');
@@ -70,6 +72,13 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/curso-info/{id}/edit/asignar', [CursoController::class, 'asignarActualizarCurso'])->name('admin.asignar.actualizar-curso');
     Route::get('/cursos-curso/meshgv', [CursoController::class, 'cursosActivos'])->name('admin.cursos.activos');
     Route::get('/asignados/cursos/{id}/edit', [CursoController::class, 'editCursoAsignado'])->name('admin.asigando.edit');
+
+    Route::post('/asignados/cambiar/{id}', [CursoController::class, 'gestionarEstadoCurso'])->name('admin.cursos.cambiarEstado');
+    Route::get('/borrar/cambiar-estado/{id}', [CursoController::class, 'deleteCursoActivo'])->name('admin.borrar.curso.activo');
+    //pagos
+    Route::post('/pagos/guardars', [CursoController::class, 'guardarPago'])->name('admin.pago.guardar');
+    Route::get('/pagos/guadar/imprimir', [CursoController::class, 'guardarImprimirPago'])->name('admin.pago.guardar.imprimir');
+    
     //Cocina
     Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
     //Acerda de IGLA
@@ -95,8 +104,11 @@ Route::middleware(['auth', 'role:Chef'])->group(function () {
     Route::get('/curso/{id}/asistencia', [DocenteCursoController::class, 'cursoAistencia'])->name('cursos.asistencia');
     Route::get('/curso/{id}/estudiantes', [DocenteCursoController::class, 'cursoEstudiantes'])->name('cursos.estudiantes');
     Route::get('/curso/{id}/trabajos', [DocenteCursoController::class, 'cursoTrabajos'])->name('cursos.trabajos');
+    Route::get('/curso/{id}/configuracion', [DocenteCursoController::class, 'cursoConfiguracion'])->name('cursos.configuracion');
+    Route::post('/config/docs/{id}/', [DocenteCursoController::class, 'uploadDocuments'])->name('materia.doc.configuracion');
     //recetas
     Route::get('/recetas/chefs/lafff', [RecetaController::class, 'recetas'])->name('recetas');
+    Route::post('/uploads', [DocenteCursoController::class,'uploads'])->name('uploads');
 });
 
 Route::middleware(['auth', 'role:Estudiante'])->group(function () {

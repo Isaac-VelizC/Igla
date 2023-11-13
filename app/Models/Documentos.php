@@ -10,6 +10,6 @@ class Documentos extends Model
     use HasFactory;
     protected $table = "documentos";
     protected $primaryKey = "id";
-    protected $fillable = ['archivo', 'fecha', 'estado'];
+    protected $fillable = ['archivo', 'fecha', 'estado', 'trabajo_id', 'materia_id', 'trabajo_estudiante_id', 'user_id', 'eval_id'];
 
 }

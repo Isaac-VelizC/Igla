@@ -22,7 +22,7 @@
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/list/main.css')}}' />
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!--script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script-->
+    @stack('style')
 </head>
 <body>
     <!-- ======== Preloader =========== -->
@@ -44,7 +44,9 @@
             @yield('content')
     </main>
 
-
+    {{-- ...Some more scripts... --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+    @stack('scripts')
     <script src="{{ asset('assets2/js/core/libs.min.js')}}"></script>
     <script src="{{ asset('assets2/js/core/external.min.js')}}"></script>
     <script src="{{ asset('assets2/js/charts/widgetcharts.js')}}"></script>

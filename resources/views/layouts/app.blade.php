@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     @stack('style')
+    @livewireStyles
 </head>
 <body>
     <!-- ======== Preloader =========== -->
@@ -43,7 +44,7 @@
         @include('layouts.navbar.nav')
             @yield('content')
     </main>
-
+    @livewireScripts
     {{-- ...Some more scripts... --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     @stack('scripts')

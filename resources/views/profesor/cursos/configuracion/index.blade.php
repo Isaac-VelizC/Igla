@@ -1,6 +1,6 @@
 @extends('profesor.cursos.curso')
 @section('curso')
-    <div class="row">
+   <div class="row">
         <div class="col-lg-4">
             <div class="card">
                <div class="card-header">
@@ -115,7 +115,7 @@
               </div>
             </div>
         </div>
-    </div>
+   </div>
 @push('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
     <script>

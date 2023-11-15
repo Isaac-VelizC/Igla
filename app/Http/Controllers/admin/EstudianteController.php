@@ -4,6 +4,8 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contacto;
+use App\Models\Curso;
+use App\Models\CursoDocente;
 use App\Models\Estudiante;
 use App\Models\Horario;
 use App\Models\NumTelefono;
@@ -91,7 +93,8 @@ class EstudianteController extends Controller
         $num = NumTelefono::where('id_persona', $contac->persona->id)->first();
         $horarios = Horario::all();
         $roles = Role::all();
-        return view('admin.usuarios.estudiantes.show', compact('estudiante', 'est', 'contac', 'num', 'horarios', 'roles'));
+        $materias = CursoDocente::all();
+        return view('admin.usuarios.estudiantes.show', compact('estudiante', 'est', 'contac', 'num', 'horarios', 'roles', 'materias'));
     }
     public function update(Request $request, $id) {
         

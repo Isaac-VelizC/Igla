@@ -105,7 +105,7 @@
                  <form method="POST" action="{{route('uploads')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <textarea class="form-control" rows="10" name="description" id="description"></textarea>
+                        <textarea class="form-control" name="description" id="description"></textarea>
                      </div>
                      @if ($errors->has('description'))
                        <span class="text-danger">{{ $errors->first('description') }}</span>

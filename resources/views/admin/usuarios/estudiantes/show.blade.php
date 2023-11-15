@@ -77,7 +77,7 @@
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#pills-profile1" type="button" role="tab" aria-controls="profile" aria-selected="false">Contacto</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#pills-contact1" type="button" role="tab" aria-controls="contact" aria-selected="false">Cursos</button>
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#pills-contact1" type="button" role="tab" aria-controls="contact" aria-selected="false">Materias</button>
                             </li>
                         </ul>
                         <div class="tab-content" id="pills-tabContent">
@@ -88,7 +88,7 @@
                                 @include('admin.usuarios.estudiantes.widgets.info_contac')
                             </div>
                             <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab1">
-                                <p>cursos</p>
+                                @include('admin.usuarios.estudiantes.widgets.info_materias')
                             </div>
                         </div>
                     </div>

@@ -89,12 +89,10 @@ class EstudianteController extends Controller
     public function showEstudiante($id) {
         $estudiante = Persona::find($id);
         $est = Estudiante::where('pers_id', $estudiante->id)->first();
-        $contac = Contacto::find($est->contact_id);
-        $num = NumTelefono::where('id_persona', $contac->persona->id)->first();
         $horarios = Horario::all();
         $roles = Role::all();
         $materias = CursoDocente::all();
-        return view('admin.usuarios.estudiantes.show', compact('estudiante', 'est', 'contac', 'num', 'horarios', 'roles', 'materias'));
+        return view('admin.usuarios.estudiantes.show', compact('estudiante', 'est', 'horarios', 'roles', 'materias'));
     }
     public function update(Request $request, $id) {
         
@@ -128,32 +126,7 @@ class EstudianteController extends Controller
 
         return back()->with('success', 'La informacion se actualizo con éxito.');
     }
-    public function updateContacto(Request $request, $id) {
-        $cont = Contacto::find($id);
-        $rules = [
-            'nombre' => 'required|string',
-            'ap_pat' => 'string',
-            'ap_mat' => 'string',
-            'ci' => 'required|string|unique:personas,ci,' . $cont->pers_id,
-            'genero' => 'required|in:Mujer,Hombre',
-            'email' => 'nullable|email|unique:personas,email,' . $cont->pers_id,
-        ];
-        $request->validate($rules);
-        $pers = Persona::find($cont->pers_id);
-        $pers->nombre = $request->nombre;
-        $pers->ap_paterno = $request->ap_pat;
-        $pers->ap_materno = $request->ap_mat;
-        $pers->ci = $request->ci;
-        $pers->genero = $request->genero;
-        $pers->email = $request->email;
-        $pers->save();
 
-        NumTelefono::updateOrInsert(
-            ['id_persona' => $pers->id],
-            ['numero_tel' => $request->telefono]
-        );
-        return back()->with('success', 'La informacion del contacto se actualizo con éxito.');
-    }
     public function cambiarPass(Request $request, $id) {
         $rules = [
             'pass' => 'required|min:8',

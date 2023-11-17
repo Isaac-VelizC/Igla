@@ -85,7 +85,7 @@
                                 @include('admin.usuarios.estudiantes.widgets.info_estud')
                             </div>
                             <div class="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile-tab1">
-                                @include('admin.usuarios.estudiantes.widgets.info_contac')
+                                @livewire('usuario.contacto-edit', ['estudiante' => $estudiante->estudiante->id])
                             </div>
                             <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab1">
                                 @include('admin.usuarios.estudiantes.widgets.info_materias')

@@ -22,23 +22,45 @@
         </div>
     </div>
     <div class="conatiner-fluid content-inner mt-n5 py-0">
-      <div class="row">
-        <div class="col-lg-12">
-            <div class="card d-flex justify-content-between">
-                <nav class="nav">
-                    <a class="nav-link" aria-current="page" href="{{ route('cursos.asistencia', [$curso->id]) }}">Asistencia</a>
-                    <a class="nav-link active" href="{{ route('cursos.trabajos', [$curso->id]) }}">Trabajos</a>
-                    <a class="nav-link" href="{{ route('cursos.estudiantes', [$curso->id]) }}">Calificaciones</a>
-                    <a class="nav-link" href="{{ route('cursos.configuracion', [$curso->id]) }}">Configuración</a>
-                </nav>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="bd-example">
+                            <ul class="nav nav-pills" data-toggle="slider-tab" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="asistencia-tab" data-bs-toggle="tab" data-bs-target="#pills-asistencia1" type="button" role="tab" aria-controls="asistencia" aria-selected="true">Asistencia</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="trabajo-tab" data-bs-toggle="tab" data-bs-target="#pills-trabajo1" type="button" role="tab" aria-controls="trabajo" aria-selected="false">Trabajos</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="calificacion-tab" data-bs-toggle="tab" data-bs-target="#pills-calificacion1" type="button" role="tab" aria-controls="calificacion" aria-selected="false">Calificaciones</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="config-tab" data-bs-toggle="tab" data-bs-target="#pills-config1" type="button" role="tab" aria-controls="config" aria-selected="false">Configuración</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-asistencia1" role="tabpanel" aria-labelledby="pills-asistencia-tab1">
+                                    @livewire('docente.asistencia-materia')
+                                </div>
+                                <div class="tab-pane fade" id="pills-trabajo1" role="tabpanel" aria-labelledby="pills-trabajo-tab1">
+                                    @livewire('docente.trabajo-materia', ['id' => $curso->id])
+                                </div>
+                                <div class="tab-pane fade" id="pills-calificacion1" role="tabpanel" aria-labelledby="pills-calificacion-tab1">
+                                    @livewire('docente.calificacion-materia')
+                                </div>
+                                <div class="tab-pane fade" id="pills-config1" role="tabpanel" aria-labelledby="pills-config-tab1">
+                                    @livewire('docente.configuracion-materia', ['id' => $curso->id])
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-            <div class="card-body">
-                @yield('curso')
             </div>
         </div>
     </div>
-    </div-->
 @endsection
 
 @push('scripts')

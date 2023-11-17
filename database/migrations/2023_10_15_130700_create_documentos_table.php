@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->id();
-            $table->string('archivo', 255);
+            $table->string('nombre', 100);
+            $table->string('url', 255);
             $table->dateTime('fecha')->default(now());
             $table->boolean('estado')->default(true);
             $table->unsignedBigInteger('trabajo_id')->nullable();

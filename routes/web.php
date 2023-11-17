@@ -32,7 +32,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/admin-inscripcions/store', [EstudianteController::class, 'inscripcion'])->name('admin.inscripcion.store');
     Route::get('/show/{id}/estudiante', [EstudianteController::class, 'showEstudiante'])->name('admin.E.show');
     Route::put('/create-student-{id}-update', [EstudianteController::class, 'update'])->name('update.estudiantes');
-    Route::put('/create-conctato-{id}-update', [EstudianteController::class, 'updateContacto'])->name('update.contacto');
     //Docentes
     Route::get('/admin-docentes', [ChefsController::class, 'allDocentes'])->name('admin.docentes');
     Route::post('/create-docentes-store', [ChefsController::class, 'store'])->name('store.docentes');

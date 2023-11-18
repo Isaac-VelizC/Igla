@@ -41,7 +41,7 @@
                     <tbody>
                       @foreach ($users as $item)
                         <tr>
-                            <td><p>{{ $item->nombre }} {{ $item->ap_parteno }} {{ $item->ap_materno }}</p></td>
+                            <td><p>{{ $item->nombre }} {{ $item->ap_paterno }} {{ $item->ap_materno }}</p></td>
                             <td><p><a href="#0">{{ $item->email }}</a></p></td>
                             <td><p>{{ $item->ci }}</p></td>
                             <td><p>{{ $item->user->getRoleNames()->first() }}</p></td>

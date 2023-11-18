@@ -41,8 +41,8 @@
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label class="form-label">Genero:</label>
-                                    <select name="genero" class="selectpicker form-control" data-style="py-0">
-                                        <option>Seleccionar Genero</option>
+                                    <select name="genero" class="selectpicker form-control" data-style="py-0" required>
+                                        <option value="" selected>Seleccionar</option>
                                         <option value="Hombre" {{ old('Hombre') }}>Hombre</option>
                                         <option value="Mujer" {{ old('Mujer') }}>Mujer</option>
                                     </select>

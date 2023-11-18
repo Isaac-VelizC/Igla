@@ -21,17 +21,19 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('responsable_id')->nullable();
             $table->foreign('responsable_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('archivos_id')->nullable();
-            $table->foreign('archivos_id')->references('id')->on('documentos')->onDelete('cascade');
-            $table->unsignedBigInteger('curso_id')->nullable();
-            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            //$table->unsignedBigInteger('archivos_id')->nullable();
+            //$table->foreign('archivos_id')->references('id')->on('documentos')->onDelete('cascade');
+            //$table->unsignedBigInteger('curso_id')->nullable();
+            //$table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
             $table->datetime('comienzo');
-            $table->datetime('termina');
+            $table->datetime('termina')->nullable();
             $table->time('inicio');
             $table->time('fin');
-            $table->string('nombre');
+            $table->mediumText('nombre');
             $table->text('descripcion')->nullable();
             $table->boolean('estado')->default(true);
+            $table->boolean('todoeldia')->nullable();
+            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

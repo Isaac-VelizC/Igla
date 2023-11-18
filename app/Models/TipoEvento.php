@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Evento extends Model
+class TipoEvento extends Model
 {
     use HasFactory;
-    protected $table = "eventos";
+    public $timestamps = false;
+    protected $table = "tipo_eventos";
     protected $primaryKey = "id";
-    protected $fillable = ['responsable_id', 'comienzo', 'termina', 'inicio', 'fin', 'nombre', 'descripcion', 'estado'];
-
+    protected $fillable = ['nombre'];
 }

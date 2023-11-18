@@ -7,6 +7,7 @@ use App\Models\Horario;
 use App\Models\MetodoPago;
 use App\Models\Periodo;
 use App\Models\TipoEvaluacion;
+use App\Models\TipoEvento;
 use App\Models\TipoTrabajo;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -42,5 +43,12 @@ class TiposSeeder extends Seeder
         
         MetodoPago::create(['nombre' => 'Cuotas', 'sigla' => 'CT']);
         MetodoPago::create(['nombre' => 'Todo', 'sigla' => 'TD']);
+
+        TipoEvento::create(['nombre' => 'Clases y Prácticas Regulares']);
+        TipoEvento::create(['nombre' => 'Días Festivos y Celebraciones']);
+        TipoEvento::create(['nombre' => 'Ferias']);
+        TipoEvento::create(['nombre' => 'Fechas Límite para Inscripciones y Pago']);
+        TipoEvento::create(['nombre' => 'Fechas de Inicio y Final de Períodos']);
+        TipoEvento::create(['nombre' => 'Festivales y Eventos Especiales']);
     }
 }

@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="iq-navbar-header" style="height: 80px;">
-</div> 
+<div class="iq-navbar-header" style="height: 80px;"></div> 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
   <div class="row">
      <div class="col-md-12 col-lg-12">
@@ -20,7 +19,7 @@
                            <a href="{{ route('admin.users') }}">
                               <div class="progress-detail">
                                  <p  class="mb-2">Total de Usuarios</p>
-                                 <h4 class="counter">{{ $users->count() }}</h4>
+                                 <h4 class="counter">{{ count($users) }}</h4>
                               </div>
                            </a>
                        </div>
@@ -37,7 +36,7 @@
                            <a href="{{ route('admin.estudinte') }}">
                               <div class="progress-detail">
                                  <p  class="mb-2">Estudiantes</p>
-                                 <h4 class="counter">{{ $estudiantes->count() }}</h4>
+                                 <h4 class="counter">{{ count($estudiantes) }}</h4>
                               </div>
                            </a>
                        </div>
@@ -54,7 +53,7 @@
                            <a href="{{ route('admin.docentes') }}">
                               <div class="progress-detail">
                                  <p  class="mb-2">Docentes</p>
-                                 <h4 class="counter">{{ $docentes->count() }}</h4>
+                                 <h4 class="counter">{{ count($docentes) }}</h4>
                               </div>
                            </a>
                        </div>
@@ -71,7 +70,7 @@
                            <a href="{{ route('admin.inscripcion') }}">
                               <div class="progress-detail">
                                  <p  class="mb-2">Inscribir</p>
-                                 <h4 class="counter">$742K</h4>
+                                 <h4 class="counter"></h4>
                               </div>
                            </a>
                        </div>
@@ -85,10 +84,12 @@
                                  <path d="M24 7v-2c0-2.761-2.238-5-5-5h-14c-2.761 0-5 2.239-5 5v2h10v2h-10v6h4v2h-4v2c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-2h-8v-2h8v-6h-5v-2h5zm-16 11c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm0-8c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4zm3 0c0 .552-.447 1-1 1s-1-.448-1-1v-4c0-.552.447-1 1-1s1 .448 1 1v4z"/>
                               </svg>
                            </div>
-                          <div class="progress-detail">
-                             <p  class="mb-2">Materias</p>
-                             <h4 class="counter">$150K</h4>
-                          </div>
+                           <a href="{{ route('admin.cursos') }}">
+                              <div class="progress-detail">
+                                 <p  class="mb-2">Materias</p>
+                              <h4 class="counter">{{ count($materias) }}</h4>
+                           </div>
+                           </a>
                        </div>
                     </div>
                  </li>

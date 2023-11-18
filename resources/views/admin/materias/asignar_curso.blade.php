@@ -5,6 +5,12 @@
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="row">                
         <div class="col-sm-12 col-lg-12">
+            @if(session('error'))
+                <div id="myAlert" class="alert alert-left alert-danger alert-dismissible fade show mb-3 alert-fade" role="alert">
+                    <span>{{ session('error') }}</span>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card">
                 <div class="card-body">
                     <div class="new-user-info">
@@ -15,7 +21,7 @@
                             </div>
                         </div>
                         <hr>
-                        <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $asignado->id) : route('admin.asignar.guardar.curso') }}">
+                        <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $asignado->id) : route('admin.asignar.guardar.curso') }}" enctype="multipart/form-data">
                             @csrf
                             @if($isEditing)
                                 @method('PUT')
@@ -97,7 +103,11 @@
                                     <h5 class="mb-3">Imagen del Curso</h5>
                                     <div class="row">
                                             <div class="position-relative">
-                                                <img id="img" src="{{ asset('imagenes/fondo_blanco.jpg') }}" alt="portada" class="theme-color-default-img rounded portada-300">
+                                                @if ($isEditing)
+                                                    <img id="img" src="{{ asset($asignado->imagen) }}" alt="portada" class="theme-color-default-img rounded portada-300">
+                                                @else
+                                                    <img id="img" src="{{ asset('imagenes/fondo_blanco.jpg') }}" alt="portada" class="theme-color-default-img rounded portada-300">
+                                                @endif
                                                 <label class="upload-icone-portada bg-primary">
                                                         <input class="file-upload" type="file" name="imagen" id="customFile" accept="image/*">
                                                         <svg class="upload-button icon-14" width="14"  viewBox="0 0 24 24">

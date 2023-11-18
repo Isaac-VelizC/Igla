@@ -45,7 +45,7 @@ class CursoController extends Controller
         $curso->color = $request->color;
         $curso->descripcion = $request->descripcion;
         $curso->save();
-        return back()->with('success', 'La materia se registro con éxito.');
+        return back()->with('success', 'La materia ' . $curso->nombre . ' se registro con éxito.');
     }
     public function actualizarCurso(Request $request, $id)
     {
@@ -98,9 +98,19 @@ class CursoController extends Controller
             'aula' => 'required|numeric',
             'fechaInico' => 'required|date',
             'fechaFin' => 'required|date|after:fInico',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
+            'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
         $request->validate($rules);
+        $docenteHorarioOcupado = CursoDocente::where('docente_id', $request->docente)
+            ->where('horario_id', $request->horario)->first();
+        if ($docenteHorarioOcupado && $docenteHorarioOcupado->fecha_fin < $request->fechaInico ) {
+            return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
+        }
+        $aulaHorarioOcupado = CursoDocente::where('aula_id', $request->aula)
+            ->where('horario_id', $request->horario)->first();
+        if ($aulaHorarioOcupado && $aulaHorarioOcupado->fecha_fin < $request->fechaInico ) {
+            return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario.');
+        }
         $curso = new CursoDocente();
         $curso->docente_id = $request->docente;
         $curso->curso_id = $request->curso;
@@ -136,6 +146,16 @@ class CursoController extends Controller
             'fechaFin' => 'required|date|after:fInico',
             'imagen' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
         ]);
+        $docenteHorarioOcupado = CursoDocente::where('docente_id', $request->docente)
+        ->where('horario_id', $request->horario)->first();
+        if ($docenteHorarioOcupado && $docenteHorarioOcupado->fecha_fin < $request->fechaInico ) {
+            return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
+        }
+        $aulaHorarioOcupado = CursoDocente::where('aula_id', $request->aula)
+            ->where('horario_id', $request->horario)->first();
+        if ($aulaHorarioOcupado && $aulaHorarioOcupado->fecha_fin < $request->fechaInico ) {
+            return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario.');
+        }
         $curso = CursoDocente::find($id);
         $curso->docente_id = $request->docente;
         $curso->curso_id = $request->curso;

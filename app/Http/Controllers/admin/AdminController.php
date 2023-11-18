@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Curso;
 use App\Models\Docente;
 use App\Models\Estudiante;
 use App\Models\Miembro;
@@ -19,7 +20,8 @@ class AdminController extends Controller
         $users = User::all();
         $estudiantes = Estudiante::all();
         $docentes = Docente::all();
-        return view('admin.home', compact('users', 'estudiantes', 'docentes'));
+        $materias = Curso::all();
+        return view('admin.home', compact('users', 'estudiantes', 'docentes', 'materias'));
     }
 
     public function allPersonal() {

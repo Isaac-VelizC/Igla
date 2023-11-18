@@ -1,24 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="iq-navbar-header" style="height: 80px;">
-    @if(session('success'))
-        <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
-            <span>{{ session('success') }}</span>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-</div>
+<div class="iq-navbar-header" style="height: 80px;"></div>
 <div class="conatiner-fluid content-inner mt-n5 py-0">
-    <div class="row">    
-        <div class="col-sm-12 col-lg-12">
+    <div id="myAlert"></div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-3">
+            @livewire('admin.calendario')
+        </div>
+        <div class="col-sm-12 col-lg-9">
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
                         <h4 class="card-title">Gestionar el Calendario</h4>
                     </div>
                 </div>
-                <div class="card-body" wire:ignore>
+                <div class="card-body">
                     <div id="calendar1" class="calendar-s"></div>
                 </div>
             </div>
@@ -36,7 +33,9 @@
             <form class="needs-validation" novalidate id="formEventos">
                 {!! csrf_field() !!}
                 <div class="modal-body">
+                    <div id="alertas"></div>
                     <div class="row">
+                        <input type="hidden" id="id" name="id">
                         <div class="form-group col-md-12">
                             <label class="form-label">Calegoria</label>
                             <select class="form-select form-select-sm mb-3 shadow-none" name="tipo_id" required>
@@ -62,9 +61,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning">Modificar</button>
-                    <button type="button" class="btn btn-danger">Eliminar</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-warning"id="btnModificar">Modificar</button>
+                    <button type="button" class="btn btn-danger" id="btnEliminar">Eliminar</button>
                     <button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
                 </div>
             </form>

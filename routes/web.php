@@ -56,9 +56,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     //Calendario
     Route::get('/calendar', [CalendarioController::class, 'index'])->name('admin.calendario');
     Route::post('/calendar/store', [CalendarioController::class, 'store'])->name('admin.calendario.store');
-    Route::put('/calendar/{id}/evento/edit', [CalendarioController::class, 'update'])->name('admin.calendario.update');
-    Route::delete('/calendar/{id}/evento/delete', [CalendarioController::class, 'delete'])->name('admin.calendario.delete');
+    Route::post('/calendar/{id}/evento/edit', [CalendarioController::class, 'edit'])->name('admin.calendario.edit');
+    Route::post('/calendar/{id}/evento/update', [CalendarioController::class, 'update'])->name('admin.calendario.update');
+    Route::post('/calendar/{id}/evento/delete', [CalendarioController::class, 'delete'])->name('admin.calendario.delete');
     Route::get('/calendar/{id}/evento/show', [CalendarioController::class, 'show'])->name('admin.calendario.show');
+    Route::get('/calendar/mostrar', [CalendarioController::class, 'mostrar'])->name('admin.calendario.ver');
     //Cursos
     Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
     Route::post('/curso-info', [CursoController::class, 'guardarCurso'])->name('admin.guardar-curso');

@@ -2,6 +2,9 @@
 
 if (document.querySelectorAll('#calendar1').length) {
   document.addEventListener('DOMContentLoaded', function () {
+    const btnGuardar = document.getElementById("btnGuardar");
+    const btnEliminar = document.getElementById("btnEliminar");
+    const btnModificar = document.getElementById("btnModificar");
     let formulario = document.querySelector("#formEventos");
     let calendarEl = document.getElementById('calendar1');
     let calendar1 = new FullCalendar.Calendar(calendarEl, {
@@ -18,16 +21,11 @@ if (document.querySelectorAll('#calendar1').length) {
       header: {
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
+          right: "dayGridMonth,timeGridWeek"
       },
-      dateClick: function (info) {
-        formulario.reset();
-        $('#schedule-start-date').val(info.dateStr)
-        $('#schedule-end-date').val(info.dateStr)
-        $('#date-event').modal('show')
-      },
-
-      events: [
+      
+      events: baseUrl+"/calendar/mostrar",
+      /*[
         {
             title: 'Click for Google',
             url: 'http://google.com/',
@@ -158,29 +156,96 @@ if (document.querySelectorAll('#calendar1').length) {
             textColor: 'rgba(58,87,232,1)',
             borderColor: 'rgba(58,87,232,1)'
         }
-      ],
+      ],*/
 
-      eventClick:function(info) {
-        var evento = info.event;
-        console.log(evento);
+      dateClick:function (info) {
+        formulario.reset();
+        $('#schedule-start-date').val(info.dateStr)
+        $('#schedule-end-date').val(info.dateStr)
+        btnEliminar.style.display = 'none';
+        btnModificar.style.display = 'none';
+        btnGuardar.style.display = 'block';
+        $('#date-event').modal('show')
+      },
+
+      eventClick:function (info) {
+        axios.post(baseUrl+"/calendar/"+info.event.id+"/evento/edit")
+            .then((respuesta) => {
+                formulario.id.value = respuesta.data.id;
+                formulario.tipo_id.value = respuesta.data.tipo_id;
+                formulario.title.value = respuesta.data.title;
+                formulario.descripcion.value = respuesta.data.descripcion;
+                formulario.start.value = respuesta.data.start;
+                formulario.end.value = respuesta.data.end;
+                btnEliminar.style.display = 'block';
+                btnModificar.style.display = 'block';
+                btnGuardar.style.display = 'none';
+                $("#date-event").modal("show");
+                calendar1.refetchEvents();
+            })
+            .catch(error => {
+                const myAlert = $("#alertas");
+                if (error.response && error.response.status === 422 && error.response.data.errors) {
+                    const errores = error.response.data.errors;
+                    Object.keys(errores).forEach((campo) => {
+                        const mensajeError = errores[campo][0];
+                        const campoInput = $(`#${campo}`);
+                        campoInput.addClass("is-invalid");
+                        campoInput.next('.invalid-feedback').html(mensajeError);
+                    });
+                } else if (error.response && error.response.data && error.response.data.error) {
+                    myAlert.html('<div class="alert alert-left alert-danger alert-dismissible fade show mb-3 alert-fade" role="alert">' +
+                        '<span>' + error.response.data.error + '</span>' +
+                        '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                        '</div>');
+                }
+            });
       }
   });
   calendar1.render();
-    document.getElementById("btnGuardar").addEventListener("click", function(event) {
+    btnGuardar.addEventListener("click", function(event) {
+        enviarDatos("/calendar/store", event);
+    });
+    btnEliminar.addEventListener("click", function(event) {
+        enviarDatos("/calendar/"+ formulario.id.value +"/evento/delete", event);
+    });
+    btnModificar.addEventListener("click", function(event) {
+        enviarDatos("/calendar/"+ formulario.id.value +"/evento/update", event);
+    });
+
+    function enviarDatos(url, event) {
         event.preventDefault();
         const datos = new FormData(formulario);
-        console.log(datos);
-        console.log(formulario.title.value);
-        axios.post("http://localhost:8000/calendar/store", datos)
+        const newUrl = baseUrl + url;
+        axios.post(newUrl, datos)
             .then((respuesta) => {
+                calendar1.refetchEvents();
+                if (respuesta.data && respuesta.data.message) {
+                    $("#myAlert").html('<div class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">' +
+                    '<span>' + respuesta.data.message + '</span>' +
+                    '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                    '</div>');
+                }
                 $("#date-event").modal("hide");
             })
             .catch(error => {
-                if (error.response) {
-                    console.log(error.response.data);
+                const myAlert = $("#alertas");
+                if (error.response && error.response.status === 422 && error.response.data.errors) {
+                    const errores = error.response.data.errors;
+                    Object.keys(errores).forEach((campo) => {
+                        const mensajeError = errores[campo][0];
+                        const campoInput = $(`#${campo}`);
+                        campoInput.addClass("is-invalid");
+                        campoInput.next('.invalid-feedback').html(mensajeError);
+                    });
+                } else if (error.response && error.response.data && error.response.data.error) {
+                    myAlert.html('<div class="alert alert-left alert-danger alert-dismissible fade show mb-3 alert-fade" role="alert">' +
+                        '<span>' + error.response.data.error + '</span>' +
+                        '<button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                        '</div>');
                 }
             });
-    });
+    }
   });
   
 }

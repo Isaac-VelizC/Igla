@@ -20,7 +20,9 @@
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/daygrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/timegrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/list/main.css')}}' />
-
+    <script>
+        var baseUrl = {!! json_encode(url('/')) !!}
+    </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     @stack('style')
     @livewireStyles
@@ -46,8 +48,7 @@
     </main>
     @livewireScripts
     {{-- ...Some more scripts... --}}
-    <!-- Asegúrate de que la ruta sea correcta -->
-    <script src="{{ asset('assets2/js/axios.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     @stack('scripts')
     <script src="{{ asset('assets2/js/core/libs.min.js')}}"></script>

@@ -14,7 +14,7 @@ class Evento extends Model
         'tipo_id' => 'required|numeric',
         'title' => 'required|string',
         'start' => 'required|date',
-        'end' => 'required|date|after:start',
+        'end' => 'required|date',
     ];
     protected $fillable = ['responsable_id', 'tipo_id', 'start', 'end', 'title', 'descripcion', 'estado'];
 

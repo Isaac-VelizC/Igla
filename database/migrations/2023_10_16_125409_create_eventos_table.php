@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tipo_eventos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+            $table->string('color')->nullable();
             $table->timestamps();
         });
         
@@ -21,19 +22,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('responsable_id')->nullable();
             $table->foreign('responsable_id')->references('id')->on('users')->onDelete('cascade');
-            //$table->unsignedBigInteger('archivos_id')->nullable();
-            //$table->foreign('archivos_id')->references('id')->on('documentos')->onDelete('cascade');
-            //$table->unsignedBigInteger('curso_id')->nullable();
-            //$table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
-            $table->datetime('comienzo');
-            $table->datetime('termina')->nullable();
-            $table->time('inicio');
-            $table->time('fin');
-            $table->mediumText('nombre');
+            $table->unsignedBigInteger('tipo_id')->nullable();
+            $table->foreign('tipo_id')->references('id')->on('tipo_eventos')->onDelete('cascade');
+            $table->datetime('start');
+            $table->datetime('end')->nullable();
+            $table->mediumText('title');
             $table->text('descripcion')->nullable();
             $table->boolean('estado')->default(true);
-            $table->boolean('todoeldia')->nullable();
-            $table->string('color')->nullable();
             $table->timestamps();
         });
     }

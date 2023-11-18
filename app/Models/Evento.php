@@ -10,6 +10,12 @@ class Evento extends Model
     use HasFactory;
     protected $table = "eventos";
     protected $primaryKey = "id";
-    protected $fillable = ['responsable_id', 'comienzo', 'termina', 'inicio', 'fin', 'nombre', 'descripcion', 'estado'];
+    static $rules = [
+        'tipo_id' => 'required|numeric',
+        'title' => 'required|string',
+        'start' => 'required|date',
+        'end' => 'required|date|after:start',
+    ];
+    protected $fillable = ['responsable_id', 'tipo_id', 'start', 'end', 'title', 'descripcion', 'estado'];
 
 }

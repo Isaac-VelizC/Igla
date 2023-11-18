@@ -11,5 +11,5 @@ class TipoEvento extends Model
     public $timestamps = false;
     protected $table = "tipo_eventos";
     protected $primaryKey = "id";
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'color'];
 }

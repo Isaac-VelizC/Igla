@@ -2,6 +2,7 @@
 
 if (document.querySelectorAll('#calendar1').length) {
   document.addEventListener('DOMContentLoaded', function () {
+    let formulario = document.querySelector("#formEventos");
     let calendarEl = document.getElementById('calendar1');
     let calendar1 = new FullCalendar.Calendar(calendarEl, {
       selectable: true,
@@ -20,10 +21,12 @@ if (document.querySelectorAll('#calendar1').length) {
           right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek"
       },
       dateClick: function (info) {
-          $('#schedule-start-date').val(info.dateStr)
-          $('#schedule-end-date').val(info.dateStr)
-          $('#date-event').modal('show')
+        formulario.reset();
+        $('#schedule-start-date').val(info.dateStr)
+        $('#schedule-end-date').val(info.dateStr)
+        $('#date-event').modal('show')
       },
+
       events: [
         {
             title: 'Click for Google',
@@ -32,13 +35,6 @@ if (document.querySelectorAll('#calendar1').length) {
             backgroundColor: 'rgba(58,87,232,0.2)',
             textColor: 'rgba(58,87,232,1)',
             borderColor: 'rgba(58,87,232,1)'
-        },
-        {
-            title: 'All Day Event',
-            start: moment(new Date(), 'YYYY-MM-DD').add(-18, 'days').format('YYYY-MM-DD') + 'T05:30:00.000Z',
-            backgroundColor: 'rgba(108,117,125,0.2)',
-            textColor: 'rgba(108,117,125,1)',
-            borderColor: 'rgba(108,117,125,1)'
         },
         {
             title: 'Long Event',
@@ -162,9 +158,29 @@ if (document.querySelectorAll('#calendar1').length) {
             textColor: 'rgba(58,87,232,1)',
             borderColor: 'rgba(58,87,232,1)'
         }
-      ]
+      ],
+
+      eventClick:function(info) {
+        var evento = info.event;
+        console.log(evento);
+      }
   });
   calendar1.render();
+    document.getElementById("btnGuardar").addEventListener("click", function(event) {
+        event.preventDefault();
+        const datos = new FormData(formulario);
+        console.log(datos);
+        console.log(formulario.title.value);
+        axios.post("http://localhost:8000/calendar/store", datos)
+            .then((respuesta) => {
+                $("#date-event").modal("hide");
+            })
+            .catch(error => {
+                if (error.response) {
+                    console.log(error.response.data);
+                }
+            });
+    });
   });
   
 }

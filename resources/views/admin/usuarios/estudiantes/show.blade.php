@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <div class="text-center">
                         <div class="user-profile">
-                           @if ($estudiante->photo)
+                           @if ($estudiante->photo != 'user.jpg')
                               <img src="{{ asset($estudiante->photo) }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
                            @else
                               <img src="{{ asset('imagenes/user.jpg') }}" alt="profile-img" class="rounded-pill avatar-130 img-fluid">
@@ -88,7 +88,7 @@
                                 @livewire('usuario.contacto-edit', ['estudiante' => $estudiante->estudiante->id])
                             </div>
                             <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab1">
-                                @include('admin.usuarios.estudiantes.widgets.info_materias')
+                                @livewire('estudiante.materias', ['estudiante' => $est->id])
                             </div>
                         </div>
                     </div>
@@ -98,7 +98,6 @@
        </div>
     </div>
 </div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const formulario = document.getElementById('formHabilitarDesabilitar');
@@ -139,6 +138,4 @@
         habilitarDesabilitarCampos(false);
     });
 </script>
-    
-    
 @endsection

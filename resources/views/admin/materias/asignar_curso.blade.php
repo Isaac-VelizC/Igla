@@ -21,14 +21,14 @@
                             </div>
                         </div>
                         <hr>
-                        <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $asignado->id) : route('admin.asignar.guardar.curso') }}" enctype="multipart/form-data">
-                            @csrf
-                            @if($isEditing)
-                                @method('PUT')
-                            @endif
-                            <div class="row">
-                                <input type="hidden" name="curso" value="{{ $materia->id }}">
-                                <div class="col-sm-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-4">
+                                <form class="needs-validation" novalidate method="POST" action="{{ $isEditing ? route('admin.asignar.actualizar-curso', $asignado->id) : route('admin.asignar.guardar.curso') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    @if($isEditing)
+                                        @method('PUT')
+                                    @endif
+                                    <input type="hidden" name="curso" value="{{ $materia->id }}">
                                     <div class="row">
                                         <div class="form-group col-md-12 d-flex">
                                             @if ($horarios->count() > 0)
@@ -98,31 +98,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12 col-lg-6">
-                                    <h5 class="mb-3">Imagen del Curso</h5>
-                                    <div class="row">
-                                            <div class="position-relative">
-                                                @if ($isEditing)
-                                                    <img id="img" src="{{ asset($asignado->imagen) }}" alt="portada" class="theme-color-default-img rounded portada-300">
-                                                @else
-                                                    <img id="img" src="{{ asset('imagenes/fondo_blanco.jpg') }}" alt="portada" class="theme-color-default-img rounded portada-300">
-                                                @endif
-                                                <label class="upload-icone-portada bg-primary">
-                                                        <input class="file-upload" type="file" name="imagen" id="customFile" accept="image/*">
-                                                        <svg class="upload-button icon-14" width="14"  viewBox="0 0 24 24">
-                                                            <path fill="#ffffff" d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" />
-                                                        </svg>
-                                                </label>
-                                                @error('imagen')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                    </div>
-                                </div>
+                                    <button type="submit" class="btn btn-primary">{{ $isEditing ? 'Actualizar' : 'Habilitar' }}</button>
+                                </form>
                             </div>
-                           <button type="submit" class="btn btn-primary">{{ $isEditing ? 'Actualizar' : 'Habilitar' }}</button>
-                        </form>
+                            <div class="col-sm-12 col-lg-8">
+                                <div id="calendar2" class="calendar-s"></div>
+                            </div>
+                        </div>
                      </div>
                 </div>
             </div>
@@ -131,18 +113,38 @@
 </div>
 
 <script>
+
+"use strict"
+
+if (document.querySelectorAll('#calendar2').length) {
+    document.addEventListener('DOMContentLoaded', function () {
+        let calendarEl = document.getElementById('calendar2');
+        let calendar2 = new FullCalendar.Calendar(calendarEl, {
+        selectable: true,
+        plugins: ["timeGrid", "dayGrid", "list", "interaction"],
+        timeZone: "UTC",
+        defaultView: "dayGridMonth",
+        locale: 'es',
+        displayEventTime:false,
+        contentHeight: "auto",
+        eventLimit: true,
+        droppable: true,
+        dayMaxEvents: 4,
+        header: {
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth"
+        },
+        events: baseUrl+"/calendar/mostrar",
+    });
+    calendar2.render();
     const cupoInput = document.getElementById('cupoid');
-    document.getElementById('aulaSelect').addEventListener('change', function() {
-        const selectedOption = this.options[this.selectedIndex];
-        const cupo = selectedOption.getAttribute('cupo');
-        cupoInput.value = cupo;
+        document.getElementById('aulaSelect').addEventListener('change', function() {
+            const selectedOption = this.options[this.selectedIndex];
+            const cupo = selectedOption.getAttribute('cupo');
+            cupoInput.value = cupo;
+        });
     });
-</script>
-<script>
-    var image = document.getElementById('img')
-    var input = document.getElementById('customFile')
-    input.addEventListener('change', (e) => {
-        image.src = URL.createObjectURL(e.target.files[0]);
-    });
+}
 </script>
 @endsection

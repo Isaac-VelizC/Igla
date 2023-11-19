@@ -98,32 +98,36 @@ class CursoController extends Controller
             'aula' => 'required|numeric',
             'fechaInico' => 'required|date',
             'fechaFin' => 'required|date|after:fInico',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg',
         ];
         $request->validate($rules);
-        $docenteHorarioOcupado = CursoDocente::where('docente_id', $request->docente)
-            ->where('horario_id', $request->horario)->first();
-        if ($docenteHorarioOcupado && $docenteHorarioOcupado->fecha_fin < $request->fechaInico ) {
-            return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
+
+        $docenteOcupado = CursoDocente::where('docente_id', $request->docente)
+        ->where('estado', true)
+        ->where('horario_id', $request->horario)
+        ->where('fecha_fin', '>=', $request->fechaInico)->first();
+
+        if ($docenteOcupado) {
+        return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
         }
         $aulaHorarioOcupado = CursoDocente::where('aula_id', $request->aula)
-            ->where('horario_id', $request->horario)->first();
-        if ($aulaHorarioOcupado && $aulaHorarioOcupado->fecha_fin < $request->fechaInico ) {
-            return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario.');
+        ->where('estado', true)
+        ->where('horario_id', $request->horario)
+        ->where('fecha_fin', '>=', $request->fechaInico)->first();
+
+        if ($aulaHorarioOcupado) {
+        return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario por una materia activa.');
         }
+
         $curso = new CursoDocente();
-        $curso->docente_id = $request->docente;
-        $curso->curso_id = $request->curso;
-        $curso->responsable_id = auth()->user()->id;
-        $curso->aula_id = $request->aula;
-        $curso->horario_id = $request->horario;
-        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
-            $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
-            $archivoPath = $request->file('imagen')->storeAs('img/cursos', $nombreArchivo, 'public');
-            $curso->imagen = 'storage/' . $archivoPath;
-        }
-        $curso->fecha_ini = $request->fechaInico;
-        $curso->fecha_fin = $request->fechaFin;
+        $curso->fill([
+        'docente_id' => $request->docente,
+        'curso_id' => $request->curso,
+        'responsable_id' => auth()->user()->id,
+        'aula_id' => $request->aula,
+        'horario_id' => $request->horario,
+        'fecha_ini' => $request->fechaInico,
+        'fecha_fin' => $request->fechaFin,
+        ]);
         $curso->save();
         return redirect()->route('admin.cursos.activos')->with('success', 'El curso se habilito con éxito.');
     }
@@ -144,36 +148,38 @@ class CursoController extends Controller
             'aula' => 'required|numeric',
             'fechaInico' => 'required|date',
             'fechaFin' => 'required|date|after:fInico',
-            'imagen' => 'nullable|image|mimes:jpeg,png,jpg|dimensions:max_width=2000,max_height=2000',
         ]);
-        $docenteHorarioOcupado = CursoDocente::where('docente_id', $request->docente)
-        ->where('horario_id', $request->horario)->first();
-        if ($docenteHorarioOcupado && $docenteHorarioOcupado->fecha_fin < $request->fechaInico ) {
-            return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
+        $docenteOcupado = CursoDocente::where('docente_id', $request->docente)
+        ->where('estado', true)
+        ->where('horario_id', $request->horario)
+        ->where('fecha_fin', '>=', $request->fechaInico)
+        ->where('id', '!=', $id)
+        ->first();
+
+        if ($docenteOcupado) {
+        return redirect()->back()->with('error', 'El docente ya está asignado en ese horario.');
         }
+
         $aulaHorarioOcupado = CursoDocente::where('aula_id', $request->aula)
-            ->where('horario_id', $request->horario)->first();
-        if ($aulaHorarioOcupado && $aulaHorarioOcupado->fecha_fin < $request->fechaInico ) {
-            return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario.');
+        ->where('estado', true)
+        ->where('horario_id', $request->horario)
+        ->where('fecha_fin', '>=', $request->fechaInico)
+        ->where('id', '!=', $id)
+        ->first();
+
+        if ($aulaHorarioOcupado) {
+        return redirect()->back()->with('error', 'El aula ya está ocupada en ese horario por una materia activa.');
         }
         $curso = CursoDocente::find($id);
-        $curso->docente_id = $request->docente;
-        $curso->curso_id = $request->curso;
-        $curso->responsable_id = auth()->user()->id;
-        $curso->aula_id = $request->aula;
-        $curso->horario_id = $request->horario;
-        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
-            $rutaImagenAnterior = $curso->imagen;
-            $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
-            $archivoPath = $request->file('imagen')->storeAs('img/cursos', $nombreArchivo, 'public');
-            $curso->imagen = 'storage/' . $archivoPath;
-            if ($rutaImagenAnterior && Storage::disk('public')->exists($rutaImagenAnterior)) {
-                Storage::disk('public')->delete($rutaImagenAnterior);
-            }
-        }
-        $curso->fecha_ini = $request->fechaInico;
-        $curso->fecha_fin = $request->fechaFin;
-        $curso->update();
+        $curso->update([
+            'docente_id' => $request->docente,
+            'curso_id' => $request->curso,
+            'responsable_id' => auth()->user()->id,
+            'aula_id' => $request->aula,
+            'horario_id' => $request->horario,
+            'fecha_ini' => $request->fechaInico,
+            'fecha_fin' => $request->fechaFin,
+        ]);
         return redirect()->route('admin.cursos.activos')->with('success', 'El curso se actualizo con éxito.');
     }
     public function showCurso($id) {

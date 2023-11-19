@@ -64,6 +64,24 @@ class CursoController extends Controller
     public function uploads(Request $request) {
         dd($request);
         CursoDocente::find()->create([]);
+        
+        /*if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
+        $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
+        $archivoPath = $request->file('imagen')->storeAs('img/cursos', $nombreArchivo, 'public');
+        $curso->imagen = 'storage/' . $archivoPath;
+        }*/
+        /**
+         * 
+        if ($request->hasFile('imagen') && $request->file('imagen')->isValid()) {
+            $rutaImagenAnterior = $curso->imagen;
+            $nombreArchivo = uniqid() . '.' . $request->file('imagen')->extension();
+            $archivoPath = $request->file('imagen')->storeAs('img/cursos', $nombreArchivo, 'public');
+            $curso->imagen = 'storage/' . $archivoPath;
+            if ($rutaImagenAnterior && Storage::disk('public')->exists($rutaImagenAnterior)) {
+                Storage::disk('public')->delete($rutaImagenAnterior);
+            }
+        }
+         */
         return back();
     }
 }

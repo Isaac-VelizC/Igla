@@ -18,4 +18,8 @@ class Evento extends Model
     ];
     protected $fillable = ['responsable_id', 'tipo_id', 'start', 'end', 'title', 'descripcion', 'estado'];
 
+    public function tipo()
+    {
+        return $this->belongsTo(TipoEvento::class, 'tipo_id');
+    }
 }

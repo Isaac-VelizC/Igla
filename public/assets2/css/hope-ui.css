@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.tipoEvento {
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
 /*!
 * Version: 1.2.0
 * Template: Hope-Ui - Responsive Bootstrap 5 Admin Dashboard Template
@@ -7,6 +12,7 @@
 * NOTE: This file contains the styling for Template.
 *
 */
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 :focus {
   outline: none;

@@ -1,34 +1,63 @@
 <div>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
+    </style>
+    @if (session()->has('message'))
+        <div class="alert alert-danger">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="card">
-        <div class="card-header d-flex justify-content-between">
+        <div class="card-body">
+            <div class="text-center">
+                <div class="header-title">
+                    <h4 class="card-title">Agregar Nuevo</h4>
+                </div>
+            </div>
+            <form wire:submit.prevent='{{ $modoEdicion ? 'update' : 'store' }}'>
+                @csrf
+                <div class="form-group">
+                    <label class="form-label">Nombre:</label>
+                    <input type="nombre" class="form-control" wire:model="eventos.nombre">
+                    @error('eventos.nombre') <span class="error">{{ $message }}</span> @enderror
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Color de Fondo:</label>
+                    <input type="color" class="form-control" wire:model="eventos.backgroundColor" required>
+                    @error('eventos.backgroundColor') <span class="error">{{ $message }}</span> @enderror
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Color de Texto:</label>
+                    <input type="color" class="form-control" wire:model="eventos.textColor">
+                    @error('eventos.textColor') <span class="error">{{ $message }}</span> @enderror
+                </div>
+                @if($modoEdicion)
+                    <input type="hidden" wire:model="eventId">
+                @endif
+                <div class="text-center">
+                    @if ($modoEdicion)
+                        <a wire:click="eliminar" class="h3 badge bg-danger" style="color: white">Borrar</a>
+                    @endif
+                    <button type="submit" class="h3 badge bg-primary" style="color: white">{{ $modoEdicion ? 'Actualizar' : 'Guardar' }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header text-center">
             <div class="header-title">
                 <h4 class="card-title">Tipos de Eventos</h4>
             </div>
         </div>
-    </div>
-    <div class="card">
-            <div class="card-body">
-                <div class="text-center">
-                    <div class="header-title">
-                        <h4 class="card-title">Tipo de Evento</h4>
-                    </div>
+        <div class="card-body">
+            @foreach ($categorias as $item)
+                <div class="fc-event" wire:click='edit({{$item->id}})' style="margin-bottom: 5px;background-color: {{ $item->backgroundColor }}; color: {{$item->TextColor}}">
+                    <span class="marquee-text tipoEvento">{{ $item->nombre }}</span>
                 </div>
-               <form action="">
-                 @csrf
-                  <div class="form-group">
-                     <label class="form-label" for="pass">Nombre:</label>
-                     <input type="nombre" class="form-control" wire:model="pass" required>
-                  </div>
-                  <div class="form-group">
-                     <label class="form-label">backgroundColor:</label>
-                     <input type="color" class="form-control" wire:model="backgroundColor" required>
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label">textColor:</label>
-                    <input type="color" class="form-control" wire:model="textColor">
-                 </div>
-                  <button type="submit" class="btn btn-primary">Guardar</button>
-               </form>
-         </div>
+            @endforeach
+        </div>
     </div>
 </div>

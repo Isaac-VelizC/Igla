@@ -68,7 +68,26 @@ class CalendarioController extends Controller
         dd($id);
     }
     public function mostrar() {
-        $events = Evento::all();
-        return response()->json($events);
+        try {
+            $events = Evento::with('tipo')->get();
+    
+            // Transformar la colección para incluir las propiedades del tipo directamente
+            $events = $events->map(function ($event) {
+                return [
+                    'id' => $event->id,
+                    'title' => $event->title,
+                    'start' => $event->start,
+                    'end' => $event->end,
+                    'descripcion' => $event->descripcion,
+                    'tipo_id' => $event->tipo_id,
+                    'backgroundColor' => $event->tipo->backgroundColor,
+                    'textColor' => $event->tipo->textColor,
+                ];
+            });
+    
+            return response()->json($events);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

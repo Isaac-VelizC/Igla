@@ -12,4 +12,8 @@ class TipoEvento extends Model
     protected $table = "tipo_eventos";
     protected $primaryKey = "id";
     protected $fillable = ['nombre', 'backgroundColor', 'textColor'];
+    public function eventos()
+    {
+        return $this->hasMany(Evento::class, 'tipo_id');
+    }
 }

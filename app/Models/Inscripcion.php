@@ -16,9 +16,12 @@ class Inscripcion extends Model
     {
         return $this->belongsTo(Estudiante::class, 'estudiante_id');
     }
-
     public function responsable()
     {
         return $this->belongsTo(User::class, 'responsable_id');
+    }
+    public function cursoDocente()
+    {
+        return $this->belongsTo(CursoDocente::class, 'materia_id');
     }
 }

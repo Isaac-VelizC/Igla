@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/dark.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets2/css/customizer.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/rtl.min.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('assets2/css/modal.css')}}"/>
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/core/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/daygrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/timegrid/main.css')}}' />

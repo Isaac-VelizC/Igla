@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
+    @endif
     <div class="card-body">
         <div class="new-user-info">
             <div class="row">
@@ -6,10 +11,10 @@
                     @foreach ($materias as $item)
                         <div class="col-lg-4 col-md-12">
                             <div @if(optional($item->cursoDocentes)->where('estado', true)->isNotEmpty())
-                                data-bs-placement="top" data-bs-toggle="modal" data-bs-target="#materias-{{$item->id}}"
+                                wire:click="seleccionarMateria({{ $item->id }})"
                             @else
                                 style="background-color: rgba(0, 0, 0, 0.5);"
-                            @endif style="background-color: {{ $item->color }};" class="card">
+                            @endif style="background-color: {{ $item->color }}; cursor: pointer;" class="card">
                                 <div class="card-body">
                                     <div class="d-grid grid-flow-col align-items-center justify-content-between mb-2">
                                         <div class="d-flex align-items-center">
@@ -29,60 +34,49 @@
             </div>
         </div>
     </div>
-    
-@foreach ($materias as $item)
-<div id="materias-{{$item->id}}" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 
-        <div class="modal-dialog" style="max-height: calc(100vh - 20px); margin-top: 10px; margin-bottom: 10px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ $item->nombre }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <p>{{ $item->descripcion }}</p>
-                        <div class="bd-example">
+    @if ($showModal)
+        <input type="checkbox" id="my-modal-toggle" class="my-modal-toggle" checked>
+        <div class="my-modal-container">
+            <div class="my-modal">
+                @if ($materiaSeleccionada)
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ $materiaSeleccionada->nombre }}</h5>
+                        <button type="button" class="btn-close" wire:click="cerrarModal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <p>{{ $materiaSeleccionada->descripcion }}</p>
                             <ul class="nav nav-pills">
                                 @foreach ($horarios as $hora)
-                                    <li class="nav-item">
-                                        <a class="nav-link {{ $tabActiva == $hora->turno ? 'active' : '' }}"
-                                           aria-current="page"
-                                           wire:click="cursos({{$item->id}}, '{{ $hora->id }}')">
-                                           {{ $hora->turno }}
-                                        </a>
+                                    <li class="nav-item" style="cursor: pointer;">
+                                        <button class="nav-link {{ $tabActiva == $hora->id ? 'active' : '' }}"
+                                            aria-current="page" wire:click="cursos({{ $materiaSeleccionada->id }}, '{{ $hora->id }}')">
+                                            {{ $hora->turno }}
+                                        </button>
                                     </li>
                                 @endforeach
                             </ul>
                             @if ($tabActiva)
                                 <div class="row">
-                                    @foreach ($cursosActivos as $curso)
+                                    @foreach ($cursosActivos as $mat)
                                         <div class="col-md-12">
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="d-flex justify-content-between">
                                                         <div>
-                                                            <span><b>Revenue</b></span>
-                                                            <div class="mt-2">
-                                                                <h2 class="counter">$35000</h2>
-                                                            </div>
+                                                            <span><b>Docente: {{ $mat->docente->persona->nombre }}</b></span>
+                                                            <div class="mt-2"><p>Horario: {{ $mat->horario->turno }}</p></div>
                                                         </div>
-                                                        <div>
-                                                            <span class="badge bg-primary">Monthly</span>
-                                                        </div>
+                                                        @if ($estadoEst)
+                                                            <div wire:click='programarMateria({{$mat->id}})'><span class="badge bg-primary">Programar</span></div>
+                                                        @else
+                                                            <div wire:click='borrarProgramacion({{$mat->id}})'><span class="badge bg-danger">Quitar</span></div>
+                                                        @endif
                                                     </div>
-                                                    <div class="d-flex justify-content-between mt-2">
-                                                        <div>
-                                                            <span>Total Revenue</span>
-                                                        </div>
-                                                        <div>
-                                                            <span>35%</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <div class="progress bg-soft-primary shadow-none w-100" style="height: 6px">
-                                                            <div class="progress-bar bg-primary" data-toggle="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                                        </div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <div><span>Aula:{{ $mat->aula->nombre }}</span></div>
+                                                        <div><span>Cupos: 0 / {{ $mat->aula->capacidad }}</span></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,18 +84,18 @@
                                     @endforeach
                                 </div>
                             @else
-                                <div class="">
+                                <div class="text-center">
                                     <p>Selecciona un horario para ver la información correspondiente.</p>
                                 </div>
                             @endif
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Programar</button>
-                </div>
+                @else
+                    <div class="text-center">
+                        <p>Selecciona una materia para ver la información correspondiente.</p>
+                    </div>
+                @endif
             </div>
         </div>
-    </div>
-    @endforeach
+    @endif
 </div>

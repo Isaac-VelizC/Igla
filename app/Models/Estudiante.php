@@ -11,7 +11,10 @@ class Estudiante extends Model
     protected $table = "estudiantes";
     protected $primaryKey = "id";
     protected $fillable = ['pers_id', 'contact_id', 'turno_id', 'direccion', 'fecha_nacimiento', 'estado', 'titulo', 'graduado'];
-
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class, 'estudiante_id', 'id');
+    }
     public function contacto()
     {
         return $this->belongsTo(Contacto::class, 'contact_id');

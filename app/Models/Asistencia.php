@@ -13,18 +13,14 @@ class Asistencia extends Model
     protected $primaryKey = "id";
     protected $fillable = ['estudiante_id', 'curso_id', 'asistencia', 'fecha', 'estado'];
 
-
-    protected $with = ['attendanceType'];
-
-    /*protected $dispatchesEvents = [
-        'saved' => AttendanceSavedEvent::class,
-    ];*/
-
-    /*public function getActivitylogOptions(): LogOptions
+    public function estudiante()
     {
-        return LogOptions::defaults()->logUnguarded();
-    }*/
-
+        return $this->belongsTo(Estudiante::class, 'estudiante_id', 'id');
+    }
+    public function cursoDocente()
+    {
+        return $this->belongsTo(CursoDocente::class, 'curso_id', 'curso_id');
+    }
     public function student()
     {
         return $this->belongsTo(Estudiante::class);

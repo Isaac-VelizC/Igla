@@ -106,10 +106,6 @@ Route::middleware(['auth', 'role:Chef'])->group(function () {
     Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
     Route::get('/curso/{id}/docente', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
     //Rutas de curso
-    Route::get('/curso/{id}/asistencia', [DocenteCursoController::class, 'cursoAistencia'])->name('cursos.asistencia');
-    Route::get('/curso/{id}/estudiantes', [DocenteCursoController::class, 'cursoEstudiantes'])->name('cursos.estudiantes');
-    Route::get('/curso/{id}/trabajos', [DocenteCursoController::class, 'cursoTrabajos'])->name('cursos.trabajos');
-    Route::get('/curso/{id}/configuracion', [DocenteCursoController::class, 'cursoConfiguracion'])->name('cursos.configuracion');
     Route::post('/config/docs/{id}/', [DocenteCursoController::class, 'uploadDocuments'])->name('materia.doc.configuracion');
     //recetas
     Route::get('/recetas/chefs/lafff', [RecetaController::class, 'recetas'])->name('recetas');

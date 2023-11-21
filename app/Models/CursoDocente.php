@@ -24,7 +24,10 @@ class CursoDocente extends Model
         'whatsapp',
         'estado'
     ];
-
+    public function asistencias()
+    {
+        return $this->hasMany(Asistencia::class, 'curso_id', 'curso_id');
+    }
     public function curso()
     {
         return $this->belongsTo(Curso::class, 'curso_id');

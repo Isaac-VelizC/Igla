@@ -43,13 +43,13 @@
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade show active" id="pills-asistencia1" role="tabpanel" aria-labelledby="pills-asistencia-tab1">
-                                    @livewire('docente.asistencia-materia')
+                                    @livewire('docente.asistencia-materia', ['id' => $curso->id])
                                 </div>
                                 <div class="tab-pane fade" id="pills-trabajo1" role="tabpanel" aria-labelledby="pills-trabajo-tab1">
                                     @livewire('docente.trabajo-materia', ['id' => $curso->id])
                                 </div>
                                 <div class="tab-pane fade" id="pills-calificacion1" role="tabpanel" aria-labelledby="pills-calificacion-tab1">
-                                    @livewire('docente.calificacion-materia')
+                                    @livewire('docente.calificacion-materia', ['id' => $curso->id])
                                 </div>
                                 <div class="tab-pane fade" id="pills-config1" role="tabpanel" aria-labelledby="pills-config-tab1">
                                     @livewire('docente.configuracion-materia', ['id' => $curso->id])

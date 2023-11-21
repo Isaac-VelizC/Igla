@@ -7,6 +7,7 @@ use App\Models\Aula;
 use App\Models\Curso;
 use App\Models\CursoDocente;
 use App\Models\Docente;
+use App\Models\Estudiante;
 use App\Models\Horario;
 use App\Models\Pago;
 use App\Models\Periodo;
@@ -183,9 +184,12 @@ class CursoController extends Controller
         return redirect()->route('admin.cursos.activos')->with('success', 'El curso se actualizo con éxito.');
     }
     public function showCurso($id) {
-        $curso = CursoDocente::find($id);
-        return view('admin.materias.show', compact('curso'));
+        $num = 1;
+        $curso = CursoDocente::with('inscripciones.estudiante')->find($id);
+        $estudiantes = $curso->inscripciones->pluck('estudiante');
+        return view('admin.materias.show', compact('curso', 'estudiantes', 'num'));
     }
+    
     public function gestionarEstadoCurso(Request $request, $id) {
         $curso = CursoDocente::updateOrCreate(['id' => $id], ['estado' => $request->estado]);
         $action = $request->estado ? 'alta' : 'baja';

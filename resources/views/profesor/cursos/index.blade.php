@@ -24,7 +24,7 @@
                   @foreach ($cursos_A as $item)
                      <li class="swiper-slide card card-slide" data-aos="fade-up" data-aos-delay="1000">
                         <div class="card-body">
-                        <a href="{{ route('cursos.trabajos', [$item->id]) }}">
+                        <a href="{{ route('cursos.curso', [$item->id]) }}">
                            <div class="progress-widget">
                               <div class="rounded p-3 bg-soft" style="background-color: {{ $item->curso->color }}">
                                  <i class="fa fa-users"></i>

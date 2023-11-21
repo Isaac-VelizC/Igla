@@ -44,7 +44,7 @@ class Materias extends Component
     public function programarMateria($cursoDocenteId) {
         Inscripcion::create([
         'estudiante_id' => $this->idEst,
-        'responsable_id' => auth()->user()->id, 
+        'responsable_id' => auth()->user()->id,
         'materia_id' => $cursoDocenteId
         ]);
         $this->cerrarModal();

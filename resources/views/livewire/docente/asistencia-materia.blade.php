@@ -1,4 +1,5 @@
 <div>
+    <hr>
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
@@ -8,9 +9,9 @@
                         <div class="dropdown me-3">{{ strftime('%A, %e de %B de %Y', strtotime($fechaAsistencia)) }}</div>
                     </div>
                 </div>
-                @if(session('success'))
+                @if(session('message'))
                     <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
-                    <span>{{ session('success') }}</span>
+                    <span>{{ session('message') }}</span>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif

@@ -116,14 +116,4 @@
             </div>
         </div>
    </div>
-@push('scripts')
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-    <script>
-        ClassicEditor
-            .create(document.querySelector('#description'))
-            .catch(error => {
-                console.error(error);
-            });
-    </script>
-@endpush
 @endsection

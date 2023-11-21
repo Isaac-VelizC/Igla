@@ -70,5 +70,13 @@
     <script src='{{ asset('assets2/vendor/fullcalendar/interaction/main.js')}}'></script>
     <script src='{{ asset('assets2/vendor/moment.min.js')}}'></script>
     <script src='{{ asset('assets2/js/plugins/calender.js')}}'></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#descriptionEditor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </body>
 </html>

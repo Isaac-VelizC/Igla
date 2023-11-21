@@ -10,6 +10,6 @@ class Pregunta extends Model
     use HasFactory;
     protected $table = "preguntas";
     protected $primaryKey = "id";
-    protected $fillable = ['pregunta', 'curso_id', 'con_nota', 'nota', 'estado'];
+    protected $fillable = ['pregunta', 'curso_id', 'con_nota', 'nota', 'estado', 'tema_id', 'limite'];
 
 }

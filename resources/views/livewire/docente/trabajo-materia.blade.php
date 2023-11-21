@@ -1,4 +1,9 @@
 <div>
+    <style>
+        .cursoMano {
+            cursor: pointer;
+        }
+    </style>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -16,13 +21,24 @@
                                     Trabajo
                                 </span>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton04" style="">
-                                    <a class="dropdown-item" href="#">Tarea</a>
-                                    <a class="dropdown-item" href="#">Pregunta</a>
-                                    <a class="dropdown-item" href="#">Tema</a> 
+                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Tarea</a>
+                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Pregunta</a>
+                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Tema</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                @if(session('message'))
+                    <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">
+                    <span>{{ session('message') }}</span>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <div class="accordion" id="accordionExample">
+                    @include('profesor.cursos.modals.new_tarea')
+                    @include('profesor.cursos.modals.new_pregunta')
+                    @include('profesor.cursos.modals.new_tema')
                 </div>
             </div>
         </div>

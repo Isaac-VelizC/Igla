@@ -27,6 +27,7 @@ return new class extends Migration
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
             $table->boolean('con_nota')->default(true);
             $table->bigInteger('nota')->nullable();
+            $table->dateTime('con_limite')->default(true);
             $table->dateTime('limite')->nullable();
             $table->unsignedBigInteger('tema_id')->nullable();
             $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');

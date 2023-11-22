@@ -6,46 +6,6 @@
 * NOTE: This file contains the script for initialize & listener Template.
 */
 
-/*----------------------------------------------
-Index Of Script
-------------------------------------------------
-
-------- Plugin Init --------
-
-:: Sticky-Nav
-:: Popover
-:: Tooltip
-:: Circle Progress
-:: Progress Bar
-:: NoUiSlider
-:: CopyToClipboard
-:: CounterUp 2
-:: SliderTab
-:: Data Tables
-:: Active Class for Pricing Table
-:: AOS Animation Plugin
-
------- Functions --------
-
-:: Resize Plugins
-:: Loader Init
-:: Sidebar Toggle
-:: Back To Top
-
-------- Listners ---------
-
-:: DOMContentLoaded
-:: Window Resize
-:: DropDown
-:: Form Validation
-:: Flatpickr
-------------------------------------------------
-Index Of Script
-----------------------------------------------*/
-"use strict";
-/*---------------------------------------------------------------------
-              Sticky-Nav
------------------------------------------------------------------------*/
 window.addEventListener('scroll', function () {
   let yOffset = document.documentElement.scrollTop;
   let navbar = document.querySelector(".navs-sticky")

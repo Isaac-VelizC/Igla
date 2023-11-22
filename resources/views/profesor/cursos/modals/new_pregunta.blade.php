@@ -13,7 +13,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Instrucciones (Opcional)</label>
-                               <textarea type="text" class="form-control" wire:model="descripcion" id="descriptionEditor"></textarea>
+                                <textarea class="form-control" wire:model='descripcionPregunta' id="editorPregunta2"></textarea>
                             </div>
                           </div>
                        </div>

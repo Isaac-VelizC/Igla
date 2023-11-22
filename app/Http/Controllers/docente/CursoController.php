@@ -18,8 +18,10 @@ class CursoController extends Controller
     }
 
     public function curso($id) {
+        $user = Auth::user();
+        $role = $user->roles->first();
         $curso = CursoDocente::find($id);
-        return view('profesor.cursos.curso', compact('curso'));
+        return view('profesor.cursos.curso', compact('curso', 'role'));
     }
     public function uploadDocuments(Request $request, $id) {
         $request->validate([

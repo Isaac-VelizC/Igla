@@ -102,9 +102,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
 Route::middleware(['auth', 'role:Chef'])->group(function () {
     Route::get('/chef-dashboard', [ChefController::class, 'index'])->name('chef.home');
-    //Cursos
-    Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
-    Route::get('/curso/{id}/docente', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
     //Rutas de curso
     Route::post('/config/docs/{id}/', [DocenteCursoController::class, 'uploadDocuments'])->name('materia.doc.configuracion');
     //recetas
@@ -122,4 +119,7 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/reset/{id}/pass/pers', [AdminController::class, 'cambiarPass'])->name('cambiar.password.Admin'); /////Falta crear la funcion
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
     Route::get('/cursos/carrera', [InfoController::class, 'cursos'])->name('cursos.carrera');
+    //Cursos
+    Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
+    Route::get('/curso/{id}/materia', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
 });

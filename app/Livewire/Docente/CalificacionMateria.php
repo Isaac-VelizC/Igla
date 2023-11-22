@@ -7,9 +7,11 @@ use Livewire\Component;
 
 class CalificacionMateria extends Component
 {
+    public $estudiantes;
     public CursoDocente $materia;
     public function mount($id) {
-        $this->materia = CursoDocente::findOrFail($id);
+        $curso = CursoDocente::with('inscripciones.estudiante')->find($id);
+        $this->estudiantes = $curso->inscripciones->pluck('estudiante');
     }
     public function render()
     {

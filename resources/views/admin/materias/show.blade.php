@@ -41,7 +41,7 @@
                         </div>
                      </div>
                   </div>
-               </div> 
+               </div>
                <div class="card">
                   <div class="card-header d-flex align-items-center justify-content-between flex-wrap pb-3">
                      <h3 class="block-title">Listado de Estudiantes</h3>
@@ -82,7 +82,7 @@
                         </table>
                      </div>
                   </div>
-               </div>              
+               </div>
             </div>
          </div>
       </div>

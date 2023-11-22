@@ -1,19 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="iq-navbar-header" style="height: 215px;">
-  <div class="container-fluid iq-container">
-      <div class="row">
-          <div class="col-md-12">
-              <div class="flex-wrap d-flex justify-content-between align-items-center">
-                  <div>
-                     <h1 style="color: black">Cursos</h1>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+<div class="iq-navbar-header" style="height: 80px;"></div>
 
 <div class="conatiner-fluid content-inner mt-n5 py-0">
     <div class="row">
@@ -66,7 +54,7 @@
                                         <th>Modalidad</th>
                                         <th>Fecha Inicio</th>
                                         <th>Fecha Fin</th>
-                                        <th>Tags</th>
+                                        <th></th>
                                      </tr>
                                   </thead>
                                   <tbody>
@@ -74,10 +62,10 @@
                                     <tr>
                                        <td><p>{{ $item->curso->nombre }}</p></td>
                                        <td>
-                                         <p>{{ $item->curso->aula->codigo }}</p>
+                                         <p>{{ $item->aula->codigo }}</p>
                                        </td>
                                        <td>
-                                         <p>{{ $item->horario->horarios }}</p>
+                                         <p>{{ $item->horario->turno }}</p>
                                        </td>
                                        <td>
                                          <p>{{ $item->curso->periodo->nombre }}</p>

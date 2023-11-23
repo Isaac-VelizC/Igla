@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/customizer.min.css')}}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/rtl.min.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets2/css/modal.css')}}"/>
+    <link rel="stylesheet" href="{{ asset('assets2/css/dropzone.css')}}"/>
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/core/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/daygrid/main.css')}}' />
     <link rel='stylesheet' href='{{ asset('assets2/vendor/fullcalendar/timegrid/main.css')}}' />
@@ -50,7 +51,6 @@
     @livewireScripts
     {{-- ...Some more scripts... --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     @stack('scripts')
     <script src="{{ asset('assets2/js/core/libs.min.js')}}"></script>
     <script src="{{ asset('assets2/js/core/external.min.js')}}"></script>
@@ -71,6 +71,8 @@
     <script src='{{ asset('assets2/vendor/moment.min.js')}}'></script>
     <script src='{{ asset('assets2/js/plugins/calender.js')}}'></script>
     <script src='{{ asset('assets2/js/cheditor.js')}}'></script>
+    <script src='{{ asset('assets2/js/scripts.js')}}'></script>
+    <script src='{{ asset('assets2/js/dropzone.js')}}'></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#editorPregunta1'))

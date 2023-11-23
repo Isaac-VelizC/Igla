@@ -8,7 +8,8 @@
                     <input type="text" class="form-control" wire:model='tema'>
                     @error('tema') <span class="form-text error">{{ $message }}</span> @enderror
                 </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-toggle="collapse" data-bs-target="#collapseThree" wire:click='resetearForm()'>Cancelar</button>
+                <button type="submit" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#collapseThree">Guardar</button>
             </form>
         </div>
     </div>

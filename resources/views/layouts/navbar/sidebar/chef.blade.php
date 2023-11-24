@@ -60,12 +60,6 @@
                     <span class="item-name">Archivos</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.ajustes') }}">
-                    <i class="bi bi-sliders"></i>
-                    <span class="item-name">Acerca De</span>
-                </a>
-              </li>
           </ul>
         </div>
   </div>

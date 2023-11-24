@@ -1,5 +1,5 @@
 <div class="accordion-item">
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+    <div id="collapseThree" class="accordion-collapse collapse {{ $AD3 ? 'show' : '' }}" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
         <div class="accordion-body">
             <form wire:submit.prevent="formTema">
                 @csrf

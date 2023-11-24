@@ -116,7 +116,7 @@ Route::middleware(['auth', 'role:Estudiante'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::put('/reset/{id}/pass/est', [EstudianteController::class, 'cambiarPass'])->name('cambiar.password.E');
     Route::put('/reset/{id}/pass/dc', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.Chef');
-    Route::put('/reset/{id}/pass/pers', [AdminController::class, 'cambiarPass'])->name('cambiar.password.Admin'); /////Falta crear la funcion
+    Route::put('/reset/{id}/pass/pers', [AdminController::class, 'cambiarPass'])->name('cambiar.password.Admin');
     Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
     Route::get('/cursos/carrera', [InfoController::class, 'cursos'])->name('cursos.carrera');
     //Cursos

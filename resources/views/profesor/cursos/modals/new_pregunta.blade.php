@@ -1,5 +1,5 @@
 <div class="accordion-item">
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div id="collapseTwo" class="accordion-collapse collapse {{ $AD2 ? 'show' : '' }}" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
         <div class="accordion-body">
             <form wire:submit.prevent="formPregunta">
                 @csrf

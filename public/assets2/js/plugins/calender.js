@@ -25,17 +25,7 @@ if (document.querySelectorAll('#calendar1').length) {
       },
       
       events: baseUrl+"/calendar/mostrar",
-      /*[
-        {
-            title: 'Click for Google',
-            url: 'http://google.com/',
-            start: moment(new Date(), 'YYYY-MM-DD').add(-20, 'days').format('YYYY-MM-DD') + 'T05:30:00.000Z',
-            backgroundColor: 'rgba(58,87,232,0.2)',
-            textColor: 'rgba(58,87,232,1)',
-            borderColor: 'rgba(58,87,232,1)'
-        },
-        */
-
+      
       dateClick:function (info) {
         formulario.reset();
         $('#schedule-start-date').val(info.dateStr)

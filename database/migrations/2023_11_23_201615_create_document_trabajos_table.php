@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('documentos', function (Blueprint $table) {
+        Schema::create('document_trabajos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre', 100);
             $table->string('url', 255);
             $table->dateTime('fecha')->default(now());
             $table->boolean('estado')->default(true);
-            $table->unsignedBigInteger('materia_id')->nullable();
-            $table->foreign('materia_id')->references('id')->on('curso_docentes')->onDelete('cascade');
-            $table->unsignedBigInteger('tarea_id')->nullable();
-            $table->foreign('tarea_id')->references('id')->on('trabajos')->onDelete('cascade');
+            $table->unsignedBigInteger('trabajo_id')->nullable();
+            $table->foreign('trabajo_id')->references('id')->on('trabajos')->onDelete('cascade');
+            $table->unsignedBigInteger('trabajo_estudiante_id')->nullable();
+            $table->foreign('trabajo_estudiante_id')->references('id')->on('trabajo_estudiantes')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('document_trabajos');
     }
 };

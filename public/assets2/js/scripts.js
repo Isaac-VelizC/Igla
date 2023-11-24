@@ -14,8 +14,5 @@ function mostrarOcultarElemento(inputId, containerId, checkboxId) {
 function toggleNotaInput(inputId, checkbox) {
     var notaInput = document.getElementById(inputId);
     notaInput.style.display = checkbox.checked ? 'block' : 'none';
-    notaInput.value = checkbox.checked ? '' : null; // Limpiar el valor si no está seleccionado
-}
-function cambiarTextoDropdown(texto) {
-    document.getElementById('dropdownText').textContent = texto;
+    notaInput.value = checkbox.checked ? '' : null;
 }

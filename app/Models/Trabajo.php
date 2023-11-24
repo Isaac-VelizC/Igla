@@ -10,6 +10,21 @@ class Trabajo extends Model
     use HasFactory;
     protected $table = "trabajos";
     protected $primaryKey = "id";
-    protected $fillable = ['tipo_id', 'curso_id', 'user_id', 'cat_crit_id', 'titulo', 'descripcion', 'doc_id', 'cantidad', 'inicio', 'fin', 'con_nota', 'nota', 'visible', 'estado'];
+    protected $fillable = ['tipo_id',
+        'curso_id',
+        'user_id',
+        'cat_crit_id',
+        'tema_id',
+        'titulo',
+        'descripcion',
+        'cantidad',
+        'inicio',
+        'con_limite',
+        'fin',
+        'con_nota',
+        'nota',
+        'visible',
+        'estado'
+    ];
 
 }

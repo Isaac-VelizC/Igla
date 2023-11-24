@@ -25,13 +25,13 @@ return new class extends Migration
             $table->text('pregunta');
             $table->unsignedBigInteger('curso_id')->nullable();
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
-            $table->boolean('con_nota')->default(true);
+            $table->boolean('con_nota')->default(false);
             $table->bigInteger('nota')->nullable();
-            $table->dateTime('con_limite')->default(true);
+            $table->boolean('con_limite')->default(false);
             $table->dateTime('limite')->nullable();
             $table->unsignedBigInteger('tema_id')->nullable();
             $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
-            $table->boolean('estado')->default(true);
+            $table->string('estado')->default('Borrador');
             $table->timestamps();
         });
 
@@ -43,23 +43,24 @@ return new class extends Migration
 
         Schema::create('trabajos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('tipo_id');
+            $table->unsignedBigInteger('tipo_id')->nullable();
             $table->foreign('tipo_id')->references('id')->on('tipo_trabajos')->onDelete('cascade');
             $table->unsignedBigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('cat_crit_id');
+            $table->unsignedBigInteger('cat_crit_id')->nullable();
             $table->foreign('cat_crit_id')->references('id')->on('categorias_criterio')->onDelete('cascade');
+            $table->unsignedBigInteger('tema_id')->nullable();
+            $table->foreign('tema_id')->references('id')->on('temas')->onDelete('cascade');
             $table->string('titulo', 100);
             $table->text('descripcion')->nullable();
-            $table->integer('cantidad')->default(1);
             $table->dateTime('inico')->default(now());
-            $table->dateTime('fin');
-            $table->boolean('con_nota')->default(true);
-            $table->bigInteger('nota')->nullable();
+            $table->dateTime('fin')->nullable();
+            $table->boolean('con_nota')->default(false);
+            $table->bigInteger('nota')->default(0);
             $table->boolean('visible')->default(false);
-            $table->boolean('estado')->default(true);
+            $table->string('estado')->default('Borrador');
             $table->timestamps();
         });
     }

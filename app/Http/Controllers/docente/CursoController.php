@@ -5,6 +5,7 @@ namespace App\Http\Controllers\docente;
 use App\Http\Controllers\Controller;
 use App\Models\CursoDocente;
 use App\Models\Documentos;
+use App\Models\Trabajo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;

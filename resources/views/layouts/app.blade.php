@@ -73,6 +73,7 @@
     <script src='{{ asset('assets2/js/cheditor.js')}}'></script>
     <script src='{{ asset('assets2/js/scripts.js')}}'></script>
     <script src='{{ asset('assets2/js/dropzone.js')}}'></script>
+    <script src='{{ asset('assets2/js/form_tarea.js')}}'></script>
     <script>
         ClassicEditor
             .create(document.querySelector('#editorPregunta1'))

@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_evaluacions', function (Blueprint $table) {
-            $table->id();
-            $table->text('nombre');
-        });
-
         Schema::create('curso_evaluacion', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('curso_id');
             $table->foreign('curso_id')->references('id')->on('curso_docentes')->onDelete('cascade');
-            $table->unsignedBigInteger('evaluacion_tipo_id');
-            $table->foreign('evaluacion_tipo_id')->references('id')->on('tipo_evaluacions')->onDelete('cascade');
+            $table->unsignedBigInteger('tipo_id')->nullable();
+            $table->foreign('tipo_id')->references('id')->on('tipo_trabajos')->onDelete('cascade');
             $table->unsignedBigInteger('cat_crit_id');
             $table->foreign('cat_crit_id')->references('id')->on('categorias_criterio')->onDelete('cascade');
             $table->unsignedBigInteger('user_id');
@@ -44,7 +39,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('tipo_evaluacions');
         Schema::dropIfExists('curso_evaluacion');
     }
 };

@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('tipo_eventos', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('color')->nullable();
+            $table->string('backgroundColor')->nullable();
+            $table->string('textColor')->nullable();
             $table->timestamps();
         });
         

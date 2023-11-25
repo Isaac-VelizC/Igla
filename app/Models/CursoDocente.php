@@ -15,7 +15,6 @@ class CursoDocente extends Model
         'curso_id',
         'responsable_id',
         'horario_id',
-        'doc_id',
         'aula_id',
         'descripcion',
         'imagen',

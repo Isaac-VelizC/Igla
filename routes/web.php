@@ -13,6 +13,8 @@ use App\Http\Controllers\Estudiante\InfoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Docente\Trabajo\ShowPregunta;
+use App\Livewire\Docente\Trabajo\ShowTarea;
 use App\Models\Informacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -107,6 +109,9 @@ Route::middleware(['auth', 'role:Chef'])->group(function () {
     //recetas
     Route::get('/recetas/chefs/lafff', [RecetaController::class, 'recetas'])->name('recetas');
     Route::post('/uploads', [DocenteCursoController::class,'uploads'])->name('uploads');
+    //Componetes
+    Route::get('/posts-pregunta/{id}', ShowPregunta::class)->name('show.pregunta');
+    Route::get('/posts-tareas/{id}', ShowTarea::class)->name('show.tarea');
 });
 
 Route::middleware(['auth', 'role:Estudiante'])->group(function () {

@@ -24,5 +24,24 @@ class Trabajo extends Model
         'visible',
         'estado'
     ];
-
+    public function curso()
+    {
+        return $this->belongsTo(CursoDocente::class, 'curso_id');
+    }
+    public function Tipo()
+    {
+        return $this->belongsTo(TipoTrabajo::class, 'tipo_id');
+    }
+    public function tema()
+    {
+        return $this->belongsTo(Tema::class, 'tema_id');
+    }
+    public function tareasEstudiantes()
+    {
+        return $this->hasMany(TrabajoEstudiante::class, 'tarea_id');
+    }
+    public function usuario()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -6,22 +6,24 @@
                     <div class="d-flex align-items-center justify-content-between flex-wrap">
                         <p class="mb-md-0 mb-2 d-flex align-items-center">{{$materia->descripcion}}</p>
                         <div class="d-flex align-items-center flex-wrap">
-                            <div class="dropdown me-3">
-                                <span class="dropdown-toggle align-items-center d-flex" id="dropdownMenuButton04" role="button" data-bs-toggle="dropdown">
-                                    <p>
-                                        <svg class="icon-20" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none">
-                                            <g>
-                                            <path d="M12.0711 18.9706V4.82847M19.1421 11.8995H5" stroke="currentColor" stroke-linecap="round"/>
-                                            </g>
-                                        </svg> Agregar Nuevo
-                                    </p>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton04" style="">
-                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" wire:click='formTarea' onclick="cambiarTextoDropdown('Tarea')">Tarea</a>
-                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo" wire:click='formPregunta' onclick="cambiarTextoDropdown('Pregunta')">Pregunta</a>
-                                    <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-controls="collapseThree" wire:click='abrirFormTema' onclick="cambiarTextoDropdown('Tema')">Tema</a>
+                            @if (auth()->user()->hasRole('Chef'))
+                                <div class="dropdown me-3">
+                                    <span class="dropdown-toggle align-items-center d-flex" id="dropdownMenuButton04" role="button" data-bs-toggle="dropdown">
+                                        <p>
+                                            <svg class="icon-20" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24" fill="none">
+                                                <g>
+                                                <path d="M12.0711 18.9706V4.82847M19.1421 11.8995H5" stroke="currentColor" stroke-linecap="round"/>
+                                                </g>
+                                            </svg> Agregar Nuevo
+                                        </p>
+                                    </span>
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton04" style="">
+                                        <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" wire:click='formTarea' onclick="cambiarTextoDropdown('Tarea')">Tarea</a>
+                                        <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-controls="collapseTwo" wire:click='formPregunta' onclick="cambiarTextoDropdown('Pregunta')">Pregunta</a>
+                                        <a class="dropdown-item cursoMano" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-controls="collapseThree" wire:click='abrirFormTema' onclick="cambiarTextoDropdown('Tema')">Tema</a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -31,11 +33,13 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 @endif
-                <div class="accordion" id="accordionExample">
-                    @include('profesor.cursos.modals.new_tarea')
-                    @include('profesor.cursos.modals.new_pregunta')
-                    @include('profesor.cursos.modals.new_tema')
-                </div>
+                @if (auth()->user()->hasRole('Chef'))
+                    <div class="accordion" id="accordionExample">
+                        @include('profesor.cursos.modals.new_tarea')
+                        @include('profesor.cursos.modals.new_pregunta')
+                        @include('profesor.cursos.modals.new_tema')
+                    </div>
+                @endif
             </div>
         </div>
         <div class="col-lg-12">

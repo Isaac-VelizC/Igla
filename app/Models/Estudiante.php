@@ -19,20 +19,20 @@ class Estudiante extends Model
     {
         return $this->belongsTo(Contacto::class, 'contact_id');
     }
-
     public function inscripciones()
     {
         return $this->hasMany(Inscripcion::class, 'estudiante_id');
     }
-
     public function persona()
     {
         return $this->belongsTo(Persona::class, 'pers_id');
     }
-    
     public function turnos()
     {
         return $this->belongsTo(Horario::class, 'turno_id');
     }
-
+    public function preguntasEstudiantes()
+    {
+        return $this->hasMany(PreguntaEstudiante::class, 'estudiante_id');
+    }
 }

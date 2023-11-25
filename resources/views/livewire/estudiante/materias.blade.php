@@ -69,7 +69,9 @@
                                                             <div class="mt-2"><p>Horario: {{ $mat->horario->turno }}</p></div>
                                                         </div>
                                                         @if ($estadoEst)
-                                                            <div wire:click='programarMateria({{$mat->id}})'><span class="badge bg-primary">Programar</span></div>
+                                                            <div wire:click='programarMateria({{$mat->id}})'>
+                                                                <p class="h3"><span class="badge bg-primary">Registrar</span></p>
+                                                            </div>
                                                         @else
                                                             <div wire:click='borrarProgramacion({{$mat->id}})'><span class="badge bg-danger">Quitar</span></div>
                                                         @endif

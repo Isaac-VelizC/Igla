@@ -94,7 +94,7 @@ class TrabajoMateria extends Component
             'curso_id' => $this->idCurso,
             'con_nota' => $this->pregunta['con_nota'],
             'nota' => $this->pregunta['nota'],
-            'limite' => $this->pregunta['limite'],
+            'limite' => $this->pregunta['limite'] ?: null,
             'tema_id' => $this->pregunta['tema'] ?: null,
             'estado' => 'Publicado',
         ])->save();
@@ -141,6 +141,7 @@ class TrabajoMateria extends Component
         $this->AD1 = false;
         $this->AD2 = false;
         $this->AD3 = false;
+        $this->mount($this->idCurso);
         $this->idTarea = null;
         $this->idFiles = null;
         $this->tarea = [ 'titulo' => '', 'tipo' => '', 'tema' => '', 'fin' => '', 'con_nota' => false, 'nota' => '100'];

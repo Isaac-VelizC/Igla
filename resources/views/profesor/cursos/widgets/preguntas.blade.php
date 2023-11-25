@@ -3,7 +3,7 @@
         <div class="card-body">
             <div class="d-grid grid-flow-col align-items-center justify-content-between mb-2">
                 <div class="d-flex align-items-center">
-                    <p class="mb-0">{{ $pregunta->pregunta }}</p>
+                    <a href="{{ route('show.pregunta', $pregunta->id) }}"><p class="mb-0">{{ $pregunta->pregunta }}</p></a>
                     <svg class="icon-20" width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.5 5L15.5 12L8.5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>

@@ -81,37 +81,6 @@
                     <h4 class="card-title">Mas Información de la Materia</h4>
                  </div>
               </div>
-              <!--div class="card-body">
-                 <form method="POST" action="{{route('uploads')}}" enctype="multipart/form-data">
-                    @csrf
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Escriba una descripcion de la materia (Opcional)" name="description" id="description"></textarea>
-                     </div>
-                     @if ($errors->has('description'))
-                       <span class="text-danger">{{ $errors->first('description') }}</span>
-                    @endif
-                     <button type="submit" class="btn btn-primary">Guardar</button>
-                  </form>
-              </div-->
-              <form wire:submit="save">
-    <div
-        x-data="{ uploading: false, progress: 0 }"
-        x-on:livewire-upload-start="uploading = true"
-        x-on:livewire-upload-finish="uploading = false"
-        x-on:livewire-upload-error="uploading = false"
-        x-on:livewire-upload-progress="progress = $event.detail.progress"
-    >
-        <!-- File Input -->
-        <input type="file" wire:model="photo" multiple>
- 
-        <!-- Progress Bar -->
-        <div x-show="uploading">
-            <progress max="100" x-bind:value="progress"></progress>
-        </div>
-    </div>
- 
-    <!-- ... -->
-</form>
             </div>
         </div>
         <div class="col-lg-12">
@@ -136,22 +105,4 @@
             </div>
         </div>
    </div>
-    @push('scripts')
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
-        <script>
-            Dropzone.options.myAwesomeDropzone = {
-                headers: {
-                    'X-CSRF-TOKEN': "{{csrf_token()}}"
-                },
-                dictDefaultMessage: "Arrastre una imagen al recuadro para subirlo",
-                maxFiles: 4,
-            };
-            ClassicEditor
-                .create(document.querySelector('#description'))
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>
-    @endpush
 </div>

@@ -16,17 +16,18 @@ class TrabajoMateria extends Component
 {
     use WithFileUploads;
     public $tema, $idCurso, $idTarea, $idFiles, $temasCurso, $tipoTrabajo, $tareas, $preguntas;
-    public $AD1 = false, $AD2 = false, $AD3 = false;
+    public $AD1 = false, $AD2 = false, $AD3 = false, $temaEditando = null;
     public CursoDocente $materia;
+    public $temaEditado = '';
     public $tarea = ['titulo' => '', 'tipo' => '', 'tema' => '', 'fin' => '', 'con_nota' => false, 'nota' => '100'];
     public $pregunta = ['pregunta' => '', 'tema' => '', 'limite' => '', 'con_nota' => false, 'nota' => '100'];
-    public $files = [], $filesTarea;
+    public $files = [], $filesTarea, $temasEditados = [];
     public function mount($id) {
         $this->idCurso = $id;
         $this->materia = CursoDocente::findOrFail($id);
         $this->temasCurso = Tema::where('curso_id', $id)->get();
         $this->tipoTrabajo = TipoTrabajo::all();
-
+        $this->temasEditados = $this->temasCurso->pluck('tema', 'id')->toArray();
         $allTareas = Trabajo::where('curso_id', $id)->get();
         $allPreguntas = Pregunta::where('curso_id', $id)->get();
         $this->tareas = collect($allTareas)->groupBy('tema_id');
@@ -110,6 +111,7 @@ class TrabajoMateria extends Component
         session()->flash('message', 'El Tema se creo con éxito');
         $this->tema = '';
         $this->AD3 = false;
+        $this->mount($this->idCurso);
     }
     public function updatedFiles() {
         foreach ($this->files as $file) {
@@ -160,6 +162,7 @@ class TrabajoMateria extends Component
                     }
                 }
                 $tarea->delete();
+                $this->mount($this->idCurso);
                 session()->flash('message', 'Se eliminó la tarea con éxito');
             } else {
                 session()->flash('error', 'No se encontró la tarea que intentas eliminar.');
@@ -168,11 +171,26 @@ class TrabajoMateria extends Component
             session()->flash('error',  $e->getMessage());
         }
     }
-    
-    
     public function eliminarPregunta($id) {
         Pregunta::find($id)->delete();
         session()->flash('message', 'Se elimino la pregunta con éxito');
+        $this->mount($this->idCurso);
+    }
+    public function editarTema($itemId) {
+        $this->temaEditando = $itemId;
+        $this->temaEditado = Tema::find($itemId)->tema;
+    }
+    public function actualizarTema($itemId) {
+        $tema = Tema::find($itemId);
+        if ($tema) {
+            $tema->tema = $this->temasEditados[$itemId];
+            $tema->update();
+        }
+        $this->temaEditando = null;
+    }
+    public function borrarTema($id) {
+        Tema::find($id)->delete();
+        $this->mount($this->idCurso);
     }
     public function render()
     {

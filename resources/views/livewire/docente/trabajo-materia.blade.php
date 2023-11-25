@@ -13,8 +13,7 @@
                                             <g>
                                             <path d="M12.0711 18.9706V4.82847M19.1421 11.8995H5" stroke="currentColor" stroke-linecap="round"/>
                                             </g>
-                                        </svg>
-                                        Agregar Nuevo
+                                        </svg> Agregar Nuevo
                                     </p>
                                 </span>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton04" style="">
@@ -65,7 +64,24 @@
                 @endforeach
         </div>
         @foreach ($temasCurso as $item)
-            <h4 class="mb-3">{{ $item->tema }}</h4>
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <h4 class="mb-3">
+                    <div class="col-lg-12">
+                        <textarea 
+                            id="dynamicInput"
+                            class="inputEdit" 
+                            wire:model="temasEditados.{{ $item->id }}"
+                            wire:blur="actualizarTema({{ $item->id }})"
+                            @if($temaEditando !== $item->id) disabled @endif
+                            style="resize: horizontal;">
+                        </textarea>
+                    </div>
+                </h4>
+                <div class="d-flex align-items-center flex-wrap">
+                    <i wire:click='editarTema({{$item->id}})' class="bi bi-pencil"></i> 
+                    <i wire:click='borrarTema({{$item->id}})' class="bi bi-trash cursoMano"></i>
+                </div>
+            </div>
             @foreach ($tareas[$item->id] ?? [] as $tarea)
                 @include('profesor.cursos.widgets.tareas')
             @endforeach
@@ -76,3 +92,10 @@
         @endforeach
     </div>
 </div>
+
+<script>
+    document.addEventListener("input", function() {
+        var inputElement = document.getElementById("dynamicInput");
+        inputElement.style.width = inputElement.scrollWidth + "px";
+    });
+</script>

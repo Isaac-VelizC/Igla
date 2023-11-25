@@ -64,3 +64,12 @@
     .cursoMano {
         cursor: pointer;
     }
+    .inputEdit {
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 16px;
+            word-wrap: break-word;
+            word-break: break-all;
+    }

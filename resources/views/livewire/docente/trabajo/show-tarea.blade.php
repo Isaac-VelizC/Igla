@@ -14,7 +14,7 @@
                 <div class="col-sm-12">
                    <div class="card">
                       <div class="row no-gutters">
-                         <div class="col-md-8">
+                         <div class="col-md-7">
                             <div class="card-body">
                                <h4>{{ $tarea->titulo }}</h4>
                                <p class="mt-2">{{ $tarea->descripcion }}</p>
@@ -28,7 +28,7 @@
                                </div>
                             </div>
                          </div>
-                         <div class="col-md-4">
+                         <div class="col-md-5">
                             <div class="card-body text-center h-100 iq-single-card">
                                 <div class="flex-wrap mb-4 d-flex align-itmes-center justify-content-between">
                                     <div class="d-flex align-itmes-center me-0 me-md-4">
@@ -82,7 +82,44 @@
                    @if (auth()->user()->hasRole('Chef'))
                         @include('profesor.cursos.widgets.calificar_trabajo')
                    @elseif(auth()->user()->hasRole('Estudiante'))
-                        @include('estudiante.cursos.widgets.subir_trabajo')
+                    <div class="card">
+                        <div class="card-header pb-3">
+                            <h3 class="block-title">Realizar Entrega</h3>
+                        </div>
+                        <div class="card-body">
+                                <div class="table-responsive pricing pt-2">
+                                    <table id="my-table" class="table mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Estado de Entrega</th>
+                                            <td class="text-center child-cell">
+                                                Pendiente
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Entrega</th>
+                                            <td class="text-center child-cell">
+                                                
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Fecha Limite</th>
+                                            <td class="text-center child-cell">
+                                                {{ $tarea->fin }}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    </table>
+                                </div>
+                                <hr>
+                            <div class="row">
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-outline-danger btn-sm" >Cancelar</button>
+                                    <a type="button" class="btn btn-secondary btn-sm" href="{{ route('estudiante.subir.tarea', [$tarea->id]) }}">Subir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                    @endif
                 </div>
              </div>

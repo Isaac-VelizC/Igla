@@ -18,7 +18,6 @@
         display: none;
     }
 }
-
 </style>    
 
 <div class="iq-navbar-header" style="height: 215px;">

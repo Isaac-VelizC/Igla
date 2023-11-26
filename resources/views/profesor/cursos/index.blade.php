@@ -19,7 +19,7 @@
                               </div>
                               <div class="progress-detail">
                                  <p  class="mb-2">{{ $item->curso->nombre }}</p>
-                                 <h4>{{ $item->horario->horarios }}</h4>
+                                 <h4>{{ $item->horario->turno }}</h4>
                               </div>
                            </div>
                         </a>

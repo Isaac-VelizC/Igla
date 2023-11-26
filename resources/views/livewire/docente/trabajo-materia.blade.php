@@ -59,32 +59,35 @@
             </div>
         </div>
         <div class="col-lg-12">
-                @foreach ($tareas[null] ?? [] as $tarea)
-                    @include('profesor.cursos.widgets.tareas')
-                @endforeach
-
-                @foreach ($preguntas[null] ?? [] as $pregunta)
-                    @include('profesor.cursos.widgets.preguntas')
-                @endforeach
+            @foreach ($tareas[null] ?? [] as $tarea)
+                @include('profesor.cursos.widgets.tareas')
+            @endforeach
+            @foreach ($preguntas[null] ?? [] as $pregunta)
+                @include('profesor.cursos.widgets.preguntas')
+            @endforeach
         </div>
         @foreach ($temasCurso as $item)
-            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <h4 class="mb-3">
-                    <div class="col-lg-12">
-                        <textarea 
-                            id="dynamicInput"
-                            class="inputEdit" 
-                            wire:model="temasEditados.{{ $item->id }}"
-                            wire:blur="actualizarTema({{ $item->id }})"
-                            @if($temaEditando !== $item->id) disabled @endif
-                            style="resize: horizontal;">
-                        </textarea>
+            <div class="d-flex align-items-center justify-content-between flex-wrap">        
+                @if (auth()->user()->hasRole('Chef'))
+                    <h4 class="mb-3">
+                        <div class="col-lg-12">
+                            <textarea 
+                                id="dynamicInput"
+                                class="inputEdit" 
+                                wire:model="temasEditados.{{ $item->id }}"
+                                wire:blur="actualizarTema({{ $item->id }})"
+                                @if($temaEditando !== $item->id) disabled @endif
+                                style="resize: horizontal;">
+                            </textarea>
+                        </div>
+                    </h4>
+                    <div class="d-flex align-items-center flex-wrap">
+                        <i wire:click='editarTema({{$item->id}})' class="bi bi-pencil"></i> 
+                        <i wire:click='borrarTema({{$item->id}})' class="bi bi-trash cursoMano"></i>
                     </div>
-                </h4>
-                <div class="d-flex align-items-center flex-wrap">
-                    <i wire:click='editarTema({{$item->id}})' class="bi bi-pencil"></i> 
-                    <i wire:click='borrarTema({{$item->id}})' class="bi bi-trash cursoMano"></i>
-                </div>
+                @elseif(auth()->user()->hasRole('Estudiante'))
+                <h4 class="mb-3">{{ $item->tema }}</h4>
+                @endif
             </div>
             @foreach ($tareas[$item->id] ?? [] as $tarea)
                 @include('profesor.cursos.widgets.tareas')

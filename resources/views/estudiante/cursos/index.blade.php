@@ -18,14 +18,7 @@
                                  <span><b>{{$item->cursoDocente->curso->nombre}}</b></span>
                               </div>
                            </div>
-                           <div class="d-flex justify-content-between mt-2">
-                              <div>
-                                 <span>Total Revenue</span>
-                              </div>
-                              <div>
-                                 <span>35%</span>
-                              </div>
-                           </div>
+                           <p>hol</p>
                         </div>
                      </a>
                   </div>

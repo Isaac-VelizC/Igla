@@ -17085,6 +17085,17 @@ thead, tbody, tfoot, tr, td, th {
   display: none;
 }
 
+.upload-files {
+  text-align: center;
+  font-size: 12px;
+  line-height: 24px;
+  cursor: pointer;
+  border: 5px solid #ffffff;
+}
+.upload-files .file-upload {
+  display: none;
+}
+
 .card-profile {
   margin-top: -120px;
   font-size: 1rem;

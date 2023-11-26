@@ -15,12 +15,10 @@ class Documentos extends Model
     {
         return $this->belongsTo(CursoDocente::class, 'materia_id');
     }
-
     public function usuario()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
     public function tarea()
     {
         return $this->belongsTo(Trabajo::class, 'tarea_id');

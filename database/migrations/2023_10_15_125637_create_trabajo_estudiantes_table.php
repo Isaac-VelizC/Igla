@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->text('descripcion')->nullable();
             $table->decimal('nota')->default(0);
-            $table->boolean('estado')->default(true);
+            $table->string('estado')->default('Borrador');
             $table->timestamps();
         });
 
@@ -31,7 +31,7 @@ return new class extends Migration
             $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
             $table->text('respuesta')->nullable();
             $table->decimal('nota')->default(0);
-            $table->boolean('estado')->default(true);
+            $table->string('estado')->default('Enviado');
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Docente\Trabajo\ShowPregunta;
 use App\Livewire\Docente\Trabajo\ShowTarea;
+use App\Livewire\Estudiante\SubirTarea;
 use App\Models\Informacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -109,13 +110,11 @@ Route::middleware(['auth', 'role:Chef'])->group(function () {
     //recetas
     Route::get('/recetas/chefs/lafff', [RecetaController::class, 'recetas'])->name('recetas');
     Route::post('/uploads', [DocenteCursoController::class,'uploads'])->name('uploads');
-    //Componetes
-    Route::get('/posts-pregunta/{id}', ShowPregunta::class)->name('show.pregunta');
-    Route::get('/posts-tareas/{id}', ShowTarea::class)->name('show.tarea');
 });
 
 Route::middleware(['auth', 'role:Estudiante'])->group(function () {
     Route::get('/estud-dashboard', [InfoController::class, 'index'])->name('estudiante.home');
+    Route::get('/estud-submit/{id}', SubirTarea::class)->name('estudiante.subir.tarea');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -127,4 +126,7 @@ Route::middleware(['auth'])->group(function () {
     //Cursos
     Route::get('/cursos', [DocenteCursoController::class, 'index'])->name('chef.cursos');
     Route::get('/curso/{id}/materia', [DocenteCursoController::class, 'curso'])->name('cursos.curso');
+    //Componetes
+    Route::get('/posts-pregunta/{id}', ShowPregunta::class)->name('show.pregunta');
+    Route::get('/posts-tareas/{id}', ShowTarea::class)->name('show.tarea');
 });

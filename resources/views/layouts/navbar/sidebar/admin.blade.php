@@ -24,7 +24,7 @@
       <div class="sidebar-list">
           <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
               <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="{{ route('admin.home') }}">
+                  <a class="nav-link {{ Route::is('admin.home') ? 'active' : '' }}" aria-current="page" href="{{ route('admin.home') }}">
                       <i class="bi bi-house"></i>
                       <span class="item-name">Inicio</span>
                   </a>
@@ -41,7 +41,7 @@
                   </a>
                   <ul class="sub-nav collapse" id="horizontal-menu" data-bs-parent="#sidebar-menu">
                       <li class="nav-item">
-                          <a class="nav-link " href="{{ route('admin.users') }}">
+                          <a class="nav-link {{ Route::is('admin.users') ? 'active' : '' }}" href="{{ route('admin.users') }}">
                             <i class="icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -54,7 +54,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link " href="{{ route('admin.estudinte') }}">
+                          <a class="nav-link {{ Route::is('admin.estudinte') ? 'active' : '' }}" href="{{ route('admin.estudinte') }}">
                               <i class="icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -67,7 +67,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link " href="{{ route('admin.docentes') }}">
+                          <a class="nav-link {{ Route::is('admin.docentes') ? 'active' : '' }}" href="{{ route('admin.docentes') }}">
                               <i class="icon svg-icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -80,7 +80,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link " href="{{ route('admin.personal') }}">
+                          <a class="nav-link {{ Route::is('admin.personal') ? 'active' : '' }}" href="{{ route('admin.personal') }}">
                               <i class="icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -106,7 +106,7 @@
                   </a>
                   <ul class="sub-nav collapse" id="sidebar-auth" data-bs-parent="#sidebar-menu">
                       <li class="nav-item">
-                          <a class="nav-link" href="{{ route('admin.cursos') }}">
+                          <a class="nav-link {{ Route::is('admin.cursos') ? 'active' : '' }}" href="{{ route('admin.cursos') }}">
                               <i class="icon">
                                   <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                       <g>
@@ -119,7 +119,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.cursos.activos') }}">
+                        <a class="nav-link {{ Route::is('admin.cursos.activos') ? 'active' : '' }}" href="{{ route('admin.cursos.activos') }}">
                             <i class="icon">
                                 <svg class="icon-10" xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -186,56 +186,50 @@
                   </ul>
               </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ route('admin.lista.pagos') }}">
+                    <a class="nav-link {{ Route::is('admin.lista.pagos') ? 'active' : '' }}" href="{{ route('admin.lista.pagos') }}">
                         <i class="bi bi-receipt"></i>
                         <span class="item-name">Pagos</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.calendario') }}">
+                    <a class="nav-link {{ Route::is('admin.calendario') ? 'active' : '' }}" href="{{ route('admin.calendario') }}">
                         <i class="bi bi-calendar"></i>
                         <span class="item-name">Calendario</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.administracion') }}">
+                    <a class="nav-link {{ Route::is('evaluacion.docente') ? 'active' : '' }}" href="{{ route('evaluacion.docente') }}">
                         <i class="bi bi-person-exclamation"></i>
                         <span class="item-name">Evaluación Docente</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.ingredientes') }}">
+                    <a class="nav-link {{ Route::is('admin.ingredientes') ? 'active' : '' }}" href="{{ route('admin.ingredientes') }}">
                             <i class="bi bi-basket"></i>
                             <span class="item-name">Ingredientes</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.ingredientes') }}">
+                    <a class="nav-link {{ Route::is('admin.ingredientes') ? 'active' : '' }}" href="{{ route('admin.ingredientes') }}">
                         <i class="bi bi-journals"></i>
                         <span class="item-name">Recetas</span>
                     </a>
                 </li>
                 <li><hr class="hr-horizontal"></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
+                    <a class="nav-link {{ Route::is('admin.home') ? 'active' : '' }}" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
                             <i class="bi bi-postcard"></i>
                             <span class="item-name">Publicaciones</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                        <i class="bi bi-archive"></i>
-                        <span class="item-name">Archivos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.administracion') }}">
+                    <a class="nav-link {{ Route::is('admin.administracion') ? 'active' : '' }}" href="{{ route('admin.administracion') }}">
                         <i class="bi bi-person-exclamation"></i>
                         <span class="item-name">Administración</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.ajustes') }}">
+                    <a class="nav-link {{ Route::is('admin.ajustes') ? 'active' : '' }}" href="{{ route('admin.ajustes') }}">
                         <i class="bi bi-sliders"></i>
                         <span class="item-name">Acerca De</span>
                     </a>

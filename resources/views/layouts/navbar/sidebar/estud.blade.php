@@ -21,41 +21,35 @@
       </div>
   </div>
   <div class="sidebar-body pt-0 data-scrollbar">
-      <div class="sidebar-list">
-          <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
-              <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="{{ route('estudiante.home') }}">
-                      <i class="bi bi-house"></i>
-                      <span class="item-name">Inicio</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link "  href="{{ route('cursos.carrera') }}">
-                  <i class="bi bi-bookshelf"></i>
-                  <span class="item-name">Materias</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link "  href="../../dashboard/admin.html">
-                    <i class="bi bi-journals"></i>
-                    <span class="item-name">Recetas</span>
-                </a>
-              </li>
-              <li><hr class="hr-horizontal"></li>
-              <li class="nav-item">
-                  <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                        <i class="bi bi-postcard"></i>
-                        <span class="item-name">Publicaciones</span>
-                  </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                    <i class="bi bi-archive"></i>
-                    <span class="item-name">Archivos</span>
-                </a>
-              </li>
-          </ul>
-        </div>
+    <div class="sidebar-list">
+      <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
+        <li class="nav-item">
+            <a class="nav-link {{ Route::is('estudiante.home') ? 'active' : '' }}" aria-current="page" href="{{ route('estudiante.home') }}">
+                <i class="bi bi-house"></i>
+                <span class="item-name">Inicio</span>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{ Route::is('cursos.carrera') ? 'active' : '' }}" href="{{ route('cursos.carrera') }}">
+            <i class="bi bi-bookshelf"></i>
+            <span class="item-name">Materias</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="../../dashboard/admin.html">
+              <i class="bi bi-journals"></i>
+              <span class="item-name">Recetas</span>
+          </a>
+        </li>
+        <li><hr class="hr-horizontal"></li>
+        <li class="nav-item">
+            <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
+                  <i class="bi bi-postcard"></i>
+                  <span class="item-name">Publicaciones</span>
+            </a>
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="sidebar-footer"></div>
 </aside>   

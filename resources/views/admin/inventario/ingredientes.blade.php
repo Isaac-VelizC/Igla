@@ -13,8 +13,8 @@
             </div>
         </div>
     </div>
-</div> 
-  
+</div>
+
 <div class="conatiner-fluid content-inner mt-n5 py-0">
      @if(session('success'))
          <div id="myAlert" class="alert alert-left alert-success alert-dismissible fade show mb-3 alert-fade" role="alert">

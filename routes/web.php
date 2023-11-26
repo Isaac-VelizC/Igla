@@ -16,6 +16,7 @@ use App\Http\Controllers\UserController;
 use App\Livewire\Docente\Trabajo\ShowPregunta;
 use App\Livewire\Docente\Trabajo\ShowTarea;
 use App\Livewire\Estudiante\SubirTarea;
+use App\Livewire\EvaluacionDocente;
 use App\Models\Informacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -63,7 +64,6 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::post('/calendar/{id}/evento/update', [CalendarioController::class, 'update'])->name('admin.calendario.update');
     Route::post('/calendar/{id}/evento/delete', [CalendarioController::class, 'delete'])->name('admin.calendario.delete');
     Route::get('/calendar/{id}/evento/show', [CalendarioController::class, 'show'])->name('admin.calendario.show');
-    Route::get('/calendar/mostrar', [CalendarioController::class, 'mostrar'])->name('admin.calendario.ver');
     //Cursos
     Route::get('/admin-cursos', [CursoController::class, 'index'])->name('admin.cursos');
     Route::post('/curso-info', [CursoController::class, 'guardarCurso'])->name('admin.guardar-curso');
@@ -86,9 +86,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     //pagos
     Route::post('/pagos/guardars', [CursoController::class, 'guardarPago'])->name('admin.pago.guardar');
     Route::get('/pagos/guadar/imprimir', [CursoController::class, 'guardarImprimirPago'])->name('admin.pago.guardar.imprimir');
-    
     //Cocina
-    Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
     //Acerda de IGLA
     Route::get('/informacion', [HomeController::class, 'acercaDe'])->name('admin.ajustes');
     Route::post('/guardar-info', [InformacionController::class, 'guardarInformacion'])->name('admin.guardar-registro');
@@ -101,6 +99,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('/administrar-modalidad/{id}/edit', [InformacionController::class, 'updateModalidad'])->name('admin.actualizar-modalidad');
     Route::post('/administrar-horario-add', [InformacionController::class, 'storeHorario'])->name('admin.guardar-horario');
     Route::put('/administrar-horario/{id}/edit', [InformacionController::class, 'updateHorario'])->name('admin.actualizar-horario');
+    //Evaluacion docente
+    Route::get('/evaluacion/add/docente', EvaluacionDocente::class)->name('evaluacion.docente');
 });
 
 Route::middleware(['auth', 'role:Chef'])->group(function () {
@@ -118,6 +118,11 @@ Route::middleware(['auth', 'role:Estudiante'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    //calendario
+    Route::get('/calendar/mostrar', [CalendarioController::class, 'mostrar'])->name('admin.calendario.ver');
+    //cocina Ingredientes
+    Route::get('/ingretientes-all', [CocinaController::class, 'allIngredientes'])->name('admin.ingredientes');
+
     Route::put('/reset/{id}/pass/est', [EstudianteController::class, 'cambiarPass'])->name('cambiar.password.E');
     Route::put('/reset/{id}/pass/dc', [ChefsController::class, 'cambiarPass'])->name('cambiar.password.Chef');
     Route::put('/reset/{id}/pass/pers', [AdminController::class, 'cambiarPass'])->name('cambiar.password.Admin');

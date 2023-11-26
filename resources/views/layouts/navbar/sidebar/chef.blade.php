@@ -24,25 +24,25 @@
       <div class="sidebar-list">
           <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
               <li class="nav-item">
-                  <a class="nav-link " aria-current="page" href="{{ route('chef.home') }}">
+                  <a class="nav-link {{ Route::is('chef.home') ? 'active' : '' }}" aria-current="page" href="{{ route('chef.home') }}">
                       <i class="bi bi-house"></i>
                       <span class="item-name">Inicio</span>
                   </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="{{ route('chef.cursos') }}">
+                <a class="nav-link {{ Route::is('chef.cursos') ? 'active' : '' }}" href="{{ route('chef.cursos') }}">
                   <i class="bi bi-bookshelf"></i>
                   <span class="item-name">Cursos</span>
                 </a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link "  href="../../dashboard/admin.html">
+                  <a class="nav-link {{ Route::is('admin.ingredientes') ? 'active' : '' }}"  href="{{ route('admin.ingredientes') }}">
                         <i class="bi bi-basket"></i>
                         <span class="item-name">Ingredientes</span>
                   </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link "  href="{{ route('recetas') }}">
+                <a class="nav-link {{ Route::is('recetas') ? 'active' : '' }}"  href="{{ route('recetas') }}">
                     <i class="bi bi-journals"></i>
                     <span class="item-name">Recetas</span>
                 </a>
@@ -53,12 +53,6 @@
                         <i class="bi bi-postcard"></i>
                         <span class="item-name">Publicaciones</span>
                   </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
-                    <i class="bi bi-archive"></i>
-                    <span class="item-name">Archivos</span>
-                </a>
               </li>
           </ul>
         </div>
